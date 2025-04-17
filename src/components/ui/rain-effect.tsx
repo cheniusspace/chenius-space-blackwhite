@@ -1,7 +1,8 @@
+
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
-interface RainEffectProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface RainEffectProps extends React.CanvasHTMLAttributes<HTMLCanvasElement> {}
 
 export const RainEffect = ({ className, ...props }: RainEffectProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
