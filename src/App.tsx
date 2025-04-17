@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +16,7 @@ import FavoriteDetail from "./pages/FavoriteDetail";
 import AddContent from "./pages/AddContent";
 import NotFound from "./pages/NotFound";
 import DesignSystem from "./pages/DesignSystem";
+import { RainSound } from "./components/ui/rain-sound";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +29,7 @@ function App() {
           <Sonner />
           <Router>
             <Layout>
+              <RainSound />
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/creations" element={<Creations />} />

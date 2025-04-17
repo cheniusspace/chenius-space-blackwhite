@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -53,10 +54,10 @@
     --background: 210 10% 5%;
     --foreground: 210 25% 98%;
 
-    --card: 210 10% 5%;
+    --card: 210 10% 8%;
     --card-foreground: 210 25% 98%;
 
-    --popover: 210 10% 5%;
+    --popover: 210 10% 8%;
     --popover-foreground: 210 25% 98%;
 
     --primary: 210 25% 98%;
@@ -89,7 +90,7 @@
   }
 
   * {
-    @apply border-[#E9ECEF];
+    @apply border-border;
   }
 
   body {
@@ -135,7 +136,7 @@
   }
 
   ::selection {
-    @apply bg-black text-white;
+    @apply bg-foreground text-background;
   }
 }
 
@@ -146,8 +147,8 @@
   }
   
   .hover-fill {
-    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-black before:text-white
-    before:-z-10 before:translate-y-full before:transition-transform before:duration-300 hover:text-white
+    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-foreground before:text-background
+    before:-z-10 before:translate-y-full before:transition-transform before:duration-300 hover:text-background
     hover:before:translate-y-0;
   }
 
