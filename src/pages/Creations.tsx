@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -6,6 +5,8 @@ import { CardGrid } from "@/components/ui/card-grid";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
 
 type Creation = {
   id: string;
@@ -54,7 +55,6 @@ const Creations = () => {
     const fetchCreations = async () => {
       setIsLoading(true);
       try {
-        // Start with the base query
         let query = supabase
           .from("creations")
           .select(`
@@ -67,7 +67,6 @@ const Creations = () => {
             )
           `);
         
-        // Add tag filter if a tag is selected
         if (selectedTag) {
           query = query.eq("creations_tags.tag_id", selectedTag);
         }
@@ -78,7 +77,6 @@ const Creations = () => {
           throw error;
         }
         
-        // Process and normalize the data
         const normalizedData = data?.map(item => {
           const normalizedTags = item.tags ? 
             item.tags.map((tagItem: any) => tagItem.tags) : [];
@@ -103,7 +101,6 @@ const Creations = () => {
           variant: "destructive",
         });
         
-        // Fallback to dummy data if fetching fails
         setCreations(creationsData);
       } finally {
         setIsLoading(false);
@@ -120,10 +117,20 @@ const Creations = () => {
   return (
     <Layout>
       <div className="container px-4 md:px-6 max-w-7xl mx-auto py-12">
-        <SectionHeading
-          title="Creations"
-          description="A collection of visual works, designs, and creative projects presented in monochromatic elegance."
-        />
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
+          <SectionHeading
+            title="Creations"
+            description="A collection of visual works, designs, and creative projects presented in monochromatic elegance."
+            className="mb-0"
+          />
+          
+          <Button asChild>
+            <Link to="/add-content" className="flex items-center gap-2 whitespace-nowrap">
+              <Plus size={16} />
+              Add Creation
+            </Link>
+          </Button>
+        </div>
 
         <div className="mb-12">
           <div className="flex space-x-4 overflow-x-auto pb-4">
@@ -206,7 +213,6 @@ const Creations = () => {
   );
 };
 
-// Fallback data in case the API call fails
 const creationsData = [
   {
     id: "1",
