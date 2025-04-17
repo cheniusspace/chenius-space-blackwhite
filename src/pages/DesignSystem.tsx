@@ -15,7 +15,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Progress } from "@/components/ui/progress";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { AlertCircle, Check, Info, Plus, AlertTriangle, LayoutGrid, Grid3X3 } from "lucide-react";
+import { AlertCircle, Check, Info, Plus, AlertTriangle, LayoutGrid, Grid3X3, HeartHandshake } from "lucide-react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import SideMenu from "@/components/design-system/SideMenu";
 
@@ -67,12 +67,12 @@ const DesignSystem = () => {
                 <h2 className="text-2xl font-heading font-bold mb-6 tracking-normal">Typography</h2>
                 <div className="space-y-6">
                   <div className="p-6 border rounded-md">
-                    <h1 className="font-heading">Heading 1 - Viga</h1>
-                    <h2 className="font-heading">Heading 2 - Viga</h2>
-                    <h3 className="font-heading">Heading 3 - Viga</h3>
-                    <h4 className="font-heading">Heading 4 - Viga</h4>
-                    <h5 className="font-heading">Heading 5 - Viga</h5>
-                    <h6 className="font-heading">Heading 6 - Viga</h6>
+                    <h1 className="text-4xl font-heading mb-4 tracking-tight">Heading 1 - Viga</h1>
+                    <h2 className="text-3xl font-heading mb-4 tracking-normal">Heading 2 - Viga</h2>
+                    <h3 className="text-2xl font-heading mb-3 tracking-normal">Heading 3 - Viga</h3>
+                    <h4 className="text-xl font-heading mb-3 tracking-normal">Heading 4 - Viga</h4>
+                    <h5 className="text-lg font-heading mb-2 tracking-normal">Heading 5 - Viga</h5>
+                    <h6 className="text-base font-heading mb-2 tracking-normal">Heading 6 - Viga</h6>
                   </div>
                   
                   <div className="p-6 border rounded-md">
@@ -97,6 +97,8 @@ const DesignSystem = () => {
                       <li>Maintain consistent text sizing throughout the interface</li>
                       <li>Use appropriate line heights for different text sizes</li>
                       <li>Keep paragraph width under 70 characters for optimal readability</li>
+                      <li>Ensure sufficient contrast between text and background colors</li>
+                      <li>Use tracking-tight for large headings and tracking-normal for smaller text</li>
                     </ul>
                   </div>
                 </div>
@@ -166,8 +168,10 @@ const DesignSystem = () => {
                     <ul className="list-disc pl-6 space-y-2">
                       <li>Use black for main headings and key UI elements</li>
                       <li>Use gray tones for supporting text and secondary elements</li>
-                      <li>Maintain sufficient contrast ratios for accessibility</li>
+                      <li>Maintain sufficient contrast ratios for accessibility (WCAG 2.1 AA standards)</li>
                       <li>Be consistent with color application across similar elements</li>
+                      <li>Use lighter grays for backgrounds and darker grays for text</li>
+                      <li>Reserve high-contrast colors for important UI actions and notifications</li>
                     </ul>
                   </div>
                 </div>
@@ -201,6 +205,12 @@ const DesignSystem = () => {
                           <LayoutGrid className="w-6 h-6 mr-2" /> 3/3
                         </div>
                       </div>
+                      <div className="mt-4">
+                        <p className="text-sm text-chenius-gray-600">
+                          Our grid system uses a 12-column layout with responsive breakpoints at 640px (sm), 
+                          768px (md), 1024px (lg), and 1280px (xl).
+                        </p>
+                      </div>
                     </div>
                   </div>
                   
@@ -209,13 +219,19 @@ const DesignSystem = () => {
                     <h3 className="text-xl font-heading mb-2 tracking-normal">Containers</h3>
                     <div className="p-4 border rounded-md">
                       <div className="max-w-7xl mx-auto p-4 bg-chenius-gray-100 mb-4 rounded-md">
-                        <div className="text-center">max-w-7xl Container</div>
+                        <div className="text-center">max-w-7xl Container (1280px)</div>
                       </div>
                       <div className="max-w-5xl mx-auto p-4 bg-chenius-gray-100 mb-4 rounded-md">
-                        <div className="text-center">max-w-5xl Container</div>
+                        <div className="text-center">max-w-5xl Container (1024px)</div>
                       </div>
                       <div className="max-w-3xl mx-auto p-4 bg-chenius-gray-100 rounded-md">
-                        <div className="text-center">max-w-3xl Container</div>
+                        <div className="text-center">max-w-3xl Container (768px)</div>
+                      </div>
+                      <div className="mt-4">
+                        <p className="text-sm text-chenius-gray-600">
+                          Containers help maintain consistent content width across the application.
+                          They automatically center content and apply appropriate padding at different screen sizes.
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -238,6 +254,13 @@ const DesignSystem = () => {
                           <div>Spacing: 48px (3rem)</div>
                         </div>
                       </div>
+                      <div className="mt-4">
+                        <p className="text-sm text-chenius-gray-600">
+                          Our spacing system uses multiples of 4px (0.25rem) as the base unit.
+                          Common spacing values include 4px (0.25rem), 8px (0.5rem), 16px (1rem), 
+                          24px (1.5rem), 32px (2rem), and 48px (3rem).
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -253,13 +276,15 @@ const DesignSystem = () => {
                 <div id="buttons" className="mb-10">
                   <h3 className="text-xl font-heading mb-4 tracking-normal">Buttons</h3>
                   <div className="p-6 border rounded-md">
-                    <div className="flex flex-wrap gap-4">
+                    <div className="flex flex-wrap gap-4 mb-6">
                       <Button variant="default">Default</Button>
                       <Button variant="secondary">Secondary</Button>
                       <Button variant="outline">Outline</Button>
                       <Button variant="ghost">Ghost</Button>
                       <Button variant="link">Link</Button>
                       <Button variant="destructive">Destructive</Button>
+                    </div>
+                    <div className="flex flex-wrap gap-4 mb-6">
                       <Button disabled>Disabled</Button>
                       <Button variant="default" size="sm">Small</Button>
                       <Button variant="default" size="lg">Large</Button>
@@ -267,6 +292,17 @@ const DesignSystem = () => {
                         <Plus className="mr-2" />
                         With Icon
                       </Button>
+                    </div>
+                    <div className="mt-4">
+                      <h4 className="text-base font-heading mb-2">Usage Guidelines</h4>
+                      <ul className="list-disc pl-6 space-y-1 text-sm">
+                        <li>Use Default for primary actions</li>
+                        <li>Use Secondary for secondary actions that appear alongside a primary action</li>
+                        <li>Use Outline for less prominent actions</li>
+                        <li>Use Ghost for tertiary actions or in tight spaces</li>
+                        <li>Use Link for navigation actions that appear inline with text</li>
+                        <li>Use Destructive for actions that may result in data loss</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -304,6 +340,15 @@ const DesignSystem = () => {
                       </CardContent>
                     </Card>
                   </CardGrid>
+                  <div className="mt-4 p-4 border rounded-md">
+                    <h4 className="text-base font-heading mb-2">Card Guidelines</h4>
+                    <ul className="list-disc pl-6 space-y-1 text-sm">
+                      <li>Use cards to group related content and actions</li>
+                      <li>Maintain consistent padding within card sections</li>
+                      <li>Limit the number of actions in a card footer</li>
+                      <li>Use the CardGrid component to display multiple cards in a responsive grid</li>
+                    </ul>
+                  </div>
                 </div>
                 
                 {/* Forms */}
@@ -321,17 +366,38 @@ const DesignSystem = () => {
                       </div>
                       <Button className="w-full">Submit</Button>
                     </div>
+                    <div className="space-y-4">
+                      <h4 className="text-base font-heading mb-2">Form Guidelines</h4>
+                      <ul className="list-disc pl-6 space-y-1 text-sm">
+                        <li>Always use labels with form controls</li>
+                        <li>Provide clear, helpful placeholder text</li>
+                        <li>Group related form fields together</li>
+                        <li>Use appropriate input types (email, password, etc.)</li>
+                        <li>Provide clear error states and validation feedback</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 
                 {/* Badges */}
                 <div id="badges" className="mb-10">
                   <h3 className="text-xl font-heading mb-4 tracking-normal">Badges</h3>
-                  <div className="flex flex-wrap gap-2 p-6 border rounded-md">
-                    <Badge>Default</Badge>
-                    <Badge variant="secondary">Secondary</Badge>
-                    <Badge variant="outline">Outline</Badge>
-                    <Badge variant="destructive">Destructive</Badge>
+                  <div className="border rounded-md">
+                    <div className="flex flex-wrap gap-2 p-6 border-b">
+                      <Badge>Default</Badge>
+                      <Badge variant="secondary">Secondary</Badge>
+                      <Badge variant="outline">Outline</Badge>
+                      <Badge variant="destructive">Destructive</Badge>
+                    </div>
+                    <div className="p-6">
+                      <h4 className="text-base font-heading mb-2">Badge Guidelines</h4>
+                      <ul className="list-disc pl-6 space-y-1 text-sm">
+                        <li>Use badges to highlight status, counts, or categories</li>
+                        <li>Keep badge text concise and clear</li>
+                        <li>Use appropriate badge variants based on context</li>
+                        <li>Ensure sufficient contrast between badge and background</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 
@@ -349,6 +415,16 @@ const DesignSystem = () => {
                       <AlertTitle>Error</AlertTitle>
                       <AlertDescription>This is a destructive alert for error messages.</AlertDescription>
                     </Alert>
+                    <div className="mt-4 p-4 border rounded-md">
+                      <h4 className="text-base font-heading mb-2">Alert Guidelines</h4>
+                      <ul className="list-disc pl-6 space-y-1 text-sm">
+                        <li>Use Info icon for informational alerts</li>
+                        <li>Use AlertCircle icon for error/destructive alerts</li>
+                        <li>Use AlertTriangle for warnings</li>
+                        <li>Use Check icon for success messages</li>
+                        <li>Keep alert messages clear and concise</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 
@@ -371,6 +447,43 @@ const DesignSystem = () => {
                       <p>This is the settings tab content. It contains configurable options.</p>
                     </TabsContent>
                   </Tabs>
+                  <div className="mt-4 p-4 border rounded-md">
+                    <h4 className="text-base font-heading mb-2">Tab Guidelines</h4>
+                    <ul className="list-disc pl-6 space-y-1 text-sm">
+                      <li>Use tabs to organize content into logical sections</li>
+                      <li>Keep tab labels short and descriptive</li>
+                      <li>Ensure tab content is contextually related</li>
+                      <li>Limit the number of tabs to avoid overwhelming users</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                {/* Toggle */}
+                <div id="toggle" className="mb-10">
+                  <h3 className="text-xl font-heading mb-4 tracking-normal">Toggle</h3>
+                  <div className="p-6 border rounded-md">
+                    <div className="flex items-center space-x-2">
+                      <div className="bg-chenius-gray-200 h-6 w-12 rounded-full relative">
+                        <div className="absolute left-1 top-1 bg-white h-4 w-4 rounded-full"></div>
+                      </div>
+                      <span>Off</span>
+                    </div>
+                    <div className="flex items-center space-x-2 mt-4">
+                      <div className="bg-black h-6 w-12 rounded-full relative">
+                        <div className="absolute right-1 top-1 bg-white h-4 w-4 rounded-full"></div>
+                      </div>
+                      <span>On</span>
+                    </div>
+                    <div className="mt-4">
+                      <h4 className="text-base font-heading mb-2">Toggle Guidelines</h4>
+                      <ul className="list-disc pl-6 space-y-1 text-sm">
+                        <li>Use toggles for binary settings (on/off, yes/no)</li>
+                        <li>Provide clear labeling for what the toggle controls</li>
+                        <li>Consider using a label that indicates the current state</li>
+                        <li>Apply immediate changes when possible (avoid requiring a save action)</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
                 
                 {/* Progress */}
@@ -387,20 +500,46 @@ const DesignSystem = () => {
                       </Button>
                     </div>
                     <div className="text-sm font-body">Current progress: {progressValue}%</div>
+                    <div className="mt-4">
+                      <h4 className="text-base font-heading mb-2">Progress Guidelines</h4>
+                      <ul className="list-disc pl-6 space-y-1 text-sm">
+                        <li>Use progress indicators for operations that take time</li>
+                        <li>Show percentage completion when possible</li>
+                        <li>Consider using indeterminate progress indicators when completion time is unknown</li>
+                        <li>Provide context about what operation is in progress</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 
                 {/* Avatar */}
                 <div id="avatar" className="mb-10">
                   <h3 className="text-xl font-heading mb-4 tracking-normal">Avatars</h3>
-                  <div className="flex items-center gap-4 p-6 border rounded-md">
-                    <Avatar>
-                      <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
-                    <Avatar>
-                      <AvatarImage src="/placeholder.svg" alt="User" />
-                      <AvatarFallback>U</AvatarFallback>
-                    </Avatar>
+                  <div className="p-6 border rounded-md">
+                    <div className="flex items-center gap-4 mb-6">
+                      <Avatar>
+                        <AvatarFallback>CN</AvatarFallback>
+                      </Avatar>
+                      <Avatar className="h-12 w-12">
+                        <AvatarFallback>CN</AvatarFallback>
+                      </Avatar>
+                      <Avatar className="h-16 w-16">
+                        <AvatarFallback>CN</AvatarFallback>
+                      </Avatar>
+                      <Avatar>
+                        <AvatarImage src="/placeholder.svg" alt="User" />
+                        <AvatarFallback>U</AvatarFallback>
+                      </Avatar>
+                    </div>
+                    <div className="mt-4">
+                      <h4 className="text-base font-heading mb-2">Avatar Guidelines</h4>
+                      <ul className="list-disc pl-6 space-y-1 text-sm">
+                        <li>Use avatars to represent users or entities</li>
+                        <li>Provide meaningful fallback text (initials) when images are unavailable</li>
+                        <li>Maintain consistent sizes for avatars in similar contexts</li>
+                        <li>Consider using different sizes based on importance or prominence</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 
@@ -427,6 +566,15 @@ const DesignSystem = () => {
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
+                  <div className="mt-4 p-4 border rounded-md">
+                    <h4 className="text-base font-heading mb-2">Accordion Guidelines</h4>
+                    <ul className="list-disc pl-6 space-y-1 text-sm">
+                      <li>Use accordions to organize content that doesn't need to be visible all at once</li>
+                      <li>Write clear, concise headers that indicate the content within</li>
+                      <li>Consider whether the content is better suited to tabs or accordions</li>
+                      <li>Allow multiple sections to be open simultaneously when appropriate</li>
+                    </ul>
+                  </div>
                 </div>
               </section>
               
@@ -447,14 +595,35 @@ const DesignSystem = () => {
                     </div>
                     <div className="border-t pt-4 mt-4 border-chenius-gray-200">Footer</div>
                   </div>
+                  <div className="p-4 border rounded-md">
+                    <h4 className="text-base font-heading mb-2">Common Layouts</h4>
+                    <ul className="list-disc pl-6 space-y-1 text-sm">
+                      <li><strong>Single Column:</strong> Ideal for focused content like articles or forms</li>
+                      <li><strong>Two Columns:</strong> Good for dashboards with sidebar navigation</li>
+                      <li><strong>Three Columns:</strong> Useful for complex applications with multiple navigation levels</li>
+                      <li><strong>Card Grid:</strong> Excellent for displaying collections of similar items</li>
+                    </ul>
+                  </div>
                 </div>
                 
                 {/* Hover Effects */}
                 <div id="hover-effects" className="mb-10">
                   <h3 className="text-xl font-heading mb-4 tracking-normal">Hover Effects</h3>
                   <div className="flex flex-wrap gap-4 p-6 border rounded-md">
-                    <a href="#" className="hover-underline text-lg font-body">Underline Hover Effect</a>
-                    <button className="hover-fill border px-4 py-2">Fill Hover Effect</button>
+                    <a href="#" className="text-lg font-body border-b border-transparent hover:border-current transition-all duration-200">Underline Hover Effect</a>
+                    <button className="border-2 border-black px-4 py-2 relative overflow-hidden group">
+                      <span className="relative z-10">Fill Hover Effect</span>
+                      <span className="absolute inset-0 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    </button>
+                  </div>
+                  <div className="mt-4 p-4 border rounded-md">
+                    <h4 className="text-base font-heading mb-2">Hover Effect Guidelines</h4>
+                    <ul className="list-disc pl-6 space-y-1 text-sm">
+                      <li>Use subtle hover effects to indicate interactivity</li>
+                      <li>Ensure hover effects are consistent across similar elements</li>
+                      <li>Consider adding transitions for smoother effects</li>
+                      <li>Remember that hover effects don't work on touch devices</li>
+                    </ul>
                   </div>
                 </div>
                 
@@ -489,6 +658,16 @@ const DesignSystem = () => {
                         </li>
                       </ol>
                     </div>
+                    
+                    <div className="mt-4">
+                      <h4 className="text-base font-heading mb-2">List Pattern Guidelines</h4>
+                      <ul className="list-disc pl-6 space-y-1 text-sm">
+                        <li>Use bulleted lists for unordered collections of items</li>
+                        <li>Use numbered lists for sequential steps or ranked items</li>
+                        <li>Maintain consistent formatting within lists</li>
+                        <li>Consider using nested lists for hierarchical information</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -503,19 +682,31 @@ const DesignSystem = () => {
                     <h3 className="text-xl font-heading mb-4 tracking-normal">Core Principles</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <h4 className="text-lg font-heading font-medium">Clarity</h4>
+                        <h4 className="text-lg font-heading font-medium flex items-center">
+                          <HeartHandshake className="mr-2 h-5 w-5" />
+                          Clarity
+                        </h4>
                         <p>Eliminate ambiguity. Make interfaces clear and intuitive by using familiar patterns and consistent visual elements.</p>
                       </div>
                       <div className="space-y-2">
-                        <h4 className="text-lg font-heading font-medium">Efficiency</h4>
+                        <h4 className="text-lg font-heading font-medium flex items-center">
+                          <HeartHandshake className="mr-2 h-5 w-5" />
+                          Efficiency
+                        </h4>
                         <p>Design interfaces that help users accomplish their tasks with minimum effort and maximum efficiency.</p>
                       </div>
                       <div className="space-y-2">
-                        <h4 className="text-lg font-heading font-medium">Consistency</h4>
+                        <h4 className="text-lg font-heading font-medium flex items-center">
+                          <HeartHandshake className="mr-2 h-5 w-5" />
+                          Consistency
+                        </h4>
                         <p>Maintain consistent patterns, behaviors, and visual elements throughout the interface to build user confidence.</p>
                       </div>
                       <div className="space-y-2">
-                        <h4 className="text-lg font-heading font-medium">Accessibility</h4>
+                        <h4 className="text-lg font-heading font-medium flex items-center">
+                          <HeartHandshake className="mr-2 h-5 w-5" />
+                          Accessibility
+                        </h4>
                         <p>Design for all users, ensuring interfaces are usable by people with diverse abilities and in various contexts.</p>
                       </div>
                     </div>
@@ -530,6 +721,9 @@ const DesignSystem = () => {
                       <li>Design for flexibility across different screen sizes and devices</li>
                       <li>Prioritize content hierarchy to help users find what they need</li>
                       <li>Create feedback mechanisms that acknowledge user actions</li>
+                      <li>Reduce cognitive load by simplifying complex tasks and workflows</li>
+                      <li>Incorporate familiar patterns to leverage existing user knowledge</li>
+                      <li>Design with empathy to address real user needs and pain points</li>
                     </ul>
                   </div>
                 </div>
