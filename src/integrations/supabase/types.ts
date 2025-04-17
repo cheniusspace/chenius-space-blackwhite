@@ -9,7 +9,225 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      creations: {
+        Row: {
+          category: string
+          created_at: string
+          date: string
+          description: string | null
+          id: string
+          image_url: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          date: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          date?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      creations_tags: {
+        Row: {
+          creation_id: string
+          id: string
+          tag_id: string
+        }
+        Insert: {
+          creation_id: string
+          id?: string
+          tag_id: string
+        }
+        Update: {
+          creation_id?: string
+          id?: string
+          tag_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "creations_tags_creation_id_fkey"
+            columns: ["creation_id"]
+            isOneToOne: false
+            referencedRelation: "creations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "creations_tags_tag_id_fkey"
+            columns: ["tag_id"]
+            isOneToOne: false
+            referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      favorites: {
+        Row: {
+          author: string
+          category: string
+          created_at: string
+          description: string | null
+          external_link: string | null
+          id: string
+          image_url: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author: string
+          category: string
+          created_at?: string
+          description?: string | null
+          external_link?: string | null
+          id?: string
+          image_url?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          category?: string
+          created_at?: string
+          description?: string | null
+          external_link?: string | null
+          id?: string
+          image_url?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      favorites_tags: {
+        Row: {
+          favorite_id: string
+          id: string
+          tag_id: string
+        }
+        Insert: {
+          favorite_id: string
+          id?: string
+          tag_id: string
+        }
+        Update: {
+          favorite_id?: string
+          id?: string
+          tag_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorites_tags_favorite_id_fkey"
+            columns: ["favorite_id"]
+            isOneToOne: false
+            referencedRelation: "favorites"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "favorites_tags_tag_id_fkey"
+            columns: ["tag_id"]
+            isOneToOne: false
+            referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      journals: {
+        Row: {
+          content: string
+          created_at: string
+          date: string
+          excerpt: string
+          id: string
+          read_time: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          date: string
+          excerpt: string
+          id?: string
+          read_time: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          date?: string
+          excerpt?: string
+          id?: string
+          read_time?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      journals_tags: {
+        Row: {
+          id: string
+          journal_id: string
+          tag_id: string
+        }
+        Insert: {
+          id?: string
+          journal_id: string
+          tag_id: string
+        }
+        Update: {
+          id?: string
+          journal_id?: string
+          tag_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "journals_tags_journal_id_fkey"
+            columns: ["journal_id"]
+            isOneToOne: false
+            referencedRelation: "journals"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "journals_tags_tag_id_fkey"
+            columns: ["tag_id"]
+            isOneToOne: false
+            referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tags: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
