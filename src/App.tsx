@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./providers/ThemeProvider";
+import Layout from "./components/layout/Layout";
 import Index from "./pages/Index";
 import Creations from "./pages/Creations";
 import CreationDetail from "./pages/CreationDetail";
@@ -25,18 +26,20 @@ function App() {
           <Toaster />
           <Sonner />
           <Router>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/creations" element={<Creations />} />
-              <Route path="/creations/:id" element={<CreationDetail />} />
-              <Route path="/journals" element={<Journals />} />
-              <Route path="/journals/:id" element={<JournalDetail />} />
-              <Route path="/favorites" element={<Favorites />} />
-              <Route path="/favorites/:id" element={<FavoriteDetail />} />
-              <Route path="/add-content" element={<AddContent />} />
-              <Route path="/design-system" element={<DesignSystem />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/creations" element={<Creations />} />
+                <Route path="/creations/:id" element={<CreationDetail />} />
+                <Route path="/journals" element={<Journals />} />
+                <Route path="/journals/:id" element={<JournalDetail />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="/favorites/:id" element={<FavoriteDetail />} />
+                <Route path="/add-content" element={<AddContent />} />
+                <Route path="/design-system" element={<DesignSystem />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Layout>
           </Router>
         </TooltipProvider>
       </ThemeProvider>

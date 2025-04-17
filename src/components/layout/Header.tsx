@@ -19,20 +19,17 @@ const Header = () => {
   };
   
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-background border-b border-chenius-gray-200">
+    <header className="fixed top-0 left-0 w-full z-50 bg-chenius-white border-b border-chenius-gray-200">
       <div className="w-full px-4 md:px-6">
         <div className="flex h-24 items-center">
           <Link to="/" className="flex items-center">
-            <div className="w-16 h-16 border border-chenius-gray-200 flex items-center justify-center bg-white">
+            <div className="w-16 h-16 border border-chenius-gray-200 flex items-center justify-center bg-chenius-white">
               <img 
-                src="/logo.svg" 
+                src="/logo.png" 
                 alt="CHENIUS Space"
                 className="w-12 h-12"
               />
             </div>
-            <span className="ml-4 font-heading text-2xl font-bold tracking-wider">
-              CHENIUS Space
-            </span>
           </Link>
           
           {isMobile ? (
@@ -46,7 +43,7 @@ const Header = () => {
               </button>
               
               {isMenuOpen && (
-                <div className="absolute top-24 left-0 w-full bg-background border-b border-chenius-gray-200 py-4 px-4 z-50">
+                <div className="absolute top-24 left-0 w-full bg-chenius-white border-b border-chenius-gray-200 py-4 px-4 z-50">
                   <nav className="flex flex-col space-y-4">
                     <Link to="/creations" className="text-base font-body uppercase tracking-wide" onClick={closeMenu}>
                       Creations
@@ -69,7 +66,7 @@ const Header = () => {
               <Link
                 to="/creations"
                 className={`text-sm font-body uppercase tracking-wide transition-colors ${
-                  isActive("/creations") ? "text-black" : "text-chenius-gray-500 hover:text-black"
+                  isActive("/creations") ? "text-chenius-black" : "text-chenius-gray-500 hover:text-chenius-black"
                 }`}
               >
                 Creations
@@ -77,7 +74,7 @@ const Header = () => {
               <Link
                 to="/journals"
                 className={`text-sm font-body uppercase tracking-wide transition-colors ${
-                  isActive("/journals") ? "text-black" : "text-chenius-gray-500 hover:text-black"
+                  isActive("/journals") ? "text-chenius-black" : "text-chenius-gray-500 hover:text-chenius-black"
                 }`}
               >
                 Journals
@@ -85,7 +82,7 @@ const Header = () => {
               <Link
                 to="/favorites"
                 className={`text-sm font-body uppercase tracking-wide transition-colors ${
-                  isActive("/favorites") ? "text-black" : "text-chenius-gray-500 hover:text-black"
+                  isActive("/favorites") ? "text-chenius-black" : "text-chenius-gray-500 hover:text-chenius-black"
                 }`}
               >
                 Favorites
@@ -95,7 +92,7 @@ const Header = () => {
           
           <Link 
             to="/contact" 
-            className="w-16 h-16 border border-chenius-gray-200 flex items-center justify-center bg-white hover:bg-chenius-gray-100 transition-colors ml-4"
+            className="w-16 h-16 border border-chenius-gray-200 flex items-center justify-center bg-chenius-white hover:bg-chenius-gray-100 transition-colors ml-4"
           >
             <MessageSquare className="w-6 h-6" />
           </Link>
