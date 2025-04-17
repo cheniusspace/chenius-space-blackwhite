@@ -1,123 +1,75 @@
-
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useMobile } from "@/hooks/use-mobile";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
-
-  const isActive = (path: string) => location.pathname === path;
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isMobile } = useMobile();
+  
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+  
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+  
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-3 bg-white/90 backdrop-blur-sm border-b border-chenius-gray-200" : "py-6"
-      }`}
-    >
-      <div className="container px-4 md:px-6 max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="text-2xl font-heading font-bold tracking-wider">
-          CHENIUS Space
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link
-            to="/creations"
-            className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
-              isActive("/creations") ? "font-medium" : "font-light"
-            }`}
-          >
-            Creations
+    <header className="fixed top-0 left-0 w-full z-50 bg-background border-b border-chenius-gray-200">
+      <div className="container px-4 md:px-6 mx-auto">
+        <div className="flex h-24 items-center justify-between">
+          <Link to="/" className="font-heading text-2xl font-bold tracking-wider">
+            CHENIUS Space
           </Link>
-          <Link
-            to="/journals"
-            className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
-              isActive("/journals") ? "font-medium" : "font-light"
-            }`}
-          >
-            Journals
-          </Link>
-          <Link
-            to="/favorites"
-            className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
-              isActive("/favorites") ? "font-medium" : "font-light"
-            }`}
-          >
-            Favorites
-          </Link>
-        </nav>
-
-        {/* Mobile menu button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Menu"
-        >
-          {isOpen ? (
-            <X className="h-6 w-6" />
+          
+          {isMobile ? (
+            <>
+              <button
+                onClick={toggleMenu}
+                className="flex items-center"
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+              
+              {isMenuOpen && (
+                <div className="absolute top-24 left-0 w-full bg-background border-b border-chenius-gray-200 py-4 px-4 z-50">
+                  <nav className="flex flex-col space-y-4">
+                    <Link to="/creations" className="text-base font-body uppercase tracking-wide" onClick={closeMenu}>
+                      Creations
+                    </Link>
+                    <Link to="/journals" className="text-base font-body uppercase tracking-wide" onClick={closeMenu}>
+                      Journals
+                    </Link>
+                    <Link to="/favorites" className="text-base font-body uppercase tracking-wide" onClick={closeMenu}>
+                      Favorites
+                    </Link>
+                    <Link to="/design-system" className="text-base font-body uppercase tracking-wide" onClick={closeMenu}>
+                      Design System
+                    </Link>
+                  </nav>
+                </div>
+              )}
+            </>
           ) : (
-            <Menu className="h-6 w-6" />
+            <nav className="flex items-center space-x-8">
+              <Link to="/creations" className="text-sm font-body uppercase tracking-wide hover-underline">
+                Creations
+              </Link>
+              <Link to="/journals" className="text-sm font-body uppercase tracking-wide hover-underline">
+                Journals
+              </Link>
+              <Link to="/favorites" className="text-sm font-body uppercase tracking-wide hover-underline">
+                Favorites
+              </Link>
+              <Link to="/design-system" className="text-sm font-body uppercase tracking-wide hover-underline">
+                Design System
+              </Link>
+            </nav>
           )}
-        </Button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="fixed inset-0 z-40 bg-white pt-24 px-6">
-          <nav className="flex flex-col space-y-8 text-lg">
-            <Link
-              to="/"
-              className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
-                isActive("/") ? "font-medium" : "font-light"
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              to="/creations"
-              className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
-                isActive("/creations") ? "font-medium" : "font-light"
-              }`}
-            >
-              Creations
-            </Link>
-            <Link
-              to="/journals"
-              className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
-                isActive("/journals") ? "font-medium" : "font-light"
-              }`}
-            >
-              Journals
-            </Link>
-            <Link
-              to="/favorites"
-              className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
-                isActive("/favorites") ? "font-medium" : "font-light"
-              }`}
-            >
-              Favorites
-            </Link>
-          </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 };

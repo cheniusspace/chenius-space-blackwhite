@@ -27,6 +27,9 @@ const Footer = () => {
             <Link to="/favorites" className="hover-underline text-sm font-body uppercase tracking-wide">
               Favorites
             </Link>
+            <Link to="/design-system" className="hover-underline text-sm font-body uppercase tracking-wide">
+              Design System
+            </Link>
           </div>
         </div>
         
