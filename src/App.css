@@ -1,8 +1,10 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .logo {
@@ -16,6 +18,11 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.05em;
 }
 
 @keyframes logo-spin {

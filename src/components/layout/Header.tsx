@@ -31,7 +31,7 @@ const Header = () => {
       }`}
     >
       <div className="container px-4 md:px-6 max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="text-2xl font-semibold tracking-tight">
+        <Link to="/" className="text-2xl font-heading font-bold tracking-wider">
           CHENIUS Space
         </Link>
 
@@ -39,24 +39,24 @@ const Header = () => {
         <nav className="hidden md:flex items-center space-x-8">
           <Link
             to="/creations"
-            className={`hover-underline px-1 py-1 ${
-              isActive("/creations") ? "font-medium" : ""
+            className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
+              isActive("/creations") ? "font-medium" : "font-light"
             }`}
           >
             Creations
           </Link>
           <Link
             to="/journals"
-            className={`hover-underline px-1 py-1 ${
-              isActive("/journals") ? "font-medium" : ""
+            className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
+              isActive("/journals") ? "font-medium" : "font-light"
             }`}
           >
             Journals
           </Link>
           <Link
             to="/favorites"
-            className={`hover-underline px-1 py-1 ${
-              isActive("/favorites") ? "font-medium" : ""
+            className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
+              isActive("/favorites") ? "font-medium" : "font-light"
             }`}
           >
             Favorites
@@ -85,32 +85,32 @@ const Header = () => {
           <nav className="flex flex-col space-y-8 text-lg">
             <Link
               to="/"
-              className={`hover-underline px-1 py-1 ${
-                isActive("/") ? "font-medium" : ""
+              className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
+                isActive("/") ? "font-medium" : "font-light"
               }`}
             >
               Home
             </Link>
             <Link
               to="/creations"
-              className={`hover-underline px-1 py-1 ${
-                isActive("/creations") ? "font-medium" : ""
+              className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
+                isActive("/creations") ? "font-medium" : "font-light"
               }`}
             >
               Creations
             </Link>
             <Link
               to="/journals"
-              className={`hover-underline px-1 py-1 ${
-                isActive("/journals") ? "font-medium" : ""
+              className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
+                isActive("/journals") ? "font-medium" : "font-light"
               }`}
             >
               Journals
             </Link>
             <Link
               to="/favorites"
-              className={`hover-underline px-1 py-1 ${
-                isActive("/favorites") ? "font-medium" : ""
+              className={`hover-underline px-1 py-1 font-body uppercase tracking-wide ${
+                isActive("/favorites") ? "font-medium" : "font-light"
               }`}
             >
               Favorites
