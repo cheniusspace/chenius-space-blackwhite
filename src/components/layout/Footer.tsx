@@ -1,15 +1,14 @@
-
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   const year = new Date().getFullYear();
   
   return (
-    <footer className="py-12 border-t border-chenius-gray-200">
+    <footer className="py-12 border-t border-chenius-gray-200 relative z-30">
       <div className="container px-4 md:px-6 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-6 md:space-y-0">
           <div>
-            <Link to="/" className="text-xl font-heading font-bold tracking-wider mb-2 block">
+            <Link to="/" className="text-xl font-heading font-bold tracking-wider mb-2 block hover:text-primary">
               CHENIUS Space
             </Link>
             <p className="text-chenius-gray-500 text-sm font-body font-light">
@@ -18,16 +17,16 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-col space-y-1 md:space-y-0 md:flex-row md:items-center md:space-x-6">
-            <Link to="/creations" className="hover-underline text-sm font-body uppercase tracking-wide">
+            <Link to="/creations" className="text-sm font-body uppercase tracking-wide hover:text-primary transition-colors">
               Creations
             </Link>
-            <Link to="/journals" className="hover-underline text-sm font-body uppercase tracking-wide">
+            <Link to="/journals" className="text-sm font-body uppercase tracking-wide hover:text-primary transition-colors">
               Journals
             </Link>
-            <Link to="/favorites" className="hover-underline text-sm font-body uppercase tracking-wide">
+            <Link to="/favorites" className="text-sm font-body uppercase tracking-wide hover:text-primary transition-colors">
               Favorites
             </Link>
-            <Link to="/design-system" className="hover-underline text-sm font-body uppercase tracking-wide">
+            <Link to="/design-system" className="text-sm font-body uppercase tracking-wide hover:text-primary transition-colors">
               Design System
             </Link>
           </div>

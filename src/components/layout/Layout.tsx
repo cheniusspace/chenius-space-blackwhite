@@ -1,22 +1,23 @@
-
 import { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 interface LayoutProps {
   children: ReactNode;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex flex-col min-h-screen font-body tracking-wide leading-relaxed">
+    <div className="flex min-h-screen flex-col">
       <Header />
-      <main id="main-content" className="flex-1 pt-24" tabIndex={-1}>
+      <main className="flex-1">
         {children}
       </main>
       <Footer />
+      <div className="fixed top-4 right-4 z-30">
+        <ThemeToggle />
+      </div>
     </div>
   );
-};
-
-export default Layout;
+}
