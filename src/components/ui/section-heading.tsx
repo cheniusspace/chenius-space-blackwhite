@@ -13,7 +13,7 @@ export function SectionHeading({ title, description, children, className = "" }:
     <div className={`mb-12 ${className}`}>
       <h2 className="text-3xl md:text-4xl font-heading font-bold tracking-wider">{title}</h2>
       {description && (
-        <p className="mt-4 text-lg text-chenius-gray-500 font-body font-light">{description}</p>
+        <p className="mt-4 text-lg text-chenius-gray-500 font-body font-light leading-relaxed tracking-wide">{description}</p>
       )}
       {children && <div className="mt-6">{children}</div>}
     </div>

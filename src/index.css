@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,6 +96,10 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading tracking-wider;
+  }
+
+  p, span, div, li, a {
+    @apply font-body tracking-wide;
   }
 
   h1 {

@@ -25,6 +25,12 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.05em;
 }
 
+p, .content, .description {
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
