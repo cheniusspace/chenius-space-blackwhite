@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -116,20 +117,21 @@ export default {
         'xl': ['1.25rem', { lineHeight: '1.9rem' }],
         '2xl': ['1.5rem', { lineHeight: '2rem' }],
         '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
-        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
-        '5xl': ['3rem', { lineHeight: '3.5rem' }],
+        '4xl': ['2.25rem', { lineHeight: '2.4rem' }],
+        '5xl': ['3rem', { lineHeight: '1.15' }],
       },
       letterSpacing: {
-        'tight': '-0.01em',
+        'tighter': '-0.05em',
+        'tight': '-0.025em',
         'normal': '0',
         'wide': '0.01em',
-        'wider': '0.05em',
-        'widest': '0.1em',
+        'wider': '0.02em',
+        'widest': '0.05em',
       },
       lineHeight: {
         'none': '1',
-        'tight': '1.2',
-        'snug': '1.375',
+        'tight': '1.15',
+        'snug': '1.3',
         'normal': '1.5',
         'relaxed': '1.7',
         'loose': '2',
