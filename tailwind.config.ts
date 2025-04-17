@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -106,7 +105,7 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out'
       },
       fontFamily: {
-        'heading': ['Viga', 'sans-serif'],
+        'heading': ['New Amsterdam', 'sans-serif'],
         'body': ['Saira Semi Condensed', 'sans-serif'],
       },
       fontSize: {
