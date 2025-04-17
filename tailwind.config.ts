@@ -52,6 +52,20 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				chenius: {
+					black: '#000000',
+					white: '#FFFFFF',
+					gray: {
+						100: '#F1F1F1',
+						200: '#E1E1E1',
+						300: '#C8C8C9',
+						400: '#888888',
+						500: '#555555',
+						600: '#333333',
+						700: '#222222',
+						800: '#111111'
+					}
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
