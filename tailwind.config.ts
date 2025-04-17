@@ -106,7 +106,7 @@ export default {
       },
       fontFamily: {
         'heading': ['Orbitron', 'sans-serif'],
-        'body': ['Roboto Mono', 'monospace'],
+        'body': ['Saira Semi Condensed', 'sans-serif'],
       },
       borderRadius: {
         'none': '0',
