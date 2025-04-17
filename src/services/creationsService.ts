@@ -1,4 +1,3 @@
-
 import { supabase } from "@/integrations/supabase/client";
 
 export type Creation = {
@@ -16,10 +15,7 @@ export const fetchCreations = async (selectedTag: string | null) => {
     .from("creations")
     .select(`
       *,
-      creations_tags!inner (
-        tag_id
-      ),
-      tags:creations_tags!inner(
+      tags:creations_tags(
         tags(id, name)
       )
     `);
@@ -35,8 +31,9 @@ export const fetchCreations = async (selectedTag: string | null) => {
   }
   
   const normalizedData = data?.map(item => {
+    // Flatten the nested tags array structure
     const normalizedTags = item.tags ? 
-      item.tags.map((tagItem: any) => tagItem.tags) : [];
+      item.tags.map((tagGroup: any) => tagGroup.tags).filter(Boolean) : [];
     
     return {
       id: item.id,
