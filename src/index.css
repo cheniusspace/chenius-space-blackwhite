@@ -26,16 +26,16 @@
     --secondary-foreground: 210 10% 15%;
 
     --muted: 210 20% 96%;
-    --muted-foreground: 210 10% 45%;
+    --muted-foreground: 210 10% 35%;
 
     --accent: 210 20% 96%;
     --accent-foreground: 210 10% 15%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 84% 50%;
     --destructive-foreground: 210 25% 98%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
+    --border: 210 20% 82%;
+    --input: 210 20% 82%;
     --ring: 210 10% 15%;
 
     --radius: 0;
@@ -46,7 +46,7 @@
     --sidebar-primary-foreground: 210 25% 98%;
     --sidebar-accent: 210 20% 96%;
     --sidebar-accent-foreground: 210 10% 10%;
-    --sidebar-border: 210 20% 90%;
+    --sidebar-border: 210 20% 82%;
     --sidebar-ring: 210 10% 15%;
   }
 
@@ -60,24 +60,24 @@
     --popover: 210 10% 8%;
     --popover-foreground: 210 25% 98%;
 
-    --primary: 210 25% 98%;
+    --primary: 210 25% 90%;
     --primary-foreground: 210 10% 5%;
 
-    --secondary: 210 10% 10%;
+    --secondary: 210 10% 12%;
     --secondary-foreground: 210 25% 98%;
 
-    --muted: 210 10% 10%;
-    --muted-foreground: 210 25% 60%;
+    --muted: 210 10% 15%;
+    --muted-foreground: 210 25% 70%;
 
-    --accent: 210 10% 10%;
+    --accent: 210 10% 15%;
     --accent-foreground: 210 25% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 25% 98%;
 
-    --border: 210 10% 15%;
-    --input: 210 10% 15%;
-    --ring: 210 25% 98%;
+    --border: 210 10% 20%;
+    --input: 210 10% 20%;
+    --ring: 210 25% 90%;
 
     --sidebar-background: 210 10% 10%;
     --sidebar-foreground: 210 25% 95%;
@@ -85,8 +85,8 @@
     --sidebar-primary-foreground: 210 10% 5%;
     --sidebar-accent: 210 10% 15%;
     --sidebar-accent-foreground: 210 25% 95%;
-    --sidebar-border: 210 10% 15%;
-    --sidebar-ring: 210 25% 60%;
+    --sidebar-border: 210 10% 20%;
+    --sidebar-ring: 210 25% 70%;
   }
 
   * {
@@ -138,6 +138,17 @@
   ::selection {
     @apply bg-foreground text-background;
   }
+  
+  /* Improved focus styles for better keyboard navigation */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+  
+  /* Skip to content link for keyboard users */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 
+           focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded;
+  }
 }
 
 @layer utilities {
@@ -154,5 +165,10 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* High contrast focus styles */
+  .focus-visible-ring {
+    @apply focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 }

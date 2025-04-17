@@ -1,3 +1,4 @@
+
 import { cn } from "@/lib/utils";
 
 const colors = [
@@ -72,10 +73,18 @@ export function ColorsSection() {
           className="flex flex-col gap-2 rounded-lg border p-4"
         >
           <div className="flex items-center justify-between">
-            <span className="font-medium">{color.name}</span>
+            <span className="font-medium" id={`color-name-${color.name.toLowerCase()}`}>{color.name}</span>
             <div className="flex gap-2">
-              <div className={cn("h-6 w-6 rounded-full", color.light)} />
-              <div className={cn("h-6 w-6 rounded-full", color.dark)} />
+              <div 
+                className={cn("h-6 w-6 rounded-full", color.light)} 
+                aria-labelledby={`color-name-${color.name.toLowerCase()}`}
+                aria-description={`Light mode ${color.name} color`}
+              />
+              <div 
+                className={cn("h-6 w-6 rounded-full", color.dark)} 
+                aria-labelledby={`color-name-${color.name.toLowerCase()}`}
+                aria-description={`Dark mode ${color.name} color`}
+              />
             </div>
           </div>
           <div className={cn("rounded-lg p-4", color.light, color.text)}>

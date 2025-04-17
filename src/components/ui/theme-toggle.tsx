@@ -17,12 +17,15 @@ export function ThemeToggle({ className }: { className?: string }) {
         "transition-all duration-200",
         className
       )}
-      aria-label="Toggle theme"
+      aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
     >
+      <span className="sr-only">
+        {theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+      </span>
       {theme === "light" ? (
-        <Moon className="h-[1.2rem] w-[1.2rem] transition-all" />
+        <Moon className="h-[1.2rem] w-[1.2rem] transition-all" aria-hidden="true" />
       ) : (
-        <Sun className="h-[1.2rem] w-[1.2rem] transition-all" />
+        <Sun className="h-[1.2rem] w-[1.2rem] transition-all" aria-hidden="true" />
       )}
     </Button>
   );

@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen font-body tracking-wide leading-relaxed">
       <Header />
-      <main className="flex-1 pt-24">
+      <main id="main-content" className="flex-1 pt-24" tabIndex={-1}>
         {children}
       </main>
       <Footer />

@@ -7,7 +7,7 @@ const BadgesSection = () => {
     <div id="badges" className="mb-10">
       <h3 className="text-xl font-heading mb-4 tracking-normal">Badges</h3>
       <div className="border rounded-md">
-        <div className="flex flex-wrap gap-2 p-6 border-b">
+        <div className="flex flex-wrap gap-2 p-6 border-b" aria-label="Badge examples">
           <Badge>Default</Badge>
           <Badge variant="secondary">Secondary</Badge>
           <Badge variant="outline">Outline</Badge>
