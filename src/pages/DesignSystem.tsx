@@ -1,6 +1,4 @@
-
 import React from "react";
-import Layout from "@/components/layout/Layout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -14,28 +12,26 @@ import {
 
 const DesignSystem = () => {
   return (
-    <Layout>
-      <div className="px-4 md:px-6 py-12 max-w-5xl mx-auto">
-            <SectionHeading
-              title="Design System"
-              description="A comprehensive guide to our visual language, components, and design patterns used throughout the application."
-            />
+    <div className="px-4 md:px-6 py-12 max-w-5xl mx-auto">
+      <SectionHeading
+        title="Design System"
+        description="A comprehensive guide to our visual language, components, and design patterns used throughout the application."
+      />
 
-            <div className="space-y-16">
-          <TypographySection />
-              <Separator />
-          <ColorsSection />
-              <Separator />
-          <LayoutSection />
-              <Separator />
-          <ComponentsSection />
-              <Separator />
-          <PatternsSection />
-              <Separator />
-          <PrinciplesSection />
-          </div>
+      <div className="space-y-16">
+        <TypographySection />
+        <Separator />
+        <ColorsSection />
+        <Separator />
+        <LayoutSection />
+        <Separator />
+        <ComponentsSection />
+        <Separator />
+        <PatternsSection />
+        <Separator />
+        <PrinciplesSection />
       </div>
-    </Layout>
+    </div>
   );
 };
 

@@ -1,6 +1,4 @@
-
 import { useState, useEffect } from "react";
-import Layout from "@/components/layout/Layout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CardGrid } from "@/components/ui/card-grid";
 import { Link } from "react-router-dom";
@@ -74,82 +72,74 @@ const Favorites = () => {
   };
 
   return (
-    <Layout>
-      <div className="container px-4 md:px-6 max-w-7xl mx-auto py-12">
-        <SectionHeading
-          title="Favorites"
-          description="A curated collection of books, artists, designers, and works that inspire and influence my creative practice."
-        />
+    <div className="container px-4 md:px-6 max-w-7xl mx-auto py-12">
+      <SectionHeading
+        title="Favorites"
+        description="A curated collection of books, artists, designers, and works that inspire and influence my creative practice."
+      />
 
-        <div className="mb-12">
-          <div className="flex space-x-4 overflow-x-auto pb-4">
+      <div className="mb-12">
+        <div className="flex space-x-4 overflow-x-auto pb-4">
+          <button 
+            onClick={() => handleCategoryFilter(null)}
+            className={`px-4 py-2 rounded-full text-sm whitespace-nowrap ${
+              selectedCategory === null 
+                ? "bg-black text-white" 
+                : "bg-white border border-chenius-gray-200 hover:bg-chenius-gray-100"
+            }`}
+          >
+            All
+          </button>
+          {categories.map(category => (
             <button 
-              onClick={() => handleCategoryFilter(null)}
+              key={category}
+              onClick={() => handleCategoryFilter(category)}
               className={`px-4 py-2 rounded-full text-sm whitespace-nowrap ${
-                selectedCategory === null 
-                  ? "bg-black text-white" 
+                selectedCategory === category
+                  ? "bg-black text-white"
                   : "bg-white border border-chenius-gray-200 hover:bg-chenius-gray-100"
               }`}
             >
-              All
+              {category}
             </button>
-            {categories.map(category => (
-              <button 
-                key={category}
-                onClick={() => handleCategoryFilter(category)}
-                className={`px-4 py-2 rounded-full text-sm whitespace-nowrap ${
-                  selectedCategory === category 
-                    ? "bg-black text-white" 
-                    : "bg-white border border-chenius-gray-200 hover:bg-chenius-gray-100"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+          ))}
         </div>
-
-        {isLoading ? (
-          <div className="min-h-[300px] flex items-center justify-center">
-            <div className="animate-pulse text-chenius-gray-500">Loading...</div>
-          </div>
-        ) : favorites.length > 0 ? (
-          <CardGrid columns={4}>
-            {favorites.map((item) => (
-              <Link 
-                key={item.id} 
-                to={`/favorites/${item.id}`} 
-                className="group block"
-              >
-                {item.image_url ? (
-                  <div className="aspect-square mb-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-[0.98]">
-                    <img 
-                      src={item.image_url} 
-                      alt={item.title} 
-                      className="w-full h-full object-cover"
-                    />
-                    <ExternalLink className="absolute w-8 h-8 text-chenius-gray-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                ) : (
-                  <div className={`aspect-square ${item.imageClass} mb-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-[0.98]`}>
-                    <ExternalLink className="w-8 h-8 text-chenius-gray-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                )}
-                <h3 className="text-lg font-medium">{item.title}</h3>
-                <div className="flex flex-col mt-2">
-                  <span className="text-sm">{item.category}</span>
-                  <span className="text-sm text-chenius-gray-500">{item.author}</span>
-                </div>
-              </Link>
-            ))}
-          </CardGrid>
-        ) : (
-          <div className="min-h-[300px] flex items-center justify-center">
-            <div className="text-chenius-gray-500">No favorites found</div>
-          </div>
-        )}
       </div>
-    </Layout>
+
+      {isLoading ? (
+        <div className="min-h-[300px] flex items-center justify-center">
+          <div className="animate-pulse text-chenius-gray-500">Loading...</div>
+        </div>
+      ) : favorites.length > 0 ? (
+        <CardGrid>
+          {favorites.map((favorite) => (
+            <div key={favorite.id} className="group">
+              <div className={`aspect-square ${favorite.imageClass} mb-4`}>
+                {favorite.image_url && (
+                  <img
+                    src={favorite.image_url}
+                    alt={favorite.title}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{favorite.title}</h3>
+              <p className="text-chenius-gray-500 mb-2">{favorite.author}</p>
+              <Link
+                to={`/favorites/${favorite.id}`}
+                className="inline-flex items-center text-sm font-medium hover-underline"
+              >
+                View Details <ExternalLink className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+          ))}
+        </CardGrid>
+      ) : (
+        <div className="min-h-[300px] flex items-center justify-center">
+          <div className="text-chenius-gray-500">No favorites found</div>
+        </div>
+      )}
+    </div>
   );
 };
 

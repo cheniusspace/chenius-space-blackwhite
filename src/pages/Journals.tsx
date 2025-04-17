@@ -1,6 +1,4 @@
-
 import { useState, useEffect } from "react";
-import Layout from "@/components/layout/Layout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
@@ -61,50 +59,48 @@ const Journals = () => {
   }, [toast]);
 
   return (
-    <Layout>
-      <div className="container px-4 md:px-6 max-w-5xl mx-auto py-12">
-        <SectionHeading
-          title="Journals"
-          description="Thoughts, reflections, and narratives exploring creativity, design, and personal experiences."
-        />
+    <div className="container px-4 md:px-6 max-w-5xl mx-auto py-12">
+      <SectionHeading
+        title="Journals"
+        description="Thoughts, reflections, and narratives exploring creativity, design, and personal experiences."
+      />
 
-        {isLoading ? (
-          <div className="min-h-[300px] flex items-center justify-center">
-            <div className="animate-pulse text-chenius-gray-500">Loading...</div>
-          </div>
-        ) : journals.length > 0 ? (
-          <div className="space-y-12">
-            {journals.map((journal) => (
-              <article key={journal.id} className="border-b border-chenius-gray-200 pb-10">
-                <Link to={`/journals/${journal.id}`} className="block group">
-                  <div className="flex flex-col">
-                    <div className="flex justify-between items-center text-sm text-chenius-gray-500 mb-3">
-                      <span>{journal.date}</span>
-                      <span>{journal.read_time}</span>
-                    </div>
-                    <h2 className="text-2xl md:text-3xl font-semibold mb-4 group-hover:text-chenius-gray-700 transition-colors">
-                      {journal.title}
-                    </h2>
-                    <p className="text-chenius-gray-500 mb-4">
-                      {journal.excerpt}
-                    </p>
-                    <div className="mt-4">
-                      <span className="inline-flex items-center text-sm font-medium hover-underline">
-                        Read More <ArrowRight className="ml-1 h-4 w-4" />
-                      </span>
-                    </div>
+      {isLoading ? (
+        <div className="min-h-[300px] flex items-center justify-center">
+          <div className="animate-pulse text-chenius-gray-500">Loading...</div>
+        </div>
+      ) : journals.length > 0 ? (
+        <div className="space-y-12">
+          {journals.map((journal) => (
+            <article key={journal.id} className="border-b border-chenius-gray-200 pb-10">
+              <Link to={`/journals/${journal.id}`} className="block group">
+                <div className="flex flex-col">
+                  <div className="flex justify-between items-center text-sm text-chenius-gray-500 mb-3">
+                    <span>{journal.date}</span>
+                    <span>{journal.read_time}</span>
                   </div>
-                </Link>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <div className="min-h-[300px] flex items-center justify-center">
-            <div className="text-chenius-gray-500">No journals found</div>
-          </div>
-        )}
-      </div>
-    </Layout>
+                  <h2 className="text-2xl md:text-3xl font-semibold mb-4 group-hover:text-chenius-gray-700 transition-colors">
+                    {journal.title}
+                  </h2>
+                  <p className="text-chenius-gray-500 mb-4">
+                    {journal.excerpt}
+                  </p>
+                  <div className="mt-4">
+                    <span className="inline-flex items-center text-sm font-medium hover-underline">
+                      Read More <ArrowRight className="ml-1 h-4 w-4" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div className="min-h-[300px] flex items-center justify-center">
+          <div className="text-chenius-gray-500">No journals found</div>
+        </div>
+      )}
+    </div>
   );
 };
 

@@ -1,6 +1,4 @@
-
 import { useState, useEffect } from "react";
-import Layout from "@/components/layout/Layout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CardGrid } from "@/components/ui/card-grid";
 import { Link } from "react-router-dom";
@@ -42,45 +40,43 @@ const Creations = () => {
   }, [selectedTag, toast]);
 
   return (
-    <Layout>
-      <div className="container px-4 md:px-6 max-w-7xl mx-auto py-12">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
-          <SectionHeading
-            title="Creations"
-            description="A collection of visual works, designs, and creative projects presented in monochromatic elegance."
-            className="mb-0"
-          />
-          
-          <Button asChild>
-            <Link to="/add-content" className="flex items-center gap-2 whitespace-nowrap">
-              <Plus size={16} />
-              Add Creation
-            </Link>
-          </Button>
-        </div>
-
-        <TagFilters 
-          selectedTag={selectedTag} 
-          onTagFilter={setSelectedTag} 
+    <div className="container px-4 md:px-6 max-w-7xl mx-auto py-12">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
+        <SectionHeading
+          title="Creations"
+          description="A collection of visual works, designs, and creative projects presented in monochromatic elegance."
+          className="mb-0"
         />
-
-        {isLoading ? (
-          <div className="min-h-[300px] flex items-center justify-center">
-            <div className="animate-pulse text-chenius-gray-500">Loading...</div>
-          </div>
-        ) : creations.length > 0 ? (
-          <CardGrid>
-            {creations.map((item) => (
-              <CreationCard key={item.id} {...item} />
-            ))}
-          </CardGrid>
-        ) : (
-          <div className="min-h-[300px] flex items-center justify-center">
-            <div className="text-chenius-gray-500">No creations found</div>
-          </div>
-        )}
+        
+        <Button asChild>
+          <Link to="/add-content" className="flex items-center gap-2 whitespace-nowrap">
+            <Plus size={16} />
+            Add Creation
+          </Link>
+        </Button>
       </div>
-    </Layout>
+
+      <TagFilters 
+        selectedTag={selectedTag} 
+        onTagFilter={setSelectedTag} 
+      />
+
+      {isLoading ? (
+        <div className="min-h-[300px] flex items-center justify-center">
+          <div className="animate-pulse text-chenius-gray-500">Loading...</div>
+        </div>
+      ) : creations.length > 0 ? (
+        <CardGrid>
+          {creations.map((item) => (
+            <CreationCard key={item.id} {...item} />
+          ))}
+        </CardGrid>
+      ) : (
+        <div className="min-h-[300px] flex items-center justify-center">
+          <div className="text-chenius-gray-500">No creations found</div>
+        </div>
+      )}
+    </div>
   );
 };
 
