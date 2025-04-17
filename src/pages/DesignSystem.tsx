@@ -3,12 +3,14 @@ import React from "react";
 import Layout from "@/components/layout/Layout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Separator } from "@/components/ui/separator";
-import TypographySection from "@/components/design-system/TypographySection";
-import ColorsSection from "@/components/design-system/ColorsSection";
-import LayoutSection from "@/components/design-system/LayoutSection";
-import ComponentsSection from "@/components/design-system/ComponentsSection";
-import PatternsSection from "@/components/design-system/PatternsSection";
-import PrinciplesSection from "@/components/design-system/PrinciplesSection";
+import {
+  TypographySection,
+  ColorsSection,
+  LayoutSection,
+  ComponentsSection,
+  PatternsSection,
+  PrinciplesSection
+} from "@/components/design-system";
 
 const DesignSystem = () => {
   return (
