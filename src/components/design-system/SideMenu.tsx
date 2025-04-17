@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Typography, Palette, Component, Grid, AspectRatio, Play, Book, Layers, FileText } from "lucide-react";
+import { Type, Palette, Component, Grid, Square, Play, BookOpen, Layers, FileText } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -16,7 +16,7 @@ interface SideMenuProps {
 
 const SideMenu = ({ activeSection, setActiveSection }: SideMenuProps) => {
   const menuItems = [
-    { id: "typography", name: "Typography", icon: Typography },
+    { id: "typography", name: "Typography", icon: Type },
     { id: "colors", name: "Color Palette", icon: Palette },
     { id: "components", name: "Components", icon: Component },
     { id: "patterns", name: "Patterns & Utilities", icon: Layers },
@@ -24,14 +24,14 @@ const SideMenu = ({ activeSection, setActiveSection }: SideMenuProps) => {
 
   const componentsSubmenu = [
     { id: "buttons", name: "Buttons", icon: Play },
-    { id: "cards", name: "Cards", icon: AspectRatio },
+    { id: "cards", name: "Cards", icon: Square },
     { id: "forms", name: "Form Elements", icon: FileText },
-    { id: "badges", name: "Badges", icon: Book },
-    { id: "alerts", name: "Alerts", icon: Book },
-    { id: "tabs", name: "Tabs", icon: Book },
-    { id: "progress", name: "Progress", icon: Book },
-    { id: "avatar", name: "Avatars", icon: Book },
-    { id: "accordion", name: "Accordion", icon: Book },
+    { id: "badges", name: "Badges", icon: BookOpen },
+    { id: "alerts", name: "Alerts", icon: BookOpen },
+    { id: "tabs", name: "Tabs", icon: BookOpen },
+    { id: "progress", name: "Progress", icon: BookOpen },
+    { id: "avatar", name: "Avatars", icon: BookOpen },
+    { id: "accordion", name: "Accordion", icon: BookOpen },
   ];
 
   const handleSectionClick = (sectionId: string) => {
