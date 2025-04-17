@@ -1,4 +1,3 @@
-
 import React from "react";
 import { 
   Type, 
@@ -13,7 +12,7 @@ import {
   Bell, 
   ToggleLeft, 
   ListTodo,
-  Panel,
+  PanelTop,
   SlidersHorizontal,
   ExternalLink,
   Box,
@@ -55,7 +54,7 @@ const SideMenu = ({ activeSection, setActiveSection }: SideMenuProps) => {
       { id: "forms", name: "Form Elements", icon: FileText },
       { id: "badges", name: "Badges", icon: BookOpen },
       { id: "alerts", name: "Alerts", icon: Bell },
-      { id: "tabs", name: "Tabs", icon: Panel },
+      { id: "tabs", name: "Tabs", icon: PanelTop },
       { id: "toggle", name: "Toggle", icon: ToggleLeft },
       { id: "progress", name: "Progress", icon: SlidersHorizontal },
       { id: "avatar", name: "Avatars", icon: BookOpen },
