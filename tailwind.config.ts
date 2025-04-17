@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -107,6 +108,39 @@ export default {
       fontFamily: {
         'heading': ['Orbitron', 'sans-serif'],
         'body': ['Saira Semi Condensed', 'sans-serif'],
+      },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1.25rem' }],
+        'sm': ['0.875rem', { lineHeight: '1.5rem' }],
+        'base': ['1rem', { lineHeight: '1.7rem' }],
+        'lg': ['1.125rem', { lineHeight: '1.8rem' }],
+        'xl': ['1.25rem', { lineHeight: '1.9rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+        '5xl': ['3rem', { lineHeight: '3.5rem' }],
+      },
+      letterSpacing: {
+        'tight': '-0.01em',
+        'normal': '0',
+        'wide': '0.01em',
+        'wider': '0.05em',
+        'widest': '0.1em',
+      },
+      lineHeight: {
+        'none': '1',
+        'tight': '1.2',
+        'snug': '1.375',
+        'normal': '1.5',
+        'relaxed': '1.7',
+        'loose': '2',
+      },
+      fontWeight: {
+        'light': '300',
+        'normal': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
       },
       borderRadius: {
         'none': '0',

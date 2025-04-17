@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -105,27 +106,31 @@
   }
 
   h1 {
-    @apply text-4xl md:text-5xl font-bold;
+    @apply text-4xl md:text-5xl font-bold leading-tight;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl font-bold;
+    @apply text-3xl md:text-4xl font-bold leading-tight;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl font-medium;
+    @apply text-2xl md:text-3xl font-semibold leading-snug;
   }
 
   h4 {
-    @apply text-xl md:text-2xl font-medium;
+    @apply text-xl md:text-2xl font-medium leading-snug;
   }
 
   h5 {
-    @apply text-lg md:text-xl font-medium;
+    @apply text-lg md:text-xl font-medium leading-normal;
   }
 
   h6 {
-    @apply text-base md:text-lg font-medium;
+    @apply text-base md:text-lg font-medium leading-normal;
+  }
+
+  p {
+    @apply leading-relaxed;
   }
 
   ::selection {
@@ -143,6 +148,10 @@
     @apply relative overflow-hidden before:absolute before:inset-0 before:bg-black before:text-white
     before:-z-10 before:translate-y-full before:transition-transform before:duration-300 hover:text-white
     hover:before:translate-y-0;
+  }
+
+  .text-balance {
+    text-wrap: balance;
   }
 }
 
