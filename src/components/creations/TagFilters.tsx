@@ -2,11 +2,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-
-type Tag = {
-  id: string;
-  name: string;
-};
+import { useTagsList } from "@/hooks/useTagsList";
 
 interface TagFiltersProps {
   selectedTag: string | null;
@@ -14,35 +10,8 @@ interface TagFiltersProps {
 }
 
 export const TagFilters = ({ selectedTag, onTagFilter }: TagFiltersProps) => {
-  const [tags, setTags] = useState<Tag[]>([]);
-  const { toast } = useToast();
+  const { tags, isLoading } = useTagsList();
   
-  useEffect(() => {
-    const fetchTags = async () => {
-      try {
-        const { data: tagsData, error: tagsError } = await supabase
-          .from("tags")
-          .select("*")
-          .order("name");
-          
-        if (tagsError) {
-          throw tagsError;
-        }
-        
-        setTags(tagsData || []);
-      } catch (error) {
-        console.error("Error fetching tags:", error);
-        toast({
-          title: "Error",
-          description: "Failed to load tags",
-          variant: "destructive",
-        });
-      }
-    };
-
-    fetchTags();
-  }, [toast]);
-
   return (
     <div className="mb-12">
       <div className="flex space-x-4 overflow-x-auto pb-4">

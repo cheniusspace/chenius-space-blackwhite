@@ -45,7 +45,7 @@ export const CreationCard = ({
         <div className="mt-2 flex flex-wrap gap-2">
           {tags.map((tag, index) => (
             <span 
-              key={index} 
+              key={tag.id || index} 
               className="text-xs bg-chenius-gray-100 px-2 py-1 rounded"
             >
               {tag.name}
