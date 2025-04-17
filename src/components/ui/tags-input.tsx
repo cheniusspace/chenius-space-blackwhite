@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, X } from "lucide-react";
+import { Check, X, Tag as TagIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -11,9 +11,10 @@ interface TagsInputProps {
   availableTags: Tag[];
   selectedTags: string[];
   onTagsChange: (selectedTags: string[]) => void;
+  sampleTags?: Tag[];
 }
 
-const TagsInput = ({ availableTags, selectedTags, onTagsChange }: TagsInputProps) => {
+const TagsInput = ({ availableTags, selectedTags, onTagsChange, sampleTags = [] }: TagsInputProps) => {
   const { toast } = useToast();
   const [newTagName, setNewTagName] = useState("");
   const [isCreatingTag, setIsCreatingTag] = useState(false);
@@ -79,6 +80,27 @@ const TagsInput = ({ availableTags, selectedTags, onTagsChange }: TagsInputProps
     }
   };
 
+  // Add sample tags to selection
+  const addSampleTags = () => {
+    if (sampleTags.length === 0) return;
+    
+    // Add 2-3 random sample tags
+    const availableSampleTags = sampleTags.filter(tag => !selectedTags.includes(tag.id));
+    if (availableSampleTags.length === 0) return;
+    
+    const randomSampleTags = availableSampleTags
+      .sort(() => 0.5 - Math.random())
+      .slice(0, Math.min(3, availableSampleTags.length));
+    
+    const newSelectedTags = [...selectedTags, ...randomSampleTags.map(tag => tag.id)];
+    onTagsChange(newSelectedTags);
+    
+    toast({
+      title: "Sample tags added",
+      description: "Some sample tags have been added for demonstration",
+    });
+  };
+
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
@@ -119,6 +141,19 @@ const TagsInput = ({ availableTags, selectedTags, onTagsChange }: TagsInputProps
           Add
         </Button>
       </div>
+      
+      {sampleTags && sampleTags.length > 0 && (
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          onClick={addSampleTags}
+          className="flex items-center gap-1"
+        >
+          <TagIcon className="h-4 w-4" />
+          Add Sample Tags
+        </Button>
+      )}
       
       {selectedTags.length > 0 && (
         <div>

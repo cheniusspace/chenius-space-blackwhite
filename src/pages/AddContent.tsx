@@ -8,17 +8,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useTagsList } from "@/hooks/useTagsList";
 import TagsInput from "@/components/ui/tags-input";
+import { Lightbulb } from "lucide-react";
 
 const AddContent = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { tags } = useTagsList();
+  const { tags, sampleTags } = useTagsList();
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   // Creation form state
@@ -51,6 +51,64 @@ const AddContent = () => {
     external_link: "",
     selectedTags: [] as string[]
   });
+
+  // Sample data for Creation
+  const sampleCreation = {
+    title: "Minimalist Photography Series",
+    category: "Photography",
+    description: "A series of black and white photographs exploring urban architecture and negative space.",
+    date: new Date().toISOString().split("T")[0],
+    image_url: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2800&auto=format&fit=crop",
+    selectedTags: sampleTags.slice(0, 3).map(tag => tag.id)
+  };
+
+  // Sample data for Journal
+  const sampleJournal = {
+    title: "Reflections on Minimalism in Design",
+    excerpt: "Exploring how less can truly be more in modern digital interfaces.",
+    content: "In today's cluttered digital landscape, minimalism stands as a beacon of clarity. This journal entry explores how stripping away the unnecessary elements can lead to more impactful design choices and user experiences.\n\nWhen we embrace minimalism, we focus on what truly matters. The white space becomes as important as the content itself, creating rhythm and allowing the eye to rest.\n\nAs designers, we should constantly ask ourselves: what can be removed while still maintaining the core message? This question guides us toward more intentional, thoughtful work.",
+    date: new Date().toISOString().split("T")[0],
+    read_time: "5 min read",
+    selectedTags: sampleTags.slice(1, 4).map(tag => tag.id)
+  };
+
+  // Sample data for Favorite
+  const sampleFavorite = {
+    title: "Design Systems for Startups",
+    category: "Book",
+    author: "Sarah Johnson",
+    description: "An essential guide to implementing scalable design systems in early-stage companies with limited resources.",
+    image_url: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=2787&auto=format&fit=crop",
+    external_link: "https://example.com/design-systems-book",
+    selectedTags: sampleTags.slice(2, 5).map(tag => tag.id)
+  };
+
+  // Load sample creation data
+  const loadSampleCreation = () => {
+    setCreation(sampleCreation);
+    toast({
+      title: "Sample data loaded",
+      description: "Sample creation data has been loaded into the form",
+    });
+  };
+
+  // Load sample journal data
+  const loadSampleJournal = () => {
+    setJournal(sampleJournal);
+    toast({
+      title: "Sample data loaded",
+      description: "Sample journal data has been loaded into the form",
+    });
+  };
+
+  // Load sample favorite data
+  const loadSampleFavorite = () => {
+    setFavorite(sampleFavorite);
+    toast({
+      title: "Sample data loaded",
+      description: "Sample favorite data has been loaded into the form",
+    });
+  };
 
   // Handle creation form submission
   const handleCreationSubmit = async (e: React.FormEvent) => {
@@ -231,10 +289,23 @@ const AddContent = () => {
           <TabsContent value="creation">
             <Card>
               <CardHeader>
-                <CardTitle>Add New Creation</CardTitle>
-                <CardDescription>
-                  Share your creative works, designs, and projects.
-                </CardDescription>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <CardTitle>Add New Creation</CardTitle>
+                    <CardDescription>
+                      Share your creative works, designs, and projects.
+                    </CardDescription>
+                  </div>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={loadSampleCreation}
+                    className="flex items-center gap-2"
+                  >
+                    <Lightbulb className="h-4 w-4" />
+                    Load Sample
+                  </Button>
+                </div>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleCreationSubmit} className="space-y-6">
@@ -280,6 +351,16 @@ const AddContent = () => {
                         value={creation.image_url}
                         onChange={e => setCreation({...creation, image_url: e.target.value})}
                       />
+                      {creation.image_url && (
+                        <div className="mt-2 aspect-video w-full max-w-sm bg-gray-100 rounded overflow-hidden">
+                          <img 
+                            src={creation.image_url} 
+                            alt="Preview" 
+                            className="w-full h-full object-cover"
+                            onError={(e) => e.currentTarget.classList.add("hidden")}
+                          />
+                        </div>
+                      )}
                     </div>
                     
                     <div>
@@ -299,6 +380,7 @@ const AddContent = () => {
                         availableTags={tags}
                         selectedTags={creation.selectedTags}
                         onTagsChange={(tagIds) => setCreation({...creation, selectedTags: tagIds})}
+                        sampleTags={sampleTags}
                       />
                     </div>
                   </div>
@@ -315,10 +397,23 @@ const AddContent = () => {
           <TabsContent value="journal">
             <Card>
               <CardHeader>
-                <CardTitle>Add New Journal</CardTitle>
-                <CardDescription>
-                  Share your thoughts, essays, and articles.
-                </CardDescription>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <CardTitle>Add New Journal</CardTitle>
+                    <CardDescription>
+                      Share your thoughts, essays, and articles.
+                    </CardDescription>
+                  </div>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={loadSampleJournal}
+                    className="flex items-center gap-2"
+                  >
+                    <Lightbulb className="h-4 w-4" />
+                    Load Sample
+                  </Button>
+                </div>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleJournalSubmit} className="space-y-6">
@@ -385,6 +480,7 @@ const AddContent = () => {
                         availableTags={tags}
                         selectedTags={journal.selectedTags}
                         onTagsChange={(tagIds) => setJournal({...journal, selectedTags: tagIds})}
+                        sampleTags={sampleTags}
                       />
                     </div>
                   </div>
@@ -401,10 +497,23 @@ const AddContent = () => {
           <TabsContent value="favorite">
             <Card>
               <CardHeader>
-                <CardTitle>Add New Favorite</CardTitle>
-                <CardDescription>
-                  Share your favorite books, articles, or inspirations.
-                </CardDescription>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <CardTitle>Add New Favorite</CardTitle>
+                    <CardDescription>
+                      Share your favorite books, articles, or inspirations.
+                    </CardDescription>
+                  </div>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={loadSampleFavorite}
+                    className="flex items-center gap-2"
+                  >
+                    <Lightbulb className="h-4 w-4" />
+                    Load Sample
+                  </Button>
+                </div>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleFavoriteSubmit} className="space-y-6">
@@ -450,6 +559,16 @@ const AddContent = () => {
                         value={favorite.image_url}
                         onChange={e => setFavorite({...favorite, image_url: e.target.value})}
                       />
+                      {favorite.image_url && (
+                        <div className="mt-2 aspect-video w-full max-w-sm bg-gray-100 rounded overflow-hidden">
+                          <img 
+                            src={favorite.image_url} 
+                            alt="Preview" 
+                            className="w-full h-full object-cover"
+                            onError={(e) => e.currentTarget.classList.add("hidden")}
+                          />
+                        </div>
+                      )}
                     </div>
                     
                     <div>
@@ -479,6 +598,7 @@ const AddContent = () => {
                         availableTags={tags}
                         selectedTags={favorite.selectedTags}
                         onTagsChange={(tagIds) => setFavorite({...favorite, selectedTags: tagIds})}
+                        sampleTags={sampleTags}
                       />
                     </div>
                   </div>

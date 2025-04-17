@@ -13,6 +13,16 @@ export function useTagsList() {
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
+  // Sample tags to use as examples
+  const sampleTags: Tag[] = [
+    { id: "sample-1", name: "Design" },
+    { id: "sample-2", name: "Photography" },
+    { id: "sample-3", name: "Art" },
+    { id: "sample-4", name: "Technology" },
+    { id: "sample-5", name: "Writing" },
+    { id: "sample-6", name: "Inspiration" }
+  ];
+
   useEffect(() => {
     const fetchTags = async () => {
       try {
@@ -25,7 +35,12 @@ export function useTagsList() {
           throw error;
         }
 
-        setTags(data || []);
+        if (data && data.length > 0) {
+          setTags(data);
+        } else {
+          // If no tags exist in the database, use sample tags
+          setTags(sampleTags);
+        }
       } catch (error) {
         console.error("Error fetching tags:", error);
         toast({
@@ -33,6 +48,8 @@ export function useTagsList() {
           description: "Failed to load tags",
           variant: "destructive",
         });
+        // Fall back to sample tags on error
+        setTags(sampleTags);
       } finally {
         setIsLoading(false);
       }
@@ -41,5 +58,5 @@ export function useTagsList() {
     fetchTags();
   }, [toast]);
 
-  return { tags, isLoading };
+  return { tags, isLoading, sampleTags };
 }
