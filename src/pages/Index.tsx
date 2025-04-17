@@ -3,33 +3,33 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Link } from "react-router-dom";
 import { ArrowRight, MessageSquare } from "lucide-react";
 import { RainEffect } from "@/components/ui/rain-effect";
-import { RainSound } from "@/components/ui/rain-sound";
 
 const Index = () => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <RainEffect />
-      <RainSound />
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative">
-        <div className="container px-4 md:px-6 max-w-5xl mx-auto text-center">
-          <h1 className="text-6xl md:text-8xl font-heading tracking-tight mb-8">
-            CHENIUS Space
-          </h1>
-          <p className="text-xl md:text-2xl text-chenius-gray-500 mb-12 max-w-2xl mx-auto">
-            A monochromatic personal space for creations, journals, and favorites.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="h-12">
-              <Link to="/creations">
-                View Creations <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button variant="outline" asChild className="h-12">
-              <Link to="/contact">
-                Contact Me <MessageSquare className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+      <section className="flex-1">
+        <div className="container relative flex flex-col items-center justify-center min-h-screen py-24">
+          <div className="flex flex-col items-center text-center">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+              Welcome to CHENIUS Space
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-2xl">
+              A creative space where ideas come to life. Explore my creations, read my journals, and discover what inspires me.
+            </p>
+            <div className="mt-10 flex items-center gap-x-6">
+              <Button asChild>
+                <Link to="/creations">
+                  Explore Creations
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link to="/contact">
+                  Contact Me
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -108,7 +108,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
