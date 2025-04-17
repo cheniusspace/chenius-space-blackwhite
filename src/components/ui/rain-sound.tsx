@@ -5,6 +5,7 @@ import * as Popover from "@radix-ui/react-popover";
 export function RainSound() {
   const [volume, setVolume] = useState(0.3);
   const [isMuted, setIsMuted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -12,7 +13,6 @@ export function RainSound() {
       audioRef.current = new Audio("/sounds/rain.mp3");
       audioRef.current.loop = true;
       audioRef.current.volume = volume;
-      audioRef.current.play();
     }
 
     return () => {
@@ -39,7 +39,23 @@ export function RainSound() {
     setIsMuted(!isMuted);
   };
 
+  const togglePlay = async () => {
+    if (audioRef.current) {
+      try {
+        if (isPlaying) {
+          await audioRef.current.pause();
+        } else {
+          await audioRef.current.play();
+        }
+        setIsPlaying(!isPlaying);
+      } catch (error) {
+        console.error("Error toggling audio:", error);
+      }
+    }
+  };
+
   const getVolumeIcon = () => {
+    if (!isPlaying) return <VolumeX className="h-4 w-4" />;
     if (isMuted || volume === 0) return <VolumeX className="h-4 w-4" />;
     if (volume < 0.5) return <Volume1 className="h-4 w-4" />;
     return <Volume2 className="h-4 w-4" />;
@@ -51,7 +67,8 @@ export function RainSound() {
         <button
           className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 w-9 relative z-50"
           type="button"
-          aria-label="Adjust volume"
+          onClick={togglePlay}
+          aria-label={isPlaying ? "Stop sound" : "Play sound"}
         >
           {getVolumeIcon()}
         </button>

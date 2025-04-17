@@ -13,22 +13,22 @@ import {
 const DesignSystem = () => {
   return (
     <div className="px-4 md:px-6 py-12 max-w-5xl mx-auto">
-      <SectionHeading
-        title="Design System"
-        description="A comprehensive guide to our visual language, components, and design patterns used throughout the application."
-      />
+            <SectionHeading
+              title="Design System"
+              description="A comprehensive guide to our visual language, components, and design patterns used throughout the application."
+            />
 
-      <div className="space-y-16">
+            <div className="space-y-16">
         <TypographySection />
-        <Separator />
+              <Separator />
         <ColorsSection />
-        <Separator />
+              <Separator />
         <LayoutSection />
-        <Separator />
+              <Separator />
         <ComponentsSection />
-        <Separator />
+              <Separator />
         <PatternsSection />
-        <Separator />
+              <Separator />
         <PrinciplesSection />
       </div>
     </div>
