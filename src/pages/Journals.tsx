@@ -67,7 +67,7 @@ const Journals = () => {
 
       {isLoading ? (
         <div className="min-h-[300px] flex items-center justify-center">
-          <div className="animate-pulse text-chenius-gray-500">Loading...</div>
+          <div className="animate-pulse text-chenius-gray-500 font-body">Loading...</div>
         </div>
       ) : journals.length > 0 ? (
         <div className="space-y-12">
@@ -75,18 +75,18 @@ const Journals = () => {
             <article key={journal.id} className="border-b border-chenius-gray-200 pb-10">
               <Link to={`/journals/${journal.id}`} className="block group">
                 <div className="flex flex-col">
-                  <div className="flex justify-between items-center text-sm text-chenius-gray-500 mb-3">
+                  <div className="flex justify-between items-center text-sm text-chenius-gray-500 mb-3 font-body">
                     <span>{journal.date}</span>
                     <span>{journal.read_time}</span>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-semibold mb-4 group-hover:text-chenius-gray-700 transition-colors">
+                  <h2 className="text-2xl md:text-3xl font-heading mb-4 group-hover:text-chenius-gray-700 transition-colors">
                     {journal.title}
                   </h2>
-                  <p className="text-chenius-gray-500 mb-4">
+                  <p className="text-chenius-gray-500 mb-4 font-body">
                     {journal.excerpt}
                   </p>
                   <div className="mt-4">
-                    <span className="inline-flex items-center text-sm font-medium hover-underline">
+                    <span className="inline-flex items-center text-sm font-medium hover-underline font-body">
                       Read More <ArrowRight className="ml-1 h-4 w-4" />
                     </span>
                   </div>
@@ -97,7 +97,7 @@ const Journals = () => {
         </div>
       ) : (
         <div className="min-h-[300px] flex items-center justify-center">
-          <div className="text-chenius-gray-500">No journals found</div>
+          <div className="text-chenius-gray-500 font-body">No journals found</div>
         </div>
       )}
     </div>

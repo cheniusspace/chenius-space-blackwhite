@@ -81,6 +81,7 @@ export default {
         lg: '0',
         md: '0',
         sm: '0',
+        none: '0',
       },
       keyframes: {
         'accordion-down': {
@@ -105,8 +106,8 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out'
       },
       fontFamily: {
-        'heading': ['New Amsterdam', 'sans-serif'],
-        'body': ['Saira Semi Condensed', 'sans-serif'],
+        'heading': ['Jost', 'sans-serif'],
+        'body': ['Jost', 'sans-serif'],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1.25rem' }],
@@ -141,9 +142,6 @@ export default {
         'medium': '500',
         'semibold': '600',
         'bold': '700',
-      },
-      borderRadius: {
-        'none': '0',
       }
     },
   },

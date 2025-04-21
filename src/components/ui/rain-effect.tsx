@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
@@ -29,13 +28,15 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
       length: number;
       speed: number;
       opacity: number;
+      width: number;
 
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.length = Math.random() * 20 + 10;
-        this.speed = Math.random() * 3 + 2;
-        this.opacity = Math.random() * 0.5 + 0.1;
+        this.length = Math.random() * 15 + 10; // Smaller drops (10-25px)
+        this.speed = Math.random() * 2 + 1; // Slower speed (1-3px/frame)
+        this.opacity = Math.random() * 0.3 + 0.1; // More subtle opacity
+        this.width = Math.random() * 0.8 + 0.3; // Thinner lines
       }
 
       update() {
@@ -51,15 +52,24 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(this.x, this.y + this.length);
-        ctx.strokeStyle = `rgba(200, 200, 200, ${this.opacity})`;
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.lineWidth = this.width;
         ctx.stroke();
+
+        // Add smaller splash effect at the bottom
+        if (this.y + this.length > canvas.height - 10) {
+          const splashSize = Math.random() * 2 + 1;
+          ctx.beginPath();
+          ctx.arc(this.x, canvas.height, splashSize, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity * 0.3})`;
+          ctx.fill();
+        }
       }
     }
 
     // Create rain drops
     const drops: RainDrop[] = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 150; i++) { // Fewer drops
       drops.push(new RainDrop());
     }
 
@@ -67,6 +77,13 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
     const animate = () => {
       if (!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Add subtle gradient background
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, 'rgba(0, 0, 0, 0.05)');
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0.2)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       drops.forEach(drop => {
         drop.update();

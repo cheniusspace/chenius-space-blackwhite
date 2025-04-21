@@ -35,7 +35,7 @@ export const CreationCard = ({
       ) : (
         <div className={`aspect-[4/5] ${imageClass} mb-4 transition-transform duration-500 group-hover:scale-[0.98]`} />
       )}
-      <h3 className="text-lg font-body font-light">{title}</h3>
+      <h3 className="text-lg font-heading font-light">{title}</h3>
       <div className="flex justify-between mt-2 text-sm text-chenius-gray-500 font-body">
         <span>{category}</span>
         <span>{date}</span>

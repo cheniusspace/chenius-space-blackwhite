@@ -82,7 +82,7 @@ const Favorites = () => {
         <div className="flex space-x-4 overflow-x-auto pb-4">
           <button 
             onClick={() => handleCategoryFilter(null)}
-            className={`px-4 py-2 rounded-full text-sm whitespace-nowrap ${
+            className={`px-4 py-2 rounded-full text-sm whitespace-nowrap font-body ${
               selectedCategory === null 
                 ? "bg-black text-white" 
                 : "bg-white border border-chenius-gray-200 hover:bg-chenius-gray-100"
@@ -94,7 +94,7 @@ const Favorites = () => {
             <button 
               key={category}
               onClick={() => handleCategoryFilter(category)}
-              className={`px-4 py-2 rounded-full text-sm whitespace-nowrap ${
+              className={`px-4 py-2 rounded-full text-sm whitespace-nowrap font-body ${
                 selectedCategory === category
                   ? "bg-black text-white"
                   : "bg-white border border-chenius-gray-200 hover:bg-chenius-gray-100"
@@ -108,7 +108,7 @@ const Favorites = () => {
 
       {isLoading ? (
         <div className="min-h-[300px] flex items-center justify-center">
-          <div className="animate-pulse text-chenius-gray-500">Loading...</div>
+          <div className="animate-pulse text-chenius-gray-500 font-body">Loading...</div>
         </div>
       ) : favorites.length > 0 ? (
         <CardGrid>
@@ -123,11 +123,11 @@ const Favorites = () => {
                   />
                 )}
               </div>
-              <h3 className="text-xl font-semibold mb-2">{favorite.title}</h3>
-              <p className="text-chenius-gray-500 mb-2">{favorite.author}</p>
+              <h3 className="text-xl font-heading mb-2">{favorite.title}</h3>
+              <p className="text-chenius-gray-500 mb-2 font-body">{favorite.author}</p>
               <Link
                 to={`/favorites/${favorite.id}`}
-                className="inline-flex items-center text-sm font-medium hover-underline"
+                className="inline-flex items-center text-sm font-medium hover-underline font-body"
               >
                 View Details <ExternalLink className="ml-1 h-4 w-4" />
               </Link>
@@ -136,7 +136,7 @@ const Favorites = () => {
         </CardGrid>
       ) : (
         <div className="min-h-[300px] flex items-center justify-center">
-          <div className="text-chenius-gray-500">No favorites found</div>
+          <div className="text-chenius-gray-500 font-body">No favorites found</div>
         </div>
       )}
     </div>

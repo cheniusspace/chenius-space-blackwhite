@@ -63,7 +63,7 @@ const Creations = () => {
 
       {isLoading ? (
         <div className="min-h-[300px] flex items-center justify-center">
-          <div className="animate-pulse text-chenius-gray-500">Loading...</div>
+          <div className="animate-pulse text-chenius-gray-500 font-body">Loading...</div>
         </div>
       ) : creations.length > 0 ? (
         <CardGrid>
@@ -73,7 +73,7 @@ const Creations = () => {
         </CardGrid>
       ) : (
         <div className="min-h-[300px] flex items-center justify-center">
-          <div className="text-chenius-gray-500">No creations found</div>
+          <div className="text-chenius-gray-500 font-body">No creations found</div>
         </div>
       )}
     </div>
