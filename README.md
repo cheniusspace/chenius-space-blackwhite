@@ -1,73 +1,82 @@
-# Welcome to your Lovable project
+# CHENIUS Space Website
 
-## Project info
+A personal website showcasing my creations, journey, and favorites. Built with modern web technologies and a minimalist design approach.
 
-**URL**: https://lovable.dev/projects/be8b6df9-927f-4f7a-ad93-0c4b3879f37e
+## 🌐 Website Information
+- Website: chenius.space
+- Email: tran@chenius.space
 
-## How can I edit this code?
+## 🛠 Tech Stack
 
-There are several ways of editing your application.
+### Core Technologies
+- React - UI Framework
+- TypeScript - Type-safe JavaScript
+- Vite - Build Tool & Dev Server
+- Tailwind CSS - Utility-first CSS Framework
 
-**Use Lovable**
+### UI Components & Styling
+- Shadcn/ui - UI Component Library
+- Framer Motion - Animations
+- Lucide Icons - Icon Library
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/be8b6df9-927f-4f7a-ad93-0c4b3879f37e) and start prompting.
+### Development Tools
+- ESLint - Code Linting
+- TypeScript - Static Type Checking
+- PostCSS - CSS Processing
+- Autoprefixer - CSS Vendor Prefixing
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Quick Start
 
-**Use your preferred IDE**
+```bash
+# Install dependencies
+npm install
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Run linter
+npm run lint
 ```
 
-**Edit a file directly in GitHub**
+## 📁 Project Structure
+```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Route components
+├── hooks/         # Custom React hooks
+├── utils/         # Utility functions
+├── types/         # TypeScript type definitions
+└── context/       # React context providers
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🎨 Design Philosophy
+The website follows a minimalist and elegant design approach with:
+- Clean typography using Jost font
+- Subtle animations and transitions
+- High contrast color scheme
+- Responsive layout
+- Minimalist UI elements
 
-**Use GitHub Codespaces**
+## 🎨 Color Palette
+The website uses a carefully curated color palette that emphasizes simplicity and elegance:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Base Colors
+- Black: #000000 - Primary background
+- White: #FFFFFF - Primary text and accents
+- Transparent White: rgba(255, 255, 255, 0.1) - Subtle borders and effects
 
-## What technologies are used for this project?
+### Text Colors
+- Primary Text: rgba(255, 255, 255, 0.7) - Main content
+- Accent Text: rgba(255, 255, 255, 1) - Hover states and important elements
 
-This project is built with .
+## 🤝 Contributing
+Feel free to open issues or submit pull requests if you find any bugs or have suggestions for improvements.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/be8b6df9-927f-4f7a-ad93-0c4b3879f37e) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
