@@ -414,3 +414,99 @@
   transform: translate(-50%, -50%);
   background: transparent;
 }
+
+/* Drawing Border Effect */
+@keyframes draw-border-top {
+  0% {
+    width: 0;
+    border-top: 0;
+  }
+  100% {
+    width: calc(100% + 4px);
+    border-top: 2px solid white;
+  }
+}
+
+@keyframes draw-border-right {
+  0% {
+    height: 0;
+    border-right: 0;
+  }
+  100% {
+    height: calc(100% + 4px);
+    border-right: 2px solid white;
+  }
+}
+
+@keyframes draw-border-bottom {
+  0% {
+    width: 0;
+    border-bottom: 0;
+  }
+  100% {
+    width: calc(100% + 4px);
+    border-bottom: 2px solid white;
+  }
+}
+
+@keyframes draw-border-left {
+  0% {
+    height: 0;
+    border-left: 0;
+  }
+  100% {
+    height: calc(100% + 4px);
+    border-left: 2px solid white;
+  }
+}
+
+.drawing-button {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.25s;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.drawing-button::before,
+.drawing-button::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.drawing-button::before {
+  top: -2px;
+  left: -2px;
+}
+
+.drawing-button::after {
+  bottom: -2px;
+  right: -2px;
+}
+
+.drawing-button:hover {
+  color: white;
+  border-color: transparent;
+}
+
+.drawing-button:hover::before {
+  animation: 
+    draw-border-top 0.25s ease-out forwards,
+    draw-border-right 0.25s ease-out 0.25s forwards;
+}
+
+.drawing-button:hover::after {
+  animation: 
+    draw-border-bottom 0.25s ease-out 0.5s forwards,
+    draw-border-left 0.25s ease-out 0.75s forwards;
+}

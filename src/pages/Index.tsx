@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { RainEffect } from "@/components/ui/rain-effect";
-import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 
 export default function Index() {
@@ -23,14 +22,14 @@ export default function Index() {
               </p>
               <div className="flex justify-center gap-6 mt-12">
                 <Link to="/creations">
-                  <Button className="button-border-effect">
+                  <button className="drawing-button">
                     Explore Creations
-                  </Button>
+                  </button>
                 </Link>
                 <Link to="/journals">
-                  <Button className="button-border-effect">
+                  <button className="drawing-button">
                     Read Journals
-                  </Button>
+                  </button>
                 </Link>
               </div>
             </div>
