@@ -162,7 +162,7 @@
 }
 
 .refined-nav-link {
-  @apply relative text-base text-white/50 hover:text-white transition-colors duration-300;
+  @apply relative text-xs text-white/50 hover:text-white transition-colors duration-300;
   font-family: 'Jost', sans-serif;
   font-weight: 300;
   letter-spacing: 0.1em;
