@@ -14,12 +14,12 @@ export default function Layout({ children }: LayoutProps) {
         <div className="container mx-auto flex justify-between items-center p-8">
           {/* Brand */}
           <Link to="/" className="nav-brand">
-            <span className="text-white/90 text-2xl">CHENIUS</span>
-            <span className="text-white/40 text-2xl">SPACE</span>
+            <span className="text-white/90 text-lg">CHENIUS</span>
+            <span className="text-white/40 text-lg">SPACE</span>
           </Link>
 
           {/* Navigation Links */}
-          <div className="flex gap-16">
+          <div className="flex gap-8">
             <Link to="/creations" className="refined-nav-link" data-text="CREATIONS">creations</Link>
             <Link to="/journals" className="refined-nav-link" data-text="JOURNALS">journals</Link>
             <Link to="/favorites" className="refined-nav-link" data-text="FAVORITES">favorites</Link>

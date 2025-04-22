@@ -162,15 +162,15 @@
 }
 
 .refined-nav-link {
-  @apply relative text-xs text-white/50 hover:text-white transition-colors duration-300;
+  @apply relative text-sm text-white/50 hover:text-white transition-colors duration-300;
   font-family: 'Jost', sans-serif;
   font-weight: 300;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   position: relative;
   display: inline-block;
-  padding: 0.25rem 0.25rem;
-  margin: 0 0.125rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0 0.0625rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
