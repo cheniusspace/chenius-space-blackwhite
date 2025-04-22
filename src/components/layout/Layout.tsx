@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { Footer } from "./Footer";
 
 interface LayoutProps {
   children: ReactNode;
@@ -7,7 +8,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen w-full">
+    <div className="min-h-screen w-full flex flex-col">
       {/* Navigation */}
       <nav className="refined-nav w-full">
         <div className="container mx-auto flex justify-between items-center p-8">
@@ -26,9 +27,11 @@ export default function Layout({ children }: LayoutProps) {
         </div>
       </nav>
 
-      <main id="main-content" className="pt-24">
+      <main id="main-content" className="flex-grow pt-24">
         {children}
       </main>
+
+      <Footer />
     </div>
   );
 }
