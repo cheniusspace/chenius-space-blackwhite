@@ -15,8 +15,8 @@ export default function Index() {
           <div className="max-w-3xl mx-auto text-center">
             <div className="mb-8">
               <img 
-                src="/images/logo.png" 
-                alt="Chenius Space Logo" 
+                src="/images/home.png" 
+                alt="Chenius Space Home" 
                 className="mx-auto h-32 w-auto object-contain"
               />
             </div>

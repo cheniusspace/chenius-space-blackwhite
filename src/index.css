@@ -6,48 +6,48 @@
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 3%;
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 0 0% 15%;
-    --accent-foreground: 0 0% 98%;
+    --background: 222 25% 7%;
+    --foreground: 220 20% 97%;
+    --card: 222 25% 7%;
+    --card-foreground: 220 20% 97%;
+    --popover: 222 25% 7%;
+    --popover-foreground: 220 20% 97%;
+    --primary: 220 20% 97%;
+    --primary-foreground: 222 25% 7%;
+    --secondary: 222 15% 15%;
+    --secondary-foreground: 220 20% 97%;
+    --muted: 222 15% 15%;
+    --muted-foreground: 220 20% 65%;
+    --accent: 222 15% 15%;
+    --accent-foreground: 220 20% 97%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 0 0% 83.9%;
+    --destructive-foreground: 220 20% 97%;
+    --border: 222 15% 15%;
+    --input: 222 15% 15%;
+    --ring: 220 20% 83.9%;
     --radius: 0;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --background: 222 25% 7%;
+    --foreground: 220 20% 97%;
+    --card: 222 25% 7%;
+    --card-foreground: 220 20% 97%;
+    --popover: 222 25% 7%;
+    --popover-foreground: 220 20% 97%;
+    --primary: 220 20% 97%;
+    --primary-foreground: 222 25% 7%;
+    --secondary: 222 15% 15%;
+    --secondary-foreground: 220 20% 97%;
+    --muted: 222 15% 15%;
+    --muted-foreground: 220 20% 65%;
+    --accent: 222 15% 15%;
+    --accent-foreground: 220 20% 97%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --destructive-foreground: 220 20% 97%;
+    --border: 222 15% 15%;
+    --input: 222 15% 15%;
+    --ring: 220 20% 83.9%;
   }
 
   * {
@@ -64,9 +64,63 @@
   }
 }
 
+@layer components {
+  .bg-rich_black-500 {
+    @apply bg-[#0A0B0F];
+  }
+  
+  .text-platinum-500 {
+    @apply text-[#E5E4E2];
+  }
+  
+  .text-platinum-500\/50 {
+    @apply text-[#E5E4E2]/50;
+  }
+  
+  .text-platinum-500\/70 {
+    @apply text-[#E5E4E2]/70;
+  }
+  
+  .text-platinum-300 {
+    @apply text-[#E0E0E0];
+  }
+  
+  .bg-platinum-300 {
+    @apply bg-[#E0E0E0];
+  }
+  
+  .border-platinum-500 {
+    @apply border-[#E5E4E2];
+  }
+  
+  .border-platinum-500\/5 {
+    @apply border-[#E5E4E2]/5;
+  }
+  
+  .border-platinum-500\/10 {
+    @apply border-[#E5E4E2]/10;
+  }
+  
+  .border-platinum-500\/30 {
+    @apply border-[#E5E4E2]/30;
+  }
+  
+  .bg-platinum-500\/10 {
+    @apply bg-[#E5E4E2]/10;
+  }
+  
+  .bg-platinum-500\/30 {
+    @apply bg-[#E5E4E2]/30;
+  }
+  
+  .bg-rich_black-500\/50 {
+    @apply bg-[#1A1B26]/50;
+  }
+}
+
 @layer base {
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#0A0B0F] text-platinum-500;
     font-family: 'Jost', sans-serif;
     font-weight: 300;
   }
@@ -77,6 +131,7 @@
     text-transform: uppercase;
     position: relative;
     display: inline-block;
+    @apply text-platinum-500;
   }
 
   h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
@@ -89,10 +144,12 @@
     z-index: -1;
     opacity: 0.3;
     transform: translate(2px, 2px);
+    @apply text-platinum-300;
   }
 
   p, span, a, li, button, input, textarea, select {
     font-family: 'Jost', sans-serif;
+    @apply text-platinum-500;
   }
 }
 
@@ -104,6 +161,7 @@
   text-transform: uppercase;
   position: relative;
   display: inline-block;
+  @apply text-platinum-500;
 }
 
 .brand-text-bold::before {
@@ -116,6 +174,7 @@
   z-index: -1;
   opacity: 0.3;
   transform: translate(2px, 2px);
+  @apply text-platinum-300;
 }
 
 .brand-text-thin {
@@ -125,6 +184,7 @@
   text-transform: uppercase;
   position: relative;
   display: inline-block;
+  @apply text-platinum-500;
 }
 
 .brand-text-thin::after {
@@ -134,7 +194,7 @@
   bottom: -2px;
   width: 100%;
   height: 1px;
-  background: rgba(255, 255, 255, 0.2);
+  @apply bg-platinum-300;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -153,16 +213,17 @@
   background-position: center;
   position: relative;
   z-index: 0;
+  @apply bg-rich_black-500;
 }
 
 /* Refined Navigation */
 .refined-nav {
-  @apply fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-black/50;
+  @apply fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-[#0A0B0F]/80;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .refined-nav-link {
-  @apply relative text-sm text-white/50 hover:text-white transition-colors duration-300;
+  @apply relative text-sm text-platinum-500/50 hover:text-platinum-500 transition-colors duration-300;
   font-family: 'Jost', sans-serif;
   font-weight: 300;
   letter-spacing: 0.1em;
@@ -171,13 +232,13 @@
   display: inline-block;
   padding: 0.5rem 0.75rem;
   margin: 0 0.0625rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  @apply border border-platinum-500/10;
 }
 
 .refined-nav-link::before {
   content: '';
   @apply absolute inset-0;
-  background: rgba(255, 255, 255, 0.1);
+  @apply bg-platinum-500/10;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -190,7 +251,7 @@
 .refined-nav-link::after {
   content: '';
   @apply absolute bottom-0 left-0 w-full h-0.5;
-  background: rgba(255, 255, 255, 0.3);
+  @apply bg-platinum-500/30;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -202,7 +263,7 @@
 }
 
 .refined-nav-link:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  @apply border-platinum-500/30;
 }
 
 /* Brand Logo in Navigation */
@@ -214,13 +275,13 @@
   position: relative;
   display: inline-block;
   padding: 0.5rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  @apply border border-platinum-500/10;
 }
 
 .nav-brand::before {
   content: '';
   @apply absolute inset-0;
-  background: rgba(255, 255, 255, 0.1);
+  @apply bg-platinum-500/10;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -233,7 +294,7 @@
 .nav-brand::after {
   content: '';
   @apply absolute bottom-0 left-0 w-full h-0.5;
-  background: rgba(255, 255, 255, 0.3);
+  @apply bg-platinum-500/30;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -245,7 +306,7 @@
 }
 
 .nav-brand:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  @apply border-platinum-500/30;
 }
 
 .nav-brand span:last-child {
@@ -292,7 +353,7 @@
 .subtle-border::before {
   content: '';
   @apply absolute inset-0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  @apply border border-platinum-500/10;
   transform: scale(0.98);
 }
 
@@ -312,7 +373,7 @@
 }
 
 .rain-drop {
-  @apply absolute w-px h-8 bg-white/10;
+  @apply absolute w-px h-8 bg-platinum-500/10;
   animation: rain 1s linear infinite;
 }
 
@@ -416,7 +477,7 @@
 .button-border-effect::before {
   content: '';
   @apply absolute inset-0;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  @apply border border-platinum-500/30;
   animation: border-pulse 1.5s ease-in-out infinite;
 }
 
@@ -436,7 +497,7 @@
 }
 
 .decorative-circle {
-  @apply absolute rounded-full border border-white/5;
+  @apply absolute rounded-full border border-platinum-500/5;
   transform: translate(-50%, -50%);
   background: transparent;
 }
@@ -449,7 +510,7 @@
   }
   100% {
     width: calc(100% + 4px);
-    border-top: 2px solid white;
+    @apply border-t border-platinum-500;
   }
 }
 
@@ -460,7 +521,7 @@
   }
   100% {
     height: calc(100% + 4px);
-    border-right: 2px solid white;
+    @apply border-r border-platinum-500;
   }
 }
 
@@ -471,7 +532,7 @@
   }
   100% {
     width: calc(100% + 4px);
-    border-bottom: 2px solid white;
+    @apply border-b border-platinum-500;
   }
 }
 
@@ -482,17 +543,17 @@
   }
   100% {
     height: calc(100% + 4px);
-    border-left: 2px solid white;
+    @apply border-l border-platinum-500;
   }
 }
 
 .drawing-button {
   position: relative;
   padding: 0.75rem 1.5rem;
-  color: rgba(255, 255, 255, 0.7);
+  @apply text-platinum-500/70;
   transition: color 0.25s;
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  @apply border border-platinum-500/10;
   cursor: pointer;
   font-family: 'Jost', sans-serif;
   font-weight: 300;
@@ -521,7 +582,7 @@
 }
 
 .drawing-button:hover {
-  color: white;
+  @apply text-platinum-500;
   border-color: transparent;
 }
 
@@ -541,14 +602,14 @@
 .button-highlight {
   @apply relative overflow-hidden;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  @apply border border-platinum-500/10;
   transition: all 0.3s ease;
 }
 
 .button-highlight::before {
   content: '';
   @apply absolute inset-0;
-  background: rgba(255, 255, 255, 0.1);
+  @apply bg-platinum-500/10;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -561,7 +622,7 @@
 .button-highlight::after {
   content: '';
   @apply absolute bottom-0 left-0 w-full h-0.5;
-  background: rgba(255, 255, 255, 0.3);
+  @apply bg-platinum-500/30;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -573,7 +634,7 @@
 }
 
 .button-highlight:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  @apply border-platinum-500/30;
 }
 
 /* Cursor Styles */

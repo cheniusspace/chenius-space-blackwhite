@@ -20,7 +20,6 @@ const Creations = () => {
       setIsLoading(true);
       try {
         const data = await fetchCreations(selectedTag);
-        console.log('Fetched creations:', data); // Debug: Log fetched data
         setCreations(data);
       } catch (error) {
         console.error("Error fetching creations:", error);
@@ -29,7 +28,6 @@ const Creations = () => {
           description: "Failed to load creations",
           variant: "destructive",
         });
-        // Use fallback data if API fails
         setCreations(creationsData);
       } finally {
         setIsLoading(false);
@@ -63,7 +61,7 @@ const Creations = () => {
 
       {isLoading ? (
         <div className="min-h-[300px] flex items-center justify-center">
-          <div className="animate-pulse text-chenius-gray-500 font-body">Loading...</div>
+          <div className="animate-pulse text-platinum-500/50">Loading...</div>
         </div>
       ) : creations.length > 0 ? (
         <CardGrid>
@@ -73,7 +71,7 @@ const Creations = () => {
         </CardGrid>
       ) : (
         <div className="min-h-[300px] flex items-center justify-center">
-          <div className="text-chenius-gray-500 font-body">No creations found</div>
+          <div className="text-platinum-500/50">No creations found</div>
         </div>
       )}
     </div>
