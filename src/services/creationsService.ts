@@ -7,7 +7,7 @@ export type Creation = {
   description: string | null;
   date: string;
   image_url: string | null;
-  tags?: string[];
+  tags?: { id: string; name: string }[];
 };
 
 export const fetchCreations = async (selectedTag: string | null = null) => {
@@ -16,7 +16,10 @@ export const fetchCreations = async (selectedTag: string | null = null) => {
     .select(`
       *,
       creations_tags (
-        tag_id
+        tags (
+          id,
+          name
+        )
       )
     `)
     .order("date", { ascending: false });
@@ -33,7 +36,7 @@ export const fetchCreations = async (selectedTag: string | null = null) => {
 
   return data.map(creation => ({
     ...creation,
-    tags: creation.creations_tags?.map(tag => tag.tag_id) || []
+    tags: creation.creations_tags?.map(tag => tag.tags) || []
   }));
 };
 
@@ -46,7 +49,11 @@ export const creationsData: Creation[] = [
     description: "A series of black and white photographs exploring urban architecture and negative space.",
     date: "2023-04-15",
     image_url: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2800&auto=format&fit=crop",
-    tags: ["photography", "minimalism", "architecture"]
+    tags: [
+      { id: "1", name: "photography" },
+      { id: "2", name: "minimalism" },
+      { id: "3", name: "architecture" }
+    ]
   },
   {
     id: "2",
@@ -55,6 +62,10 @@ export const creationsData: Creation[] = [
     description: "An experimental typography project focusing on minimal forms and negative space.",
     date: "2023-03-22",
     image_url: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=2787&auto=format&fit=crop",
-    tags: ["typography", "design", "minimalism"]
+    tags: [
+      { id: "4", name: "typography" },
+      { id: "2", name: "minimalism" },
+      { id: "5", name: "design" }
+    ]
   }
 ];

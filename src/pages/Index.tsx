@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { RainEffect } from "@/components/ui/rain-effect";
 import { MouseTrail } from "@/components/effects/MouseTrail";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { fetchCreations, type Creation } from "@/services/creationsService";
 import { fetchJournals, type Journal } from "@/services/journalsService";
 import { fetchFavorites, type Favorite } from "@/services/favoritesService";
@@ -9,7 +9,7 @@ import { fetchTermOfTheDay, type Term } from "@/services/termsService";
 import { fetchTopics, type Topic } from "@/services/topicsService";
 import { CreationCard } from "@/components/creations/CreationCard";
 import { TopicCard } from "@/components/topics/TopicCard";
-import { ArrowRight, ExternalLink, BookOpen } from "lucide-react";
+import { ArrowRight, ExternalLink, BookOpen, Palette, Cpu, Brush, Lightbulb, PenTool, Compass, Hammer, Sparkles } from "lucide-react";
 
 export default function Index() {
   const [recentCreations, setRecentCreations] = useState<Creation[]>([]);
@@ -24,6 +24,8 @@ export default function Index() {
     term: true,
     topics: true
   });
+  const [activeSection, setActiveSection] = useState(0);
+  const sectionsRef = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     const getRecentContent = async () => {
@@ -60,44 +62,188 @@ export default function Index() {
     getRecentContent();
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = sectionsRef.current.findIndex(
+              (ref) => ref === entry.target
+            );
+            if (index !== -1) {
+              setActiveSection(index);
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      sectionsRef.current.forEach((section) => {
+        if (section) observer.unobserve(section);
+      });
+    };
+  }, []);
+
   return (
-    <div className="w-full subtle-grid bg-black text-white">
+    <div className="w-full subtle-grid bg-[#0A0A0A] text-white">
       <MouseTrail />
       <div className="relative z-0">
         <RainEffect />
       </div>
       <div className="relative z-10">
-        {/* Hero Section */}
-        <div className="container mx-auto px-4 py-32">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="mb-16">
-              <img 
-                src="/images/home.png" 
-                alt="Chenius Space Home" 
-                className="mx-auto h-32 w-auto object-contain"
-              />
+        {/* Vertical Navigation Squares */}
+        <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50">
+          <div className="flex flex-col items-center">
+            {/* Top Line */}
+            <div className="w-0.5 h-8 bg-white/30 mb-4" />
+            
+            <div className="flex flex-col items-center gap-4">
+              {['hero', 'topics', 'term', 'creations', 'journals', 'favorites'].map((section, index) => (
+                <button
+                  key={section}
+                  onClick={() => {
+                    sectionsRef.current[index]?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="group relative w-2 h-2"
+                  aria-label={`Go to ${section} section`}
+                >
+                  {/* Section Name Tooltip */}
+                  <div className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <div className="relative">
+                      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rotate-45" />
+                      <div className="bg-white text-black px-3 py-1 text-xs font-medium whitespace-nowrap">
+                        {section.charAt(0).toUpperCase() + section.slice(1)}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Outline Square */}
+                  <div className={`absolute inset-0 border border-white/30 transform transition-all duration-300 ${
+                    activeSection === index ? 'rotate-45 opacity-0' : 'rotate-0 opacity-100'
+                  }`} />
+                  
+                  {/* Filled Square */}
+                  <div className={`absolute inset-0 bg-white transform transition-all duration-300 ${
+                    activeSection === index ? 'rotate-45 opacity-100' : 'rotate-0 opacity-0'
+                  }`} />
+                </button>
+              ))}
             </div>
-            <h1 className="text-6xl font-bold tracking-tight mb-12">
-              <span className="brand-text-bold">CHENIUS</span>
-              <span className="brand-text-thin">SPACE</span>
-            </h1>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed tracking-wide mb-16">
-              A digital space where creativity meets technology, 
-              exploring the intersection of art, design, and innovation.
-            </p>
-            <div className="flex justify-center gap-8">
-              <Link to="/creations" className="button-highlight px-8 py-4 text-sm uppercase tracking-wider">
-                Explore Creations
-              </Link>
-              <Link to="/journals" className="button-highlight px-8 py-4 text-sm uppercase tracking-wider">
-                Read Journals
-              </Link>
-            </div>
+
+            {/* Bottom Line */}
+            <div className="w-0.5 h-8 bg-white/30 mt-4" />
           </div>
         </div>
 
+        {/* Hero Section */}
+        <section className="h-[calc(100vh-64px)] flex flex-col items-center justify-center py-8 sm:py-0 relative">
+          {/* Random Topic Squares */}
+          <div className="absolute top-[8%] left-[8%]">
+            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
+              <div className="flex flex-col items-center -rotate-45">
+                <Palette className="w-5 h-5 text-white/50 mb-1" />
+                <span className="text-white/50 text-sm font-light tracking-wider">DESIGN</span>
+              </div>
+            </div>
+          </div>
+          <div className="absolute top-[8%] right-[8%]">
+            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
+              <div className="flex flex-col items-center -rotate-45">
+                <Cpu className="w-5 h-5 text-white/50 mb-1" />
+                <span className="text-white/50 text-sm font-light tracking-wider">TECH</span>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bottom-[8%] left-[8%]">
+            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
+              <div className="flex flex-col items-center -rotate-45">
+                <Brush className="w-5 h-5 text-white/50 mb-1" />
+                <span className="text-white/50 text-sm font-light tracking-wider">ART</span>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bottom-[8%] right-[8%]">
+            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
+              <div className="flex flex-col items-center -rotate-45">
+                <Lightbulb className="w-5 h-5 text-white/50 mb-1" />
+                <span className="text-white/50 text-sm font-light tracking-wider">INNOVATE</span>
+              </div>
+            </div>
+          </div>
+          <div className="absolute top-[20%] left-[20%]">
+            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
+              <div className="flex flex-col items-center -rotate-45">
+                <PenTool className="w-5 h-5 text-white/50 mb-1" />
+                <span className="text-white/50 text-sm font-light tracking-wider">CREATE</span>
+              </div>
+            </div>
+          </div>
+          <div className="absolute top-[20%] right-[20%]">
+            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
+              <div className="flex flex-col items-center -rotate-45">
+                <Compass className="w-5 h-5 text-white/50 mb-1" />
+                <span className="text-white/50 text-sm font-light tracking-wider">EXPLORE</span>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bottom-[20%] left-[20%]">
+            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
+              <div className="flex flex-col items-center -rotate-45">
+                <Hammer className="w-5 h-5 text-white/50 mb-1" />
+                <span className="text-white/50 text-sm font-light tracking-wider">BUILD</span>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bottom-[20%] right-[20%]">
+            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
+              <div className="flex flex-col items-center -rotate-45">
+                <Sparkles className="w-5 h-5 text-white/50 mb-1" />
+                <span className="text-white/50 text-sm font-light tracking-wider">INSPIRE</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col items-center justify-center space-y-8 sm:space-y-16 -mt-20">
+              {/* Image Container */}
+              <div className="relative w-full max-w-2xl mx-auto">
+                {/* Background Text */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-[80px] sm:text-[150px] md:text-[200px] -tracking-[0.1em] text-center">
+                    <span className="font-['Antonio'] text-white/10 font-bold">CHENIUS</span>
+                    <span className="font-['Antonio'] text-white/5 font-light">SPACE</span>
+                  </span>
+                </div>
+
+                <div className="absolute inset-0">
+                  <div className="absolute inset-0 border-2 sm:border-4 border-white/30 transform rotate-45 animate-glow" />
+                  <div className="absolute inset-0 border-2 sm:border-4 border-white/30 transform -rotate-45 animate-glow-delay-1" />
+                  <div className="absolute inset-0 border-2 sm:border-4 border-white/30 transform rotate-45 animate-glow-delay-2" />
+                </div>
+                
+                <div className="relative overflow-hidden">
+                  <img 
+                    src="/images/chenius.png" 
+                    alt="Chenius Space Home" 
+                    className="w-full h-auto object-contain transform hover:scale-105 transition-transform duration-500 animate-float rounded-lg shadow-lg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Topics Section */}
-        <section className="py-24 border-t border-white/10">
+        <section 
+          ref={(el) => (sectionsRef.current[1] = el)}
+          className="min-h-screen flex items-center justify-center py-24 border-t border-white/10"
+        >
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
               <div className="max-w-2xl">
@@ -197,7 +343,10 @@ export default function Index() {
         </section>
 
         {/* Term of the Day */}
-        <section className="py-24 border-t border-white/10">
+        <section 
+          ref={(el) => (sectionsRef.current[2] = el)}
+          className="min-h-screen flex items-center justify-center py-24 border-t border-white/10"
+        >
           <div className="container mx-auto px-4">
             {isLoading.term ? (
               <div className="max-w-3xl mx-auto animate-pulse">
@@ -231,7 +380,10 @@ export default function Index() {
         </section>
 
         {/* Creations Preview */}
-        <section className="py-24 border-t border-white/10">
+        <section 
+          ref={(el) => (sectionsRef.current[3] = el)}
+          className="min-h-screen flex items-center justify-center py-24 border-t border-white/10"
+        >
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center mb-12">
               <h2 className="text-2xl font-bold">Recent Creations</h2>
@@ -289,7 +441,10 @@ export default function Index() {
         </section>
 
         {/* Journals Preview */}
-        <section className="py-24 border-t border-white/10">
+        <section 
+          ref={(el) => (sectionsRef.current[4] = el)}
+          className="min-h-screen flex items-center justify-center py-24 border-t border-white/10"
+        >
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center mb-12">
               <h2 className="text-2xl font-bold">Latest Journals</h2>
@@ -352,7 +507,10 @@ export default function Index() {
         </section>
 
         {/* Favorites Preview */}
-        <section className="py-24 border-t border-white/10">
+        <section 
+          ref={(el) => (sectionsRef.current[5] = el)}
+          className="min-h-screen flex items-center justify-center py-24 border-t border-white/10"
+        >
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center mb-12">
               <h2 className="text-2xl font-bold">Featured Favorites</h2>

@@ -30,8 +30,8 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
       opacity: number;
       width: number;
 
-      constructor() {
-        this.x = Math.random() * canvas.width;
+      constructor(x: number) {
+        this.x = x;
         this.y = Math.random() * canvas.height;
         this.length = Math.random() * 15 + 10;
         this.speed = Math.random() * 1 + 0.5;
@@ -43,7 +43,6 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
         this.y += this.speed;
         if (this.y > canvas.height) {
           this.y = -this.length;
-          this.x = Math.random() * canvas.width;
         }
       }
 
@@ -60,8 +59,15 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
 
     // Create rain drops
     const drops: RainDrop[] = [];
-    for (let i = 0; i < 100; i++) {
-      drops.push(new RainDrop());
+    const dropCount = 100;
+    const columnCount = 20; // Number of vertical columns for rain
+    const columnWidth = canvas.width / columnCount;
+    
+    for (let i = 0; i < dropCount; i++) {
+      // Distribute drops evenly across columns
+      const column = i % columnCount;
+      const x = column * columnWidth + Math.random() * columnWidth;
+      drops.push(new RainDrop(x));
     }
 
     // Animation loop
