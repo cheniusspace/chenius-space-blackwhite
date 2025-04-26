@@ -91,158 +91,192 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="w-full subtle-grid bg-[#0A0A0A] text-white">
+    <div className="w-full subtle-grid bg-[#000000] text-white">
       <MouseTrail />
-      <div className="relative z-0">
+      <div className="relative z-[100]">
         <RainEffect />
       </div>
       <div className="relative z-10">
-        {/* Vertical Navigation Squares */}
-        <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50">
-          <div className="flex flex-col items-center">
-            {/* Top Line */}
-            <div className="w-0.5 h-8 bg-white/30 mb-4" />
-            
-            <div className="flex flex-col items-center gap-4">
-              {['hero', 'topics', 'term', 'creations', 'journals', 'favorites'].map((section, index) => (
-                <button
-                  key={section}
-                  onClick={() => {
-                    sectionsRef.current[index]?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="group relative w-2 h-2"
-                  aria-label={`Go to ${section} section`}
-                >
-                  {/* Section Name Tooltip */}
-                  <div className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    <div className="relative">
-                      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rotate-45" />
-                      <div className="bg-white text-black px-3 py-1 text-xs font-medium whitespace-nowrap">
-                        {section.charAt(0).toUpperCase() + section.slice(1)}
-                      </div>
+        {/* Hero Section */}
+        <section className="min-h-[90vh] relative overflow-hidden">
+          {/* Background Elements */}
+          <div className="absolute inset-0 pointer-events-none">
+            {/* Random Circles - More Scattered with Padding */}
+            <div className="absolute top-[20%] right-[10%] w-22 h-22 border border-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[20%] left-[5%] w-18 h-18 border border-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[35%] right-[18%] w-10 h-10 border border-[#333333]/80 rounded-full" />
+            <div className="absolute top-[35%] left-[25%] w-26 h-26 border border-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[45%] right-[30%] w-12 h-12 border border-[#333333]/80 rounded-full" />
+            <div className="absolute top-[48%] left-[38%] w-16 h-16 border border-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[60%] right-[45%] w-20 h-20 border border-[#333333]/80 rounded-full" />
+            <div className="absolute top-[60%] left-[52%] w-30 h-30 border border-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[70%] right-[58%] w-8 h-8 border border-[#333333]/80 rounded-full" />
+            <div className="absolute top-[70%] left-[65%] w-24 h-24 border border-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[80%] right-[72%] w-16 h-16 border border-[#333333]/80 rounded-full" />
+            <div className="absolute top-[80%] left-[78%] w-28 h-28 border border-[#333333]/80 rounded-full" />
+            <div className="absolute top-[90%] left-[92%] w-20 h-20 border border-[#333333]/80 rounded-full" />
+
+            {/* Small Dots - More Scattered with Padding */}
+            <div className="absolute top-[5%] left-[15%] w-1.5 h-1.5 bg-[#333333]/80 rounded-full" />
+            <div className="absolute top-[15%] right-[20%] w-2 h-2 bg-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[15%] left-[28%] w-1.5 h-1.5 bg-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[25%] right-[35%] w-2 h-2 bg-[#333333]/80 rounded-full" />
+            <div className="absolute top-[25%] left-[42%] w-1.5 h-1.5 bg-[#333333]/80 rounded-full" />
+            <div className="absolute top-[35%] right-[48%] w-2 h-2 bg-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[35%] left-[55%] w-1.5 h-1.5 bg-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[45%] right-[62%] w-2 h-2 bg-[#333333]/80 rounded-full" />
+            <div className="absolute top-[45%] left-[68%] w-1.5 h-1.5 bg-[#333333]/80 rounded-full" />
+            <div className="absolute top-[55%] right-[75%] w-2 h-2 bg-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[55%] left-[82%] w-1.5 h-1.5 bg-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[65%] right-[88%] w-2 h-2 bg-[#333333]/80 rounded-full" />
+            <div className="absolute top-[65%] left-[92%] w-1.5 h-1.5 bg-[#333333]/80 rounded-full" />
+            <div className="absolute top-[75%] right-[95%] w-2 h-2 bg-[#333333]/80 rounded-full" />
+            <div className="absolute bottom-[75%] left-[98%] w-1.5 h-1.5 bg-[#333333]/80 rounded-full" />
+
+            {/* Lines - More Scattered with Padding */}
+            <div className="absolute top-[8%] left-[10%] w-28 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[15deg]" />
+            <div className="absolute top-[18%] right-[15%] w-22 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[35deg]" />
+            <div className="absolute bottom-[20%] left-[20%] w-26 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[55deg]" />
+            <div className="absolute top-[28%] right-[25%] w-20 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[75deg]" />
+            <div className="absolute top-[38%] left-[30%] w-34 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[95deg]" />
+            <div className="absolute bottom-[40%] right-[38%] w-24 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[115deg]" />
+            <div className="absolute top-[48%] left-[45%] w-30 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[135deg]" />
+            <div className="absolute bottom-[50%] right-[52%] w-18 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[155deg]" />
+            <div className="absolute top-[58%] left-[58%] w-32 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[175deg]" />
+            <div className="absolute top-[68%] right-[65%] w-26 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[195deg]" />
+            <div className="absolute bottom-[65%] left-[72%] w-22 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[215deg]" />
+            <div className="absolute bottom-[75%] right-[78%] w-28 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[235deg]" />
+
+            {/* Additional Circles - More Scattered with Padding */}
+            <div className="absolute top-[10%] left-[18%] w-34 h-34 border border-[#333333]/70 rounded-full" />
+            <div className="absolute top-[25%] right-[25%] w-40 h-40 border border-[#333333]/70 rounded-full" />
+            <div className="absolute bottom-[25%] left-[32%] w-28 h-28 border border-[#333333]/70 rounded-full" />
+            <div className="absolute bottom-[40%] right-[38%] w-46 h-46 border border-[#333333]/70 rounded-full" />
+            <div className="absolute top-[42%] left-[45%] w-22 h-22 border border-[#333333]/70 rounded-full" />
+            <div className="absolute top-[55%] right-[52%] w-52 h-52 border border-[#333333]/70 rounded-full" />
+            <div className="absolute bottom-[55%] left-[58%] w-30 h-30 border border-[#333333]/70 rounded-full" />
+            <div className="absolute bottom-[70%] right-[65%] w-26 h-26 border border-[#333333]/70 rounded-full" />
+            <div className="absolute top-[72%] left-[72%] w-38 h-38 border border-[#333333]/70 rounded-full" />
+            <div className="absolute top-[85%] right-[78%] w-24 h-24 border border-[#333333]/70 rounded-full" />
+
+            {/* Additional Small Dots - More Scattered with Padding */}
+            <div className="absolute top-[15%] left-[22%] w-1.5 h-1.5 bg-[#333333]/70 rounded-full" />
+            <div className="absolute top-[32%] right-[28%] w-2 h-2 bg-[#333333]/70 rounded-full" />
+            <div className="absolute bottom-[30%] left-[35%] w-1.5 h-1.5 bg-[#333333]/70 rounded-full" />
+            <div className="absolute bottom-[45%] right-[42%] w-2 h-2 bg-[#333333]/70 rounded-full" />
+            <div className="absolute top-[45%] left-[48%] w-1.5 h-1.5 bg-[#333333]/70 rounded-full" />
+            <div className="absolute top-[62%] right-[55%] w-2 h-2 bg-[#333333]/70 rounded-full" />
+            <div className="absolute bottom-[60%] left-[62%] w-1.5 h-1.5 bg-[#333333]/70 rounded-full" />
+            <div className="absolute bottom-[75%] right-[68%] w-2 h-2 bg-[#333333]/70 rounded-full" />
+            <div className="absolute top-[75%] left-[75%] w-1.5 h-1.5 bg-[#333333]/70 rounded-full" />
+            <div className="absolute top-[92%] right-[82%] w-2 h-2 bg-[#333333]/70 rounded-full" />
+
+            {/* Extra Large Circles - More Scattered with Padding */}
+            <div className="absolute top-[5%] left-[10%] w-58 h-58 border border-[#333333]/60 rounded-full" />
+            <div className="absolute top-[65%] right-[15%] w-68 h-68 border border-[#333333]/60 rounded-full" />
+            <div className="absolute bottom-[15%] left-[65%] w-63 h-63 border border-[#333333]/60 rounded-full" />
+            <div className="absolute top-[35%] right-[68%] w-53 h-53 border border-[#333333]/60 rounded-full" />
+            <div className="absolute top-[85%] left-[85%] w-72 h-72 border border-[#333333]/60 rounded-full" />
+          </div>
+
+          <div className="container mx-auto px-4 h-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 h-[90vh] items-center">
+              {/* Left Column - Visual Elements */}
+              <div className="lg:col-span-6 relative z-10">
+                <div className="relative w-full aspect-square">
+                  {/* Main Image Container */}
+                  <div className="relative w-full aspect-square">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-3xl opacity-50 hover:opacity-80 transition-opacity duration-1000" />
+                    <img 
+                      src="/images/chenius.png" 
+                      alt="Chenius Space Home" 
+                      className="relative w-full h-full object-contain transform hover:scale-105 transition-all duration-500 opacity-80 hover:opacity-100 animate-[float_4s_ease-in-out_infinite]"
+                    />
+                  </div>
+
+                  {/* Status Indicators */}
+                  <div className="absolute top-4 right-4 flex items-center gap-3">
+                    <div className="w-0.5 h-4 bg-white/10" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column - Text Content */}
+              <div className="lg:col-span-6 relative z-10">
+                <div className="space-y-12">
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                      <span className="text-xs text-white/50 tracking-widest">MY UNKNOWN JOURNEY</span>
+                    </div>
+                    
+                    <h1 className="text-6xl sm:text-7xl md:text-8xl font-light tracking-tight leading-none">
+                      <span className="block text-white font-medium">Lost</span>
+                      <span className="block text-white/80">But Finding</span>
+                    </h1>
+
+                    <p className="text-lg sm:text-xl text-white/60 max-w-lg leading-relaxed">
+                      In the silence of my thoughts, I wander through shadows of uncertainty, seeking fragments of who I might become
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-6">
+                    <div className="group relative">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <button className="relative px-8 py-4 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
+                        <span className="text-sm text-white/90 tracking-widest">TAKE A LOOK, WHO KNOWS WE ARE ALIKE</span>
+                      </button>
                     </div>
                   </div>
 
-                  {/* Outline Square */}
-                  <div className={`absolute inset-0 border border-white/30 transform transition-all duration-300 ${
-                    activeSection === index ? 'rotate-45 opacity-0' : 'rotate-0 opacity-100'
-                  }`} />
-                  
-                  {/* Filled Square */}
-                  <div className={`absolute inset-0 bg-white transform transition-all duration-300 ${
-                    activeSection === index ? 'rotate-45 opacity-100' : 'rotate-0 opacity-0'
-                  }`} />
-                </button>
-              ))}
-            </div>
-
-            {/* Bottom Line */}
-            <div className="w-0.5 h-8 bg-white/30 mt-4" />
-          </div>
-        </div>
-
-        {/* Hero Section */}
-        <section className="h-[calc(100vh-64px)] flex flex-col items-center justify-center py-8 sm:py-0 relative">
-          {/* Random Topic Squares */}
-          <div className="absolute top-[8%] left-[8%]">
-            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
-              <div className="flex flex-col items-center -rotate-45">
-                <Palette className="w-5 h-5 text-white/50 mb-1" />
-                <span className="text-white/50 text-sm font-light tracking-wider">DESIGN</span>
-              </div>
-            </div>
-          </div>
-          <div className="absolute top-[8%] right-[8%]">
-            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
-              <div className="flex flex-col items-center -rotate-45">
-                <Cpu className="w-5 h-5 text-white/50 mb-1" />
-                <span className="text-white/50 text-sm font-light tracking-wider">TECH</span>
-              </div>
-            </div>
-          </div>
-          <div className="absolute bottom-[8%] left-[8%]">
-            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
-              <div className="flex flex-col items-center -rotate-45">
-                <Brush className="w-5 h-5 text-white/50 mb-1" />
-                <span className="text-white/50 text-sm font-light tracking-wider">ART</span>
-              </div>
-            </div>
-          </div>
-          <div className="absolute bottom-[8%] right-[8%]">
-            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
-              <div className="flex flex-col items-center -rotate-45">
-                <Lightbulb className="w-5 h-5 text-white/50 mb-1" />
-                <span className="text-white/50 text-sm font-light tracking-wider">INNOVATE</span>
-              </div>
-            </div>
-          </div>
-          <div className="absolute top-[20%] left-[20%]">
-            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
-              <div className="flex flex-col items-center -rotate-45">
-                <PenTool className="w-5 h-5 text-white/50 mb-1" />
-                <span className="text-white/50 text-sm font-light tracking-wider">CREATE</span>
-              </div>
-            </div>
-          </div>
-          <div className="absolute top-[20%] right-[20%]">
-            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
-              <div className="flex flex-col items-center -rotate-45">
-                <Compass className="w-5 h-5 text-white/50 mb-1" />
-                <span className="text-white/50 text-sm font-light tracking-wider">EXPLORE</span>
-              </div>
-            </div>
-          </div>
-          <div className="absolute bottom-[20%] left-[20%]">
-            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
-              <div className="flex flex-col items-center -rotate-45">
-                <Hammer className="w-5 h-5 text-white/50 mb-1" />
-                <span className="text-white/50 text-sm font-light tracking-wider">BUILD</span>
-              </div>
-            </div>
-          </div>
-          <div className="absolute bottom-[20%] right-[20%]">
-            <div className="w-24 h-24 border border-white/10 transform rotate-45 p-4 flex items-center justify-center square-glow">
-              <div className="flex flex-col items-center -rotate-45">
-                <Sparkles className="w-5 h-5 text-white/50 mb-1" />
-                <span className="text-white/50 text-sm font-light tracking-wider">INSPIRE</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center justify-center space-y-8 sm:space-y-16 -mt-20">
-              {/* Image Container */}
-              <div className="relative w-full max-w-2xl mx-auto">
-                {/* Background Text */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-[80px] sm:text-[150px] md:text-[200px] -tracking-[0.1em] text-center">
-                    <span className="font-['Antonio'] text-white/10 font-bold">CHENIUS</span>
-                    <span className="font-['Antonio'] text-white/5 font-light">SPACE</span>
-                  </span>
-                </div>
-
-                <div className="absolute inset-0">
-                  <div className="absolute inset-0 border-2 sm:border-4 border-white/30 transform rotate-45 animate-glow" />
-                  <div className="absolute inset-0 border-2 sm:border-4 border-white/30 transform -rotate-45 animate-glow-delay-1" />
-                  <div className="absolute inset-0 border-2 sm:border-4 border-white/30 transform rotate-45 animate-glow-delay-2" />
-                </div>
-                
-                <div className="relative overflow-hidden">
-                  <img 
-                    src="/images/chenius.png" 
-                    alt="Chenius Space Home" 
-                    className="w-full h-auto object-contain transform hover:scale-105 transition-transform duration-500 animate-float rounded-lg shadow-lg"
-                  />
+                  {/* Progress Indicators */}
+                  <div className="flex items-center gap-8">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-white/30 rounded-full" />
+                      <span className="text-xs text-white/40">WEB DESIGN</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-white/30 rounded-full" />
+                      <span className="text-xs text-white/40">ARCHITECTURE</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-white/30 rounded-full" />
+                      <span className="text-xs text-white/40">MUSIC</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-white/30 rounded-full" />
+                      <span className="text-xs text-white/40">DIGITAL ART</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-white/30 rounded-full" />
+                      <span className="text-xs text-white/40">SELF DEV</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Down Button */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <button 
+              onClick={() => {
+                const topicsSection = document.getElementById('topics');
+                topicsSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="flex flex-col items-center gap-1 group"
+            >
+              <span className="text-xs text-white/50 tracking-widest">EXPLORE MORE</span>
+              <div className="w-0.5 h-8 bg-gradient-to-b from-white/50 to-transparent group-hover:translate-y-1 transition-transform" />
+            </button>
           </div>
         </section>
 
         {/* Topics Section */}
         <section 
+          id="topics"
           ref={(el) => (sectionsRef.current[1] = el)}
-          className="min-h-screen flex items-center justify-center py-24 border-t border-white/10"
+          className="min-h-screen flex items-center justify-center py-24"
         >
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
