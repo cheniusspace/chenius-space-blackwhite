@@ -9,7 +9,185 @@ import { fetchTermOfTheDay, type Term } from "@/services/termsService";
 import { fetchTopics, type Topic } from "@/services/topicsService";
 import { CreationCard } from "@/components/creations/CreationCard";
 import { TopicCard } from "@/components/topics/TopicCard";
-import { ArrowRight, ExternalLink, BookOpen, Palette, Cpu, Brush, Lightbulb, PenTool, Compass, Hammer, Sparkles } from "lucide-react";
+import { ArrowRight, ExternalLink, BookOpen, Palette, Cpu, Brush, Lightbulb, PenTool, Compass, Hammer, Sparkles, Heart } from "lucide-react";
+
+function AudioPlayer() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const updateProgress = () => {
+      if (audio.duration) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        if (progressBarRef.current) {
+          progressBarRef.current.style.width = `${progress}%`;
+        }
+        setCurrentTime(audio.currentTime);
+      }
+    };
+
+    const updateDuration = () => {
+      setDuration(audio.duration);
+    };
+
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('loadedmetadata', updateDuration);
+
+    return () => {
+      audio.removeEventListener('timeupdate', updateProgress);
+      audio.removeEventListener('loadedmetadata', updateDuration);
+    };
+  }, []);
+
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!audioRef.current || !progressBarRef.current) return;
+    
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / rect.width;
+    audioRef.current.currentTime = pos * audioRef.current.duration;
+  };
+
+  const formatTime = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60);
+    seconds = Math.floor(seconds % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  return (
+    <div className="group relative">
+      <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="relative bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300 p-4">
+        <div className="flex items-center gap-4">
+          <button 
+            onClick={togglePlay}
+            className="w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+          >
+            {isPlaying ? (
+              <svg 
+                className="w-5 h-5 text-white/90"
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" 
+                />
+              </svg>
+            ) : (
+              <svg 
+                className="w-5 h-5 text-white/90"
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" 
+                />
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
+                />
+              </svg>
+            )}
+          </button>
+          <div className="flex-1">
+            <div 
+              className="h-1 bg-white/10 rounded-full overflow-hidden cursor-pointer"
+              onClick={handleProgressClick}
+            >
+              <div 
+                ref={progressBarRef}
+                className="h-full bg-white/90 w-0 transition-all duration-100"
+              />
+            </div>
+            <div className="flex justify-between mt-2">
+              <span className="text-xs text-white/60">{formatTime(currentTime)}</span>
+              <span className="text-xs text-white/60">{formatTime(duration)}</span>
+            </div>
+          </div>
+          <button 
+            onClick={toggleMute}
+            className="w-8 h-8 flex items-center justify-center text-white/60 hover:text-white/90 transition-colors"
+          >
+            {isMuted ? (
+              <svg 
+                className="w-4 h-4"
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" 
+                />
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" 
+                />
+              </svg>
+            ) : (
+              <svg 
+                className="w-4 h-4"
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" 
+                />
+              </svg>
+            )}
+          </button>
+        </div>
+        <audio 
+          ref={audioRef}
+          src="/sounds/ImCHENIUS.mp3"
+          className="hidden"
+        />
+      </div>
+    </div>
+  );
+}
 
 export default function Index() {
   const [recentCreations, setRecentCreations] = useState<Creation[]>([]);
@@ -177,13 +355,13 @@ export default function Index() {
             <div className="absolute bottom-[15%] left-[65%] w-63 h-63 border border-[#333333]/60 rounded-full" />
             <div className="absolute top-[35%] right-[68%] w-53 h-53 border border-[#333333]/60 rounded-full" />
             <div className="absolute top-[85%] left-[85%] w-72 h-72 border border-[#333333]/60 rounded-full" />
-          </div>
+                      </div>
 
           <div className="container mx-auto px-4 h-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 h-[90vh] items-center">
               {/* Left Column - Visual Elements */}
               <div className="lg:col-span-6 relative z-10">
-                <div className="relative w-full aspect-square">
+                <div className="relative w-full aspect-square max-w-[500px] mx-auto">
                   {/* Main Image Container */}
                   <div className="relative w-full aspect-square">
                     <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-3xl opacity-50 hover:opacity-80 transition-opacity duration-1000" />
@@ -197,80 +375,264 @@ export default function Index() {
                   {/* Status Indicators */}
                   <div className="absolute top-4 right-4 flex items-center gap-3">
                     <div className="w-0.5 h-4 bg-white/10" />
-                  </div>
-                </div>
+          </div>
+        </div>
               </div>
 
               {/* Right Column - Text Content */}
               <div className="lg:col-span-6 relative z-10">
-                <div className="space-y-12">
-                  <div className="space-y-6">
+                <div className="space-y-8 sm:space-y-12">
+                  <div className="space-y-4 sm:space-y-6">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
                       <span className="text-xs text-white/50 tracking-widest">MY UNKNOWN JOURNEY</span>
-                    </div>
+            </div>
                     
-                    <h1 className="text-6xl sm:text-7xl md:text-8xl font-light tracking-tight leading-none">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight leading-none">
                       <span className="block text-white font-medium">Lost</span>
                       <span className="block text-white/80">But Finding</span>
                     </h1>
 
-                    <p className="text-lg sm:text-xl text-white/60 max-w-lg leading-relaxed">
+                    <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-lg leading-relaxed">
                       In the silence of my thoughts, I wander through shadows of uncertainty, seeking fragments of who I might become
                     </p>
-                  </div>
+          </div>
 
                   <div className="flex flex-wrap gap-6">
-                    <div className="group relative">
+                    <button 
+                      onClick={() => {
+                        const aboutSection = document.querySelector('.min-h-screen.py-24.border-t.border-white\\/10');
+                        aboutSection?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="group relative"
+                    >
                       <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <button className="relative px-8 py-4 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
-                        <span className="text-sm text-white/90 tracking-widest">TAKE A LOOK, WHO KNOWS WE ARE ALIKE</span>
-                      </button>
-                    </div>
-                  </div>
+                      <div className="relative px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
+                        <span className="text-sm text-white/90 tracking-widest">TAKE A LOOK, WHO KNOWS WE'RE PART OF EACH OTHER'S JOURNEY</span>
+              </div>
+                    </button>
+            </div>
 
                   {/* Progress Indicators */}
-                  <div className="flex items-center gap-8">
+                  <div className="flex flex-wrap gap-4 sm:gap-8">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
                       <span className="text-xs text-white/40">WEB DESIGN</span>
-                    </div>
+          </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
                       <span className="text-xs text-white/40">ARCHITECTURE</span>
-                    </div>
+              </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
                       <span className="text-xs text-white/40">MUSIC</span>
-                    </div>
+            </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
                       <span className="text-xs text-white/40">DIGITAL ART</span>
-                    </div>
+          </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
                       <span className="text-xs text-white/40">SELF DEV</span>
-                    </div>
+              </div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CHENIUS Space Section */}
+        <section className="min-h-screen py-24 border-t border-white/10">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="space-y-12">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                    <span className="text-xs text-white/50 tracking-widest">ABOUT THE SPACE</span>
+              </div>
+                  
+                  <h2 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight leading-none">
+                    <span className="block text-white font-medium">CHENIUS</span>
+                    <span className="block text-white/80">Space</span>
+                  </h2>
+
+                  <p className="text-lg sm:text-xl text-white/60 max-w-2xl leading-relaxed">
+                    A space where I embrace my imperfections and turn them into creative expressions. Through design, development, and self-discovery, I'm learning to appreciate every piece of myself.
+                  </p>
+            </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-medium text-white/90">Creative Exploration</h3>
+                    <p className="text-white/60">
+                      A collection of projects, experiments, and creations that showcase the intersection of art and technology.
+                    </p>
+                    <Link 
+                      to="/creations"
+                      className="group relative inline-block"
+                    >
+                      <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <button className="relative px-6 py-3 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
+                        <span className="text-sm text-white/90 tracking-widest">VIEW MY CREATIONS</span>
+                      </button>
+                    </Link>
+          </div>
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-medium text-white/90">Personal Growth</h3>
+                    <p className="text-white/60">
+                      Documenting the journey of learning, failing, and evolving in the ever-changing landscape of digital creation.
+                    </p>
+                    <Link 
+                      to="/journals"
+                      className="group relative inline-block"
+                    >
+                      <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <button className="relative px-6 py-3 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
+                        <span className="text-sm text-white/90 tracking-widest">READ MY JOURNALS</span>
+                      </button>
+                    </Link>
+              </div>
+            </div>
+
+                {/* Music Section */}
+                <div className="space-y-6 pt-12 border-t border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                    <span className="text-xs text-white/50 tracking-widest">MY SONG</span>
+          </div>
+                  
+                  <div className="space-y-4">
+                    <p className="text-lg text-white/60">
+                      Thanks to Suno, I created a fun song that captures the essence of myself and this space. 
+                      It's a musical journey through my creative process and the emotions behind this digital sanctuary.
+                    </p>
+                    <AudioPlayer />
+                    <div className="mt-6">
+                      <p className="text-sm text-white/60 mb-4">Also available on:</p>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        <a 
+                          href="https://music.youtube.com" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
+                        >
+                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                          </svg>
+                          <span className="text-sm text-white/90">YouTube Music</span>
+                        </a>
+                        <a 
+                          href="https://open.spotify.com" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
+                        >
+                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
+                          </svg>
+                          <span className="text-sm text-white/90">Spotify</span>
+                        </a>
+                        <a 
+                          href="https://music.apple.com" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
+                        >
+                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
+                          </svg>
+                          <span className="text-sm text-white/90">Apple Music</span>
+                        </a>
+                        <a 
+                          href="https://www.pandora.com" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
+                        >
+                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
+                          </svg>
+                          <span className="text-sm text-white/90">Pandora</span>
+                        </a>
+                        <a 
+                          href="https://www.iheart.com" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
+                        >
+                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
+                          </svg>
+                          <span className="text-sm text-white/90">iHeartRadio</span>
+                        </a>
+                        <a 
+                          href="https://www.deezer.com" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
+                        >
+                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
+                          </svg>
+                          <span className="text-sm text-white/90">Deezer</span>
+                        </a>
+                        <a 
+                          href="https://www.tiktok.com" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
+                        >
+                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
+                          </svg>
+                          <span className="text-sm text-white/90">TikTok</span>
+                        </a>
+                        <a 
+                          href="https://music.amazon.com" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
+                        >
+                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
+                          </svg>
+                          <span className="text-sm text-white/90">Amazon Music</span>
+                        </a>
+              </div>
+            </div>
+          </div>
+                </div>
+
+                {/* Favorites Section */}
+                <div className="space-y-6 pt-12 border-t border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                    <span className="text-xs text-white/50 tracking-widest">MY FAVORITES</span>
+                </div>
+                
+                  <div className="space-y-4">
+                    <p className="text-lg text-white/60">
+                      One of the easiest ways to get to know someone is by finding their favorites. I also create a curated list of my favorite things - not just to keep track of what I love, but also to share with the world the incredible people, places, and things that inspire me.
+                    </p>
+                    <Link 
+                      to="/favorites"
+                      className="group relative inline-block"
+                    >
+                      <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <button className="relative px-6 py-3 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
+                        <span className="text-sm text-white/90 tracking-widest">EXPLORE MY FAVORITES</span>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Down Button */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-            <button 
-              onClick={() => {
-                const topicsSection = document.getElementById('topics');
-                topicsSection?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="flex flex-col items-center gap-1 group"
-            >
-              <span className="text-xs text-white/50 tracking-widest">EXPLORE MORE</span>
-              <div className="w-0.5 h-8 bg-gradient-to-b from-white/50 to-transparent group-hover:translate-y-1 transition-transform" />
-            </button>
-          </div>
         </section>
+
+        <div className="border-t border-white/10" />
 
         {/* Topics Section */}
         <section 
@@ -279,99 +641,152 @@ export default function Index() {
           className="min-h-screen flex items-center justify-center py-24"
         >
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
-              <div className="max-w-2xl">
-                <h2 className="text-2xl font-bold mb-4">Explore Topics</h2>
-                <p className="text-platinum-500/70">
-                  Discover our diverse collection of interests and expertise, from creative arts to technical innovations.
-                </p>
+            <div className="max-w-6xl mx-auto">
+              <div className="flex flex-col items-center mb-12">
+                <h2 className="text-2xl font-bold mb-12">What You Can Find in the Space</h2>
+                <div className="relative w-full max-w-6xl">
+                  {/* Main Content Section */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    {/* Left Column - Stats */}
+                    <div className="space-y-8">
+                      {/* Total Content */}
+                      <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 rounded-lg">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
+                          <p className="text-sm text-white/60 mb-4 tracking-widest">TOTAL CONTENT</p>
+                          <p className="text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-white/80 to-white/60">
+                            {recentCreations.length + recentJournals.length + featuredFavorites.length}
+                          </p>
+                          <p className="text-lg text-white/60 mt-4 tracking-widest">PIECES OF CONTENT TO EXPLORE</p>
+                        </div>
+                      </div>
+
+                      {/* Content Categories */}
+                      <div className="grid grid-cols-2 gap-4">
+                        {/* Creations */}
+                        <div className="group relative aspect-square overflow-hidden bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg">
+                          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+                            <div className="relative w-20 h-20 mb-4">
+                              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-xl opacity-50" />
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Palette className="w-10 h-10 text-white/90" />
+                              </div>
+                            </div>
+                            <p className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">{recentCreations.length}</p>
+                            <p className="text-sm text-white/60 tracking-widest">CREATIONS</p>
+                          </div>
+                          <Link 
+                            to="/creations"
+                            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-center justify-center"
+                          >
+                            <span className="text-sm text-white/90 tracking-widest">EXPLORE</span>
+                          </Link>
+                        </div>
+
+                        {/* Journals */}
+                        <div className="group relative aspect-square overflow-hidden bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg">
+                          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+                            <div className="relative w-20 h-20 mb-4">
+                              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-xl opacity-50" />
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <BookOpen className="w-10 h-10 text-white/90" />
+                              </div>
+                            </div>
+                            <p className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">{recentJournals.length}</p>
+                            <p className="text-sm text-white/60 tracking-widest">JOURNALS</p>
               </div>
               <Link 
-                to="/topics" 
-                className="group flex items-center gap-2 text-platinum-500/50 hover:text-platinum-500 transition-colors"
+                            to="/journals"
+                            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-center justify-center"
               >
-                View All Topics
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                            <span className="text-sm text-white/90 tracking-widest">EXPLORE</span>
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white/5 p-6 backdrop-blur-sm">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-white/10 flex items-center justify-center">
-                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 2v20M8 6h8M6 10h12M4 14h16M6 18h12"/>
-                      <circle cx="12" cy="12" r="2"/>
-                    </svg>
+                        {/* Favorites */}
+                        <div className="group relative aspect-square overflow-hidden bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg">
+                          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+                            <div className="relative w-20 h-20 mb-4">
+                              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-xl opacity-50" />
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Heart className="w-10 h-10 text-white/90" />
+                              </div>
                   </div>
-                  <h3 className="text-xl font-heading">Content Overview</h3>
+                            <p className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">{featuredFavorites.length}</p>
+                            <p className="text-sm text-white/60 tracking-widest">FAVORITES</p>
                 </div>
-                <div className="space-y-6">
-                  <div>
-                    <p className="text-4xl font-bold mb-2">{recentCreations.length}</p>
-                    <p className="text-platinum-500/70">Creations</p>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {recentCreations.slice(0, 3).map((creation) => (
-                        <span 
-                          key={creation.id}
-                          className="px-3 py-1 text-xs bg-white/10"
-                        >
-                          {creation.category}
-                        </span>
-                      ))}
+                          <Link 
+                            to="/favorites"
+                            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-center justify-center"
+                          >
+                            <span className="text-sm text-white/90 tracking-widest">EXPLORE</span>
+                          </Link>
+                        </div>
+
+                        {/* Topics Preview */}
+                        <div className="group relative aspect-square overflow-hidden bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg">
+                          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+                            <div className="relative w-20 h-20 mb-4">
+                              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-xl opacity-50" />
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Cpu className="w-10 h-10 text-white/90" />
                     </div>
                   </div>
-                  <div>
-                    <p className="text-4xl font-bold mb-2">{featuredFavorites.length}</p>
-                    <p className="text-platinum-500/70">Favorites</p>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {featuredFavorites.slice(0, 3).map((favorite) => (
-                        <span 
-                          key={favorite.id}
-                          className="px-3 py-1 text-xs bg-white/10"
-                        >
-                          {favorite.category}
-                        </span>
-                      ))}
+                            <p className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">{topics.length}</p>
+                            <p className="text-sm text-white/60 tracking-widest">TOPICS</p>
+                          </div>
+                          <Link 
+                            to="/topics"
+                            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-center justify-center"
+                          >
+                            <span className="text-sm text-white/90 tracking-widest">EXPLORE</span>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
+
+                    {/* Right Column - Topics Grid */}
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg blur-3xl opacity-20" />
+                      <div className="grid grid-cols-3 gap-2 relative">
+                        {isLoading.topics ? (
+                          [1, 2, 3, 4, 5, 6].map((item) => (
+                            <div key={item} className="animate-pulse">
+                              <div className="aspect-square bg-white/5 rounded-lg" />
                   </div>
-                  <div>
-                    <p className="text-4xl font-bold mb-2">{recentJournals.length}</p>
-                    <p className="text-platinum-500/70">Journals</p>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {recentJournals.slice(0, 3).map((journal) => (
-                        <span 
-                          key={journal.id}
-                          className="px-3 py-1 text-xs bg-white/10"
-                        >
-                          {journal.tags?.[0] || 'General'}
-                        </span>
-                      ))}
+                          ))
+                        ) : (
+                          topics.map((topic) => (
+                            <Link
+                              key={topic.id}
+                              to={topic.link}
+                              className="group relative aspect-square overflow-hidden bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg"
+                            >
+                              <div className="absolute inset-0 flex items-center justify-center p-2">
+                                <div className="relative w-12 h-12">
+                                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-xl opacity-50" />
+                                  <div className="absolute inset-0 flex items-center justify-center">
+                                    <img
+                                      src={topic.icon}
+                                      alt={topic.title}
+                                      className="w-6 h-6 text-platinum-500 transform group-hover:scale-110 transition-transform duration-300"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="absolute inset-0 flex flex-col items-center justify-center p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <h3 className="text-sm font-medium text-white/90 mb-1 text-center tracking-widest">{topic.title}</h3>
+                                <p className="text-xs text-white/70 text-center line-clamp-2">{topic.description}</p>
+                              </div>
+                            </Link>
+                          ))
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {isLoading.topics ? (
-                <div className="md:col-span-1 lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {[1, 2, 3, 4, 5].map((item) => (
-                    <div key={item} className="animate-pulse">
-                      <div className="h-32 bg-white/5" />
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="md:col-span-1 lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {topics.map((topic) => (
-                    <TopicCard
-                      key={topic.id}
-                      title={topic.title}
-                      icon={topic.icon}
-                      link={topic.link}
-                    />
-                  ))}
-                </div>
-              )}
+              <div className="border-t border-white/10 my-12" />
             </div>
           </div>
         </section>
@@ -606,4 +1021,5 @@ export default function Index() {
     </div>
   );
 }
+
 
