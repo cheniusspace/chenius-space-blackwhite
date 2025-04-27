@@ -10,6 +10,7 @@ import { fetchTopics, type Topic } from "@/services/topicsService";
 import { CreationCard } from "@/components/creations/CreationCard";
 import { TopicCard } from "@/components/topics/TopicCard";
 import { ArrowRight, ExternalLink, BookOpen, Palette, Cpu, Brush, Lightbulb, PenTool, Compass, Hammer, Sparkles, Heart } from "lucide-react";
+import UniverseOrbit from '../components/UniverseOrbit';
 
 function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -278,7 +279,7 @@ export default function Index() {
         {/* Hero Section */}
         <section className="min-h-[90vh] relative overflow-hidden">
           {/* Background Elements */}
-          <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 pointer-events-none z-0">
             {/* Main Circles */}
             <div className="absolute top-[20%] right-[10%] w-22 h-22 border border-[#333333]/80 rounded-full" />
             <div className="absolute bottom-[20%] left-[5%] w-18 h-18 border border-[#333333]/80 rounded-full" />
@@ -326,18 +327,18 @@ export default function Index() {
                   {/* Status Indicators */}
                   <div className="absolute top-4 right-4 flex items-center gap-3">
                     <div className="w-0.5 h-4 bg-white/10" />
-          </div>
-        </div>
+                  </div>
+                </div>
               </div>
 
               {/* Right Column - Text Content */}
               <div className="lg:col-span-6 relative z-10">
-                <div className="space-y-8 sm:space-y-12">
+                <div className="space-y-8 sm:space-y-12 text-center lg:text-left">
                   <div className="space-y-4 sm:space-y-6">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
                       <span className="text-xs text-white/50 tracking-widest">MY UNKNOWN JOURNEY</span>
-            </div>
+                    </div>
                     
                     <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight leading-none">
                       <span className="block text-white font-medium">Lost</span>
@@ -347,7 +348,7 @@ export default function Index() {
                     <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-lg leading-relaxed">
                       In the silence of my thoughts, I wander through shadows of uncertainty, seeking fragments of who I might become
                     </p>
-          </div>
+                  </div>
 
                   <div className="flex flex-wrap gap-6">
                     <button 
@@ -360,50 +361,55 @@ export default function Index() {
                       <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
                       <div className="relative px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
                         <span className="text-sm text-white/90 tracking-widest">TAKE A LOOK, WHO KNOWS WE'RE PART OF EACH OTHER'S JOURNEY</span>
-              </div>
+                      </div>
                     </button>
-            </div>
+                  </div>
 
                   {/* Progress Indicators */}
                   <div className="flex flex-wrap gap-4 sm:gap-8">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
                       <span className="text-xs text-white/40">WEB DESIGN</span>
-          </div>
+                    </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
                       <span className="text-xs text-white/40">ARCHITECTURE</span>
-              </div>
+                    </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
                       <span className="text-xs text-white/40">MUSIC</span>
-            </div>
+                    </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
                       <span className="text-xs text-white/40">DIGITAL ART</span>
-          </div>
+                    </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
                       <span className="text-xs text-white/40">SELF DEV</span>
-              </div>
-            </div>
-          </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Section Divider */}
+        <div className="relative py-12">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-white/10"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <span className="px-4 bg-[#11131F] text-white/50 text-sm tracking-widest">ABOUT THE SPACE</span>
+          </div>
+        </div>
+
         {/* CHENIUS Space Section */}
-        <section className="min-h-screen py-24 border-t border-white/10">
+        <section className="min-h-screen py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="space-y-12">
                 <div className="space-y-6">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                    <span className="text-xs text-white/50 tracking-widest">ABOUT THE SPACE</span>
-              </div>
-                  
                   <h2 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight leading-none">
                     <span className="block text-white font-medium">CHENIUS</span>
                     <span className="block text-white/80">Space</span>
@@ -412,7 +418,7 @@ export default function Index() {
                   <p className="text-lg sm:text-xl text-white/60 max-w-2xl leading-relaxed">
                     A space where I embrace my imperfections and turn them into creative expressions. Through design, development, and self-discovery, I'm learning to appreciate every piece of myself.
                   </p>
-            </div>
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-4">
@@ -429,7 +435,7 @@ export default function Index() {
                         <span className="text-sm text-white/90 tracking-widest">VIEW MY CREATIONS</span>
                       </button>
                     </Link>
-          </div>
+                  </div>
                   <div className="space-y-4">
                     <h3 className="text-xl font-medium text-white/90">Personal Growth</h3>
                     <p className="text-white/60">
@@ -444,30 +450,26 @@ export default function Index() {
                         <span className="text-sm text-white/90 tracking-widest">READ MY JOURNALS</span>
                       </button>
                     </Link>
-              </div>
-            </div>
+                  </div>
+                </div>
 
                 {/* Music Section */}
                 <div className="space-y-6 pt-12 border-t border-white/10">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                    <span className="text-xs text-white/50 tracking-widest">MY SONG</span>
-          </div>
+                    <span className="text-xs text-white/50 tracking-widest">SONG ABOUT CHENIUS</span>
+                  </div>
                   
                   <div className="space-y-4">
-                    <p className="text-lg text-white/60">
-                      Thanks to Suno, I created a fun song that captures the essence of myself and this space. 
-                      It's a musical journey through my creative process and the emotions behind this digital sanctuary.
-                    </p>
                     <AudioPlayer />
                     <div className="mt-6">
                       <p className="text-sm text-white/60 mb-4">Also available on:</p>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                      <div className="flex flex-nowrap overflow-x-auto gap-4 pb-4">
                         <a 
                           href="https://music.youtube.com" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
+                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300 whitespace-nowrap"
                         >
                           <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -551,9 +553,9 @@ export default function Index() {
                           </svg>
                           <span className="text-sm text-white/90">Amazon Music</span>
                         </a>
-              </div>
-            </div>
-          </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Favorites Section */}
@@ -561,8 +563,8 @@ export default function Index() {
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
                     <span className="text-xs text-white/50 tracking-widest">MY FAVORITES</span>
-                </div>
-                
+                  </div>
+
                   <div className="space-y-4">
                     <p className="text-lg text-white/60">
                       One of the easiest ways to get to know someone is by finding their favorites. I also create a curated list of my favorite things - not just to keep track of what I love, but also to share with the world the incredible people, places, and things that inspire me.
@@ -583,206 +585,40 @@ export default function Index() {
           </div>
         </section>
 
-        <div className="border-t border-white/10" />
+        {/* Section Divider */}
+        <div className="relative py-12">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-white/10"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <span className="px-4 bg-[#11131F] text-white/50 text-sm tracking-widest">EXPLORE THE SPACE</span>
+          </div>
+        </div>
 
-        {/* Topics Section */}
-        <section 
-          id="topics"
-          ref={(el) => (sectionsRef.current[1] = el)}
-          className="min-h-screen flex items-center justify-center py-24"
-        >
+        {/* Content Section */}
+        <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="flex flex-col items-center mb-12">
-                <h2 className="text-2xl font-bold mb-12">What You Can Find in the Space</h2>
-                <div className="relative w-full max-w-6xl">
-                  {/* Main Content Section */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    {/* Left Column - Stats */}
-                    <div className="space-y-8">
-                      {/* Total Content */}
-                      <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 rounded-lg">
-                        <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
-                          <p className="text-sm text-white/60 mb-4 tracking-widest">TOTAL CONTENT</p>
-                          <p className="text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-white/80 to-white/60">
-                            {recentCreations.length + recentJournals.length + featuredFavorites.length}
-                          </p>
-                          <p className="text-lg text-white/60 mt-4 tracking-widest">PIECES OF CONTENT TO EXPLORE</p>
-                        </div>
-                      </div>
-
-                      {/* Content Categories */}
-                      <div className="grid grid-cols-2 gap-4">
-                        {/* Creations */}
-                        <div className="group relative aspect-square overflow-hidden bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg">
-                          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-                            <div className="relative w-20 h-20 mb-4">
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-xl opacity-50" />
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <Palette className="w-10 h-10 text-white/90" />
-                              </div>
-                            </div>
-                            <p className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">{recentCreations.length}</p>
-                            <p className="text-sm text-white/60 tracking-widest">CREATIONS</p>
-                          </div>
-                          <Link 
-                            to="/creations"
-                            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-center justify-center"
-                          >
-                            <span className="text-sm text-white/90 tracking-widest">EXPLORE</span>
-                          </Link>
-                        </div>
-
-                        {/* Journals */}
-                        <div className="group relative aspect-square overflow-hidden bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg">
-                          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-                            <div className="relative w-20 h-20 mb-4">
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-xl opacity-50" />
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <BookOpen className="w-10 h-10 text-white/90" />
-                              </div>
-                            </div>
-                            <p className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">{recentJournals.length}</p>
-                            <p className="text-sm text-white/60 tracking-widest">JOURNALS</p>
-              </div>
-              <Link 
-                            to="/journals"
-                            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-center justify-center"
-              >
-                            <span className="text-sm text-white/90 tracking-widest">EXPLORE</span>
-              </Link>
-            </div>
-
-                        {/* Favorites */}
-                        <div className="group relative aspect-square overflow-hidden bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg">
-                          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-                            <div className="relative w-20 h-20 mb-4">
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-xl opacity-50" />
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <Heart className="w-10 h-10 text-white/90" />
-                              </div>
-                  </div>
-                            <p className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">{featuredFavorites.length}</p>
-                            <p className="text-sm text-white/60 tracking-widest">FAVORITES</p>
-                </div>
-                          <Link 
-                            to="/favorites"
-                            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-center justify-center"
-                          >
-                            <span className="text-sm text-white/90 tracking-widest">EXPLORE</span>
-                          </Link>
-                        </div>
-
-                        {/* Topics Preview */}
-                        <div className="group relative aspect-square overflow-hidden bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg">
-                          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-                            <div className="relative w-20 h-20 mb-4">
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-xl opacity-50" />
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <Cpu className="w-10 h-10 text-white/90" />
-                    </div>
-                  </div>
-                            <p className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">{topics.length}</p>
-                            <p className="text-sm text-white/60 tracking-widest">TOPICS</p>
-                          </div>
-                          <Link 
-                            to="/topics"
-                            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-center justify-center"
-                          >
-                            <span className="text-sm text-white/90 tracking-widest">EXPLORE</span>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Right Column - Topics Grid */}
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg blur-3xl opacity-20" />
-                      <div className="grid grid-cols-3 gap-2 relative">
-                        {isLoading.topics ? (
-                          [1, 2, 3, 4, 5, 6].map((item) => (
-                            <div key={item} className="animate-pulse">
-                              <div className="aspect-square bg-white/5 rounded-lg" />
-                  </div>
-                          ))
-                        ) : (
-                          topics.map((topic) => (
-                            <Link
-                              key={topic.id}
-                              to={topic.link}
-                              className="group relative aspect-square overflow-hidden bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg"
-                            >
-                              <div className="absolute inset-0 flex items-center justify-center p-2">
-                                <div className="relative w-12 h-12">
-                                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-xl opacity-50" />
-                                  <div className="absolute inset-0 flex items-center justify-center">
-                                    <img
-                                      src={topic.icon}
-                                      alt={topic.title}
-                                      className="w-6 h-6 text-platinum-500 transform group-hover:scale-110 transition-transform duration-300"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="absolute inset-0 flex flex-col items-center justify-center p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <h3 className="text-sm font-medium text-white/90 mb-1 text-center tracking-widest">{topic.title}</h3>
-                                <p className="text-xs text-white/70 text-center line-clamp-2">{topic.description}</p>
-                              </div>
-                            </Link>
-                          ))
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border-t border-white/10 my-12" />
-            </div>
+            <h2 className="text-4xl font-light text-center mb-16 text-Pink-300">
+              What You Can Find in the Space
+            </h2>
+            <UniverseOrbit />
           </div>
         </section>
 
-        {/* Term of the Day */}
-        <section 
-          ref={(el) => (sectionsRef.current[2] = el)}
-          className="min-h-screen flex items-center justify-center py-24 border-t border-white/10"
-        >
-          <div className="container mx-auto px-4">
-            {isLoading.term ? (
-              <div className="max-w-3xl mx-auto animate-pulse">
-                <div className="h-6 bg-white/5 w-3/4 mx-auto mb-4" />
-                <div className="h-4 bg-white/5 w-1/4 mx-auto" />
-              </div>
-            ) : termOfTheDay ? (
-              <div className="max-w-3xl mx-auto text-center">
-                <BookOpen className="h-10 w-10 mx-auto mb-6 text-platinum-500/50" />
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-heading font-light">
-                    {termOfTheDay.term}
-                  </h3>
-                  <p className="text-platinum-500/50 text-lg">
-                    {termOfTheDay.definition}
-                  </p>
-                  <div className="text-platinum-500/50">
-                    <p className="font-medium">{termOfTheDay.category}</p>
-                    {termOfTheDay.example && (
-                      <p className="text-base mt-2 italic">"{termOfTheDay.example}"</p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="text-center text-platinum-500/50">
-                No term available
-              </div>
-            )}
+        {/* Section Divider */}
+        <div className="relative py-12">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-white/10"></div>
           </div>
-        </section>
+          <div className="relative flex justify-center">
+            <span className="px-4 bg-[#11131F] text-white/50 text-sm tracking-widest">RECENT CREATIONS</span>
+          </div>
+        </div>
 
         {/* Creations Preview */}
         <section 
-          ref={(el) => (sectionsRef.current[3] = el)}
-          className="min-h-screen flex items-center justify-center py-24 border-t border-white/10"
+          ref={(el) => (sectionsRef.current[1] = el)}
+          className="min-h-screen flex items-center justify-center py-24"
         >
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center mb-12">
@@ -840,10 +676,20 @@ export default function Index() {
           </div>
         </section>
 
+        {/* Section Divider */}
+        <div className="relative py-12">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-white/10"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <span className="px-4 bg-[#11131F] text-white/50 text-sm tracking-widest">LATEST JOURNALS</span>
+          </div>
+        </div>
+
         {/* Journals Preview */}
         <section 
-          ref={(el) => (sectionsRef.current[4] = el)}
-          className="min-h-screen flex items-center justify-center py-24 border-t border-white/10"
+          ref={(el) => (sectionsRef.current[2] = el)}
+          className="min-h-screen flex items-center justify-center py-24"
         >
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center mb-12">
@@ -906,10 +752,20 @@ export default function Index() {
           </div>
         </section>
 
+        {/* Section Divider */}
+        <div className="relative py-12">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-white/10"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <span className="px-4 bg-[#11131F] text-white/50 text-sm tracking-widest">FEATURED FAVORITES</span>
+          </div>
+        </div>
+
         {/* Favorites Preview */}
         <section 
-          ref={(el) => (sectionsRef.current[5] = el)}
-          className="min-h-screen flex items-center justify-center py-24 border-t border-white/10"
+          ref={(el) => (sectionsRef.current[3] = el)}
+          className="min-h-screen flex items-center justify-center py-24"
         >
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center mb-12">

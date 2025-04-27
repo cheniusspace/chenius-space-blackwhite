@@ -7,34 +7,34 @@
 
 @layer base {
   :root {
-    --background: #11131F;
-    --foreground: #EBEBED;
-    --card: #11131F;
-    --card-foreground: #EBEBED;
-    --popover: #11131F;
-    --popover-foreground: #EBEBED;
-    --primary: #EBEBED;
-    --primary-foreground: #11131F;
-    --secondary: #343B4D;
-    --secondary-foreground: #EBEBED;
-    --muted: #343B4D;
-    --muted-foreground: #D5D9E1;
-    --accent: #4E596A;
-    --accent-foreground: #EBEBED;
-    --destructive: #343B4D;
-    --destructive-foreground: #EBEBED;
-    --border: #343B4D;
-    --input: #343B4D;
-    --ring: #D5D9E1;
+    --background: #171921;
+    --foreground: #F3F4F7;
+    --card: #171921;
+    --card-foreground: #F3F4F7;
+    --popover: #171921;
+    --popover-foreground: #F3F4F7;
+    --primary: #F3F4F7;
+    --primary-foreground: #171921;
+    --secondary: #20222E;
+    --secondary-foreground: #F3F4F7;
+    --muted: #20222E;
+    --muted-foreground: #E7E8EE;
+    --accent: #787EA1;
+    --accent-foreground: #F3F4F7;
+    --destructive: #20222E;
+    --destructive-foreground: #F3F4F7;
+    --border: #20222E;
+    --input: #20222E;
+    --ring: #E7E8EE;
     --radius: 0;
   }
 
   .dark {
-    --background: #11131F;
+    --background: #000000;
     --foreground: #EBEBED;
-    --card: #11131F;
+    --card: #000000;
     --card-foreground: #EBEBED;
-    --popover: #11131F;
+    --popover: #000000;
     --popover-foreground: #EBEBED;
     --primary: #EBEBED;
     --primary-foreground: #11131F;
@@ -67,15 +67,15 @@
 
 @layer components {
   .bg-dark {
-    @apply bg-[#11131F];
+    @apply bg-[#000000];
   }
   
   .bg-medium {
-    @apply bg-[#343B4D];
+    @apply bg-[#171921];
   }
   
   .bg-light {
-    @apply bg-[#4E596A];
+    @apply bg-[#20222E];
   }
   
   .text-light {
@@ -97,9 +97,11 @@
 
 @layer base {
   body {
-    @apply bg-[#11131F] text-[#EBEBED];
+    @apply bg-[var(--color-Dark-600)] text-[var(--color-Dark-50)];
     font-family: 'Jost', sans-serif;
     font-weight: 300;
+    background-color: #000000;
+    color: #F3F4F7;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Jost', sans-serif;
@@ -108,7 +110,7 @@
     text-transform: uppercase;
     position: relative;
     display: inline-block;
-    @apply text-[#EBEBED];
+    @apply text-[var(--color-Dark-50)];
   }
 
   h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
@@ -121,12 +123,12 @@
     z-index: -1;
     opacity: 0.3;
     transform: translate(2px, 2px);
-    @apply text-[#D5D9E1];
+    @apply text-[var(--color-Dark-100)];
   }
 
   p, span, a, li, button, input, textarea, select {
     font-family: 'Jost', sans-serif;
-    @apply text-[#EBEBED];
+    @apply text-[var(--color-Dark-50)];
   }
 }
 
@@ -138,7 +140,7 @@
   text-transform: uppercase;
   position: relative;
   display: inline-block;
-  @apply text-[#EBEBED];
+  @apply text-[var(--color-Dark-50)];
 }
 
 .brand-text-bold::before {
@@ -151,7 +153,7 @@
   z-index: -1;
   opacity: 0.3;
   transform: translate(2px, 2px);
-  @apply text-[#D5D9E1];
+  @apply text-[var(--color-Dark-100)];
 }
 
 .brand-text-thin {
@@ -161,7 +163,7 @@
   text-transform: uppercase;
   position: relative;
   display: inline-block;
-  @apply text-[#EBEBED];
+  @apply text-[var(--color-Dark-50)];
 }
 
 .brand-text-thin::after {
@@ -171,7 +173,7 @@
   bottom: -2px;
   width: 100%;
   height: 1px;
-  @apply bg-[#D5D9E1];
+  @apply bg-[var(--color-Dark-100)];
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -184,38 +186,40 @@
 
 /* Subtle Grid Background */
 .subtle-grid {
-  background-image: 
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-color: #000000;
+  background-image: radial-gradient(circle at center, rgba(246, 192, 198, 0.15) 1px, transparent 1px);
   background-size: 30px 30px;
   background-position: center;
   position: relative;
   z-index: 0;
-  @apply bg-[#11131F];
+  @apply bg-[var(--color-Dark-600)];
 }
 
 /* Refined Navigation */
 .refined-nav {
-  @apply fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-[#11131F]/80;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  @apply fixed top-0 left-0 right-0 z-50 backdrop-blur-sm;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(32, 34, 46, 0.1);
 }
 
 .refined-nav-link {
-  @apply relative text-sm text-[#D5D9E1]/50 hover:text-[#EBEBED] transition-colors duration-300;
+  @apply relative text-sm transition-colors duration-300;
+  color: #E7E8EE;
   font-family: 'Jost', sans-serif;
   font-weight: 300;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   position: relative;
   display: inline-block;
-  padding: 0.5rem 0.75rem;
-  margin: 0 0.0625rem;
-  @apply border border-[#343B4D]/10;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(32, 34, 46, 0.1);
+  transition: all 0.3s ease;
 }
 
 .refined-nav-link::before {
   content: '';
   @apply absolute inset-0;
-  @apply bg-[#343B4D]/10;
+  background-color: rgba(32, 34, 46, 0.1);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -228,7 +232,7 @@
 .refined-nav-link::after {
   content: '';
   @apply absolute bottom-0 left-0 w-full h-0.5;
-  @apply bg-[#343B4D]/30;
+  background-color: rgba(32, 34, 46, 0.3);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -240,7 +244,8 @@
 }
 
 .refined-nav-link:hover {
-  @apply border-[#343B4D]/30;
+  color: #F3F4F7;
+  border-color: rgba(32, 34, 46, 0.3);
 }
 
 /* Brand Logo in Navigation */
@@ -252,13 +257,15 @@
   position: relative;
   display: inline-block;
   padding: 0.5rem 1rem;
-  @apply border border-[#343B4D]/10;
+  border: 1px solid rgba(32, 34, 46, 0.1);
+  transition: all 0.3s ease;
 }
 
 .nav-brand::before {
   content: '';
-  @apply absolute inset-0;
-  @apply bg-[#343B4D]/10;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(32, 34, 46, 0.1);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -270,8 +277,12 @@
 
 .nav-brand::after {
   content: '';
-  @apply absolute bottom-0 left-0 w-full h-0.5;
-  @apply bg-[#343B4D]/30;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(32, 34, 46, 0.3);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -283,7 +294,7 @@
 }
 
 .nav-brand:hover {
-  @apply border-[#343B4D]/30;
+  border-color: rgba(32, 34, 46, 0.3);
 }
 
 .nav-brand span:last-child {
@@ -401,12 +412,12 @@
 
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1),
-                0 0 10px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 5px rgba(246, 192, 198, 0.1),
+                0 0 10px rgba(246, 192, 198, 0.05);
   }
   50% {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2),
-                0 0 20px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(246, 192, 198, 0.2),
+                0 0 20px rgba(246, 192, 198, 0.1);
   }
 }
 
@@ -526,10 +537,10 @@
 .drawing-button {
   position: relative;
   padding: 0.75rem 1.5rem;
-  @apply text-[#D5D9E1]/70;
+  @apply text-[var(--color-Purple-400)];
   transition: color 0.25s;
   background: transparent;
-  @apply border border-[#343B4D]/10;
+  @apply border border-[var(--color-Purple-300)];
   cursor: pointer;
   font-family: 'Jost', sans-serif;
   font-weight: 300;
@@ -558,7 +569,7 @@
 }
 
 .drawing-button:hover {
-  @apply text-[#EBEBED];
+  @apply text-[var(--color-Purple-500)];
   border-color: transparent;
 }
 
@@ -576,16 +587,18 @@
 
 /* Button Highlight Effect */
 .button-highlight {
-  @apply relative overflow-hidden;
+  position: relative;
+  overflow: hidden;
   background: transparent;
-  @apply border border-[#343B4D]/10;
+  border: 1px solid #AEB9E5;
   transition: all 0.3s ease;
 }
 
 .button-highlight::before {
   content: '';
-  @apply absolute inset-0;
-  @apply bg-[#343B4D]/10;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(205, 212, 239, 0.1);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -597,8 +610,12 @@
 
 .button-highlight::after {
   content: '';
-  @apply absolute bottom-0 left-0 w-full h-0.5;
-  @apply bg-[#343B4D]/30;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #8798D9;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -610,7 +627,7 @@
 }
 
 .button-highlight:hover {
-  @apply border-[#343B4D]/30;
+  border-color: #8798D9;
 }
 
 /* Cursor Styles */
@@ -831,4 +848,51 @@
 
 .square-glow {
   animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Button Styles */
+.button-pink {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  border: 1px solid #F6C0C6;
+  transition: all 0.3s ease;
+  color: #F6C0C6;
+}
+
+.button-pink::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(246, 192, 198, 0.1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.button-pink:hover::before {
+  transform: scaleX(1);
+}
+
+.button-pink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #F2A6AD;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.button-pink:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.button-pink:hover {
+  border-color: #F2A6AD;
+  color: #F2A6AD;
 }
