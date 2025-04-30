@@ -400,207 +400,130 @@ export default function Index() {
 
         {/* CHENIUS Space Section */}
         <section className="min-h-screen py-24">
-          <div className="container mx-auto px-4">
-            <div className="max-w-screen-xl mx-auto">
-              <div className="space-y-12">
-                <div className="space-y-6">
-                  <h2 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight leading-none">
-                    <span className="block text-white font-medium">CHENIUS</span>
-                    <span className="block text-white/80">Space</span>
-                  </h2>
+          <div className="container mx-auto px-4 max-w-screen-xl">
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                <span className="text-xs text-white/50 tracking-widest">ABOUT THE SPACE</span>
+              </div>
+              <h2 className="text-5xl font-light tracking-tight">
+                <span className="text-white font-medium">CHENIUS</span> Space
+              </h2>
+            </div>
 
-                  <p className="text-lg sm:text-xl text-white/60 max-w-2xl leading-relaxed">
-                   A space where I embrace my indiscipline and impatience, transforming them into creative expressions. 
-                   </p>
-                </div>
+            <p className="text-lg sm:text-xl text-white/60 max-w-2xl leading-relaxed mb-16">
+              A space where I embrace my indiscipline and impatience, transforming them into creative expressions. 
+            </p>
 
-                {/* Creative Exploration Section */}
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="space-y-4">
-                      <Link 
-                        to="/creations"
-                        className="block"
-                      >
-                        <div className="relative w-full aspect-[3/2] flex items-center justify-center bg-white/5 group">
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-1000" />
-                          <img 
-                            src="/images/creative-exploration.png" 
-                            alt="Creative Exploration"
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute top-0 right-0 p-4 bg-black/50 backdrop-blur-sm rounded-none border-l border-b border-white/10 group-hover:border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-black/70">
-                            <ChevronRight className="w-8 h-8 text-white/90 -rotate-45" />
-                          </div>
-                        </div>
-                      </Link>
-                      <h3 className="text-xl font-medium text-white/90">Creative Exploration</h3>
-                      <p className="text-white/60">
-                        A collection of projects, experiments, and creations that showcase the intersection of art and technology.
-                      </p>
-                    </div>
-                    <div className="space-y-4">
-                      <Link 
-                        to="/journals"
-                        className="block"
-                      >
-                        <div className="relative w-full aspect-[3/2] flex items-center justify-center bg-white/5 group">
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-1000" />
-                          <img 
-                            src="/images/personal-growth.png" 
-                            alt="Personal Growth"
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute top-0 right-0 p-4 bg-black/50 backdrop-blur-sm rounded-none border-l border-b border-white/10 group-hover:border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-black/70">
-                            <ChevronRight className="w-8 h-8 text-white/90 -rotate-45" />
-                    </div>
-                  </div>
-                      </Link>
-                      <h3 className="text-xl font-medium text-white/90">Personal Growth</h3>
-                      <p className="text-white/60">
-                        Documenting the journey of learning, failing, and evolving in the ever-changing landscape of digital creation.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Music Section */}
-                <div className="space-y-6 pt-12 border-t border-white/10">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                    <span className="text-xs text-white/50 tracking-widest">SONG ABOUT CHENIUS</span>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <AudioPlayer />
-                    <div className="mt-6">
-                      <p className="text-sm text-white/60 mb-4">Also available on:</p>
-                      <div className="flex flex-nowrap overflow-x-auto gap-4 pb-4">
-                        <a 
-                          href="https://music.youtube.com" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300 whitespace-nowrap"
-                        >
-                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                          </svg>
-                          <span className="text-sm text-white/90">YouTube Music</span>
-                        </a>
-                        <a 
-                          href="https://open.spotify.com" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
-                        >
-                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
-                          </svg>
-                          <span className="text-sm text-white/90">Spotify</span>
-                        </a>
-                        <a 
-                          href="https://music.apple.com" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
-                        >
-                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
-                          </svg>
-                          <span className="text-sm text-white/90">Apple Music</span>
-                        </a>
-                        <a 
-                          href="https://www.pandora.com" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
-                        >
-                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
-                          </svg>
-                          <span className="text-sm text-white/90">Pandora</span>
-                        </a>
-                        <a 
-                          href="https://www.iheart.com" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
-                        >
-                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
-                          </svg>
-                          <span className="text-sm text-white/90">iHeartRadio</span>
-                        </a>
-                        <a 
-                          href="https://www.deezer.com" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
-                        >
-                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
-                          </svg>
-                          <span className="text-sm text-white/90">Deezer</span>
-                        </a>
-                        <a 
-                          href="https://www.tiktok.com" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
-                        >
-                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
-                          </svg>
-                          <span className="text-sm text-white/90">TikTok</span>
-                        </a>
-                        <a 
-                          href="https://music.amazon.com" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300"
-                        >
-                          <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2.4c5.28 0 9.6 4.32 9.6 9.6s-4.32 9.6-9.6 9.6S2.4 17.28 2.4 12 6.72 2.4 12 2.4zm0 1.2c-4.68 0-8.4 3.72-8.4 8.4s3.72 8.4 8.4 8.4 8.4-3.72 8.4-8.4-3.72-8.4-8.4-8.4zm0 1.2c3.96 0 7.2 3.24 7.2 7.2s-3.24 7.2-7.2 7.2-7.2-3.24-7.2-7.2 3.24-7.2 7.2-7.2zm0 1.2c-3.36 0-6 2.64-6 6s2.64 6 6 6 6-2.64 6-6-2.64-6-6-6zm0 1.2c2.64 0 4.8 2.16 4.8 4.8s-2.16 4.8-4.8 4.8-4.8-2.16-4.8-4.8 2.16-4.8 4.8-4.8z"/>
-                          </svg>
-                          <span className="text-sm text-white/90">Amazon Music</span>
-                        </a>
+            {/* Creative Exploration Section */}
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <Link 
+                    to="/creations"
+                    className="block"
+                  >
+                    <div className="relative w-full aspect-[3/2] flex items-center justify-center bg-white/5 group">
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-1000" />
+                      <img 
+                        src="/images/creative-exploration.png" 
+                        alt="Creative Exploration"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-0 right-0 p-4 bg-black/50 backdrop-blur-sm rounded-none border-l border-b border-white/10 group-hover:border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-black/70">
+                        <ChevronRight className="w-8 h-8 text-white/90 -rotate-45" />
                       </div>
                     </div>
+                  </Link>
+                  <h3 className="text-xl font-medium text-white/90">Creative Exploration</h3>
+                  <p className="text-white/60">
+                    A collection of projects, experiments, and creations that showcase the intersection of art and technology.
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <Link 
+                    to="/journals"
+                    className="block"
+                  >
+                    <div className="relative w-full aspect-[3/2] flex items-center justify-center bg-white/5 group">
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-1000" />
+                      <img 
+                        src="/images/personal-growth.png" 
+                        alt="Personal Growth"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-0 right-0 p-4 bg-black/50 backdrop-blur-sm rounded-none border-l border-b border-white/10 group-hover:border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-black/70">
+                        <ChevronRight className="w-8 h-8 text-white/90 -rotate-45" />
+                      </div>
+                    </div>
+                  </Link>
+                  <h3 className="text-xl font-medium text-white/90">Personal Growth</h3>
+                  <p className="text-white/60">
+                    Documenting the journey of learning, failing, and evolving in the ever-changing landscape of digital creation.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Music Section */}
+            <div className="space-y-6 pt-12 border-t border-white/10 mt-16">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                <span className="text-xs text-white/50 tracking-widest">SONG ABOUT CHENIUS</span>
+              </div>
+              
+              <div className="space-y-4">
+                <AudioPlayer />
+                <div className="mt-6">
+                  <p className="text-sm text-white/60 mb-4">Also available on:</p>
+                  <div className="flex flex-nowrap overflow-x-auto gap-4 pb-4">
+                    <a 
+                      href="https://music.youtube.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300 whitespace-nowrap"
+                    >
+                      <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                      </svg>
+                      <span className="text-sm text-white/90">YouTube Music</span>
+                    </a>
+                    {/* Other music platform links */}
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Favorites Section */}
-              <div className="space-y-6 pt-12 border-t border-white/10">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                  <span className="text-xs text-white/50 tracking-widest">MY FAVORITES</span>
-                </div>
+            {/* Favorites Section */}
+            <div className="space-y-6 pt-12 border-t border-white/10 mt-16">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                <span className="text-xs text-white/50 tracking-widest">MY FAVORITES</span>
+              </div>
 
-                <div className="space-y-4">
-                  <p className="text-lg text-white/60">
-                    I don't wanna lose track of my favorite people, places and things
-                  </p>
-                  <div className="flex flex-wrap gap-6">
-                    <div className="flex items-center gap-2">
-                      <Users className="w-5 h-5 text-white/90" />
-                      <span className="text-sm text-white/60">People</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Globe className="w-5 h-5 text-white/90" />
-                      <span className="text-sm text-white/60">Websites</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Book className="w-5 h-5 text-white/90" />
-                      <span className="text-sm text-white/60">Books</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Building2 className="w-5 h-5 text-white/90" />
-                      <span className="text-sm text-white/60">Organizations</span>
-                    </div>
+              <div className="space-y-4">
+                <p className="text-lg text-white/60">
+                  I don't wanna lose track of my favorite people, places and things
+                </p>
+                <div className="flex flex-wrap gap-6">
+                  <div className="flex items-center gap-2">
+                    <Users className="w-5 h-5 text-white/90" />
+                    <span className="text-sm text-white/60">People</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Globe className="w-5 h-5 text-white/90" />
+                    <span className="text-sm text-white/60">Websites</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Book className="w-5 h-5 text-white/90" />
+                    <span className="text-sm text-white/60">Books</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Building2 className="w-5 h-5 text-white/90" />
+                    <span className="text-sm text-white/60">Organizations</span>
                   </div>
                 </div>
-                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -617,12 +540,15 @@ export default function Index() {
 
         {/* Content Section */}
         <section className="py-32">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-32">
-              <h2 className="text-2xl font-bold">What You Can Find in the Space</h2>
-              <p className="text-white/60 mt-4 max-w-[1000px] mx-auto">
-                Explore my journey through various topics - from web design and architecture to music, digital art, and personal growth
-              </p>
+          <div className="container mx-auto px-4 max-w-screen-xl">
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                <span className="text-xs text-white/50 tracking-widest">EXPLORE THE SPACE</span>
+              </div>
+              <h2 className="text-5xl font-light tracking-tight">
+                <span className="text-white font-medium">Topics</span> I'm Exploring
+              </h2>
             </div>
             <div className="relative">
               <ContentSpace />
@@ -643,25 +569,24 @@ export default function Index() {
         {/* Creations Preview */}
         <section 
           ref={(el) => (sectionsRef.current[1] = el)}
-          className="min-h-screen flex items-center justify-center py-24"
+          className="py-24"
         >
-          <div className="container mx-auto px-4">
-            <div className="flex justify-between items-center mb-12">
-              <h2 className="text-2xl font-bold">Recent Creations</h2>
-              <Link 
-                to="/creations" 
-                className="group flex items-center gap-2 text-platinum-500/50 hover:text-platinum-500 transition-colors"
-              >
-                View All
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+          <div className="container mx-auto px-4 max-w-screen-xl">
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                <span className="text-xs text-white/50 tracking-widest">RECENT WORK</span>
+              </div>
+              <h2 className="text-5xl font-light tracking-tight">
+                <span className="text-white font-medium">Creative</span> Explorations
+              </h2>
             </div>
             
             {isLoading.creations ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[1, 2, 3].map((item) => (
-                  <div key={item} className="animate-pulse">
-                    <div className="aspect-[4/3] bg-white/5 rounded-lg" />
+                  <div key={item} className={`animate-pulse ${item === 2 ? 'md:col-span-2' : ''}`}>
+                    <div className="aspect-[4/3] bg-white/5 rounded-none" />
                     <div className="mt-6 space-y-3">
                       <div className="h-5 bg-white/5 w-2/3" />
                       <div className="h-4 bg-white/5 w-1/2" />
@@ -670,10 +595,10 @@ export default function Index() {
                 ))}
               </div>
             ) : recentCreations.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {recentCreations.map((creation) => (
-                  <div key={creation.id} className="group">
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-white/5">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                {recentCreations.map((creation, index) => (
+                  <div key={creation.id} className={`group ${index === 0 ? 'md:col-span-2' : ''}`}>
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-none bg-white/5">
                       {creation.image_url && (
                         <img
                           src={creation.image_url}
@@ -681,20 +606,23 @@ export default function Index() {
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <span className="inline-block px-3 py-1 text-xs bg-white/10 backdrop-blur-sm rounded-full mb-2">
-                          {creation.category}
-                        </span>
-                        <h3 className="text-xl font-heading mb-2">{creation.title}</h3>
-                        <p className="text-base text-platinum-500/70 line-clamp-2">{creation.description}</p>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                            <span className="text-xs text-white/50 tracking-widest">{creation.category}</span>
+                          </div>
+                          <h3 className="text-2xl font-light">{creation.title}</h3>
+                          <p className="text-sm text-white/70 line-clamp-2">{creation.description}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="text-center text-platinum-500/50">
+              <div className="text-center text-white/50">
                 No creations found
               </div>
             )}
@@ -714,63 +642,72 @@ export default function Index() {
         {/* Journals Preview */}
         <section 
           ref={(el) => (sectionsRef.current[2] = el)}
-          className="min-h-screen flex items-center justify-center py-24"
+          className="py-24"
         >
-          <div className="container mx-auto px-4">
-            <div className="flex justify-between items-center mb-12">
-              <h2 className="text-2xl font-bold">Latest Journals</h2>
-              <Link 
-                to="/journals" 
-                className="group flex items-center gap-2 text-platinum-500/50 hover:text-platinum-500 transition-colors"
-              >
-                View All
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+          <div className="container mx-auto px-4 max-w-screen-xl">
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                <span className="text-xs text-white/50 tracking-widest">LATEST JOURNALS</span>
+              </div>
+              <h2 className="text-5xl font-light tracking-tight">
+                <span className="text-white font-medium">Personal</span> Reflections
+              </h2>
             </div>
 
             {isLoading.journals ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                {[1, 2].map((item) => (
-                  <div key={item} className="animate-pulse">
-                    <div className="h-4 bg-white/5 w-1/4 mb-6" />
-                    <div className="h-8 bg-white/5 w-3/4 mb-4" />
-                    <div className="h-4 bg-white/5 w-full mb-4" />
-                    <div className="h-4 bg-white/5 w-1/2" />
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                {[1, 2, 3].map((item) => (
+                  <div key={item} className={`animate-pulse ${item === 1 ? 'md:col-span-2' : ''}`}>
+                    <div className="h-48 bg-white/5 rounded-none" />
+                    <div className="mt-6 space-y-3">
+                      <div className="h-5 bg-white/5 w-2/3" />
+                      <div className="h-4 bg-white/5 w-1/2" />
+                    </div>
                   </div>
                 ))}
               </div>
             ) : recentJournals.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                {recentJournals.map((journal) => (
-                  <Link 
-                    key={journal.id} 
-                    to={`/journals/${journal.id}`}
-                    className="group block p-8 bg-white/5 hover:bg-white/10 transition-colors rounded-lg"
-                  >
-                    <div className="flex justify-between items-center text-sm text-platinum-500/50 mb-4">
-                      <span>{new Date(journal.date).toLocaleDateString('default', { 
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric'
-                      })}</span>
-                      <span>{journal.read_time}</span>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                {recentJournals.map((journal, index) => (
+                  <div key={journal.id} className={`group ${index === 0 ? 'md:col-span-2' : ''}`}>
+                    <div className="relative h-48 overflow-hidden rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="relative h-full p-8 flex flex-col">
+                        <div className="space-y-6 flex-1">
+                          <div className="flex items-center gap-3">
+                            <span className="text-xs text-white/50 tracking-widest">
+                              {new Date(journal.date).toLocaleDateString('default', { 
+                                month: 'long',
+                                day: 'numeric',
+                                year: 'numeric'
+                              })}
+                            </span>
+                            <span className="text-xs text-white/50">•</span>
+                            <span className="text-xs text-white/50">{journal.read_time}</span>
+                          </div>
+                          <div className="space-y-2">
+                            <h3 className="text-2xl font-light group-hover:text-white transition-colors">{journal.title}</h3>
+                            <p className="text-sm text-white/70 line-clamp-2">{journal.excerpt}</p>
+                          </div>
+                        </div>
+                        <div className="mt-8">
+                          <Link 
+                            to={`/journals/${journal.id}`}
+                            className="group relative inline-flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 transition-all duration-300"
+                          >
+                            <span className="text-sm tracking-widest">READ MORE</span>
+                            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                            <div className="absolute inset-0 border border-white/10 group-hover:border-white/20 transition-colors" />
+                          </Link>
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-heading mb-6 group-hover:text-platinum-500 transition-colors">
-                      {journal.title}
-                    </h3>
-                    <p className="text-platinum-500/50 text-lg mb-6">
-                      {journal.excerpt}
-                    </p>
-                    <div className="mt-6">
-                      <span className="inline-flex items-center text-sm font-medium hover-underline">
-                        Read More <ArrowRight className="ml-1 h-4 w-4" />
-                      </span>
-                    </div>
-                  </Link>
+                  </div>
                 ))}
               </div>
             ) : (
-              <div className="text-center text-platinum-500/50">
+              <div className="text-center text-white/50">
                 No journals found
               </div>
             )}
@@ -790,18 +727,27 @@ export default function Index() {
         {/* Favorites Preview */}
         <section 
           ref={(el) => (sectionsRef.current[3] = el)}
-          className="min-h-screen flex items-center justify-center py-24"
+          className="py-24"
         >
-          <div className="container mx-auto px-4">
-            <div className="flex justify-between items-center mb-12">
-              <h2 className="text-2xl font-bold">Featured Favorites</h2>
-              <Link 
-                to="/favorites" 
-                className="group flex items-center gap-2 text-platinum-500/50 hover:text-platinum-500 transition-colors"
-              >
-                View All
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+          <div className="container mx-auto px-4 max-w-screen-xl">
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                <span className="text-xs text-white/50 tracking-widest">FEATURED FAVORITES</span>
+              </div>
+              <div className="flex justify-between items-end">
+                <h2 className="text-4xl font-light tracking-tight">
+                  <span className="block text-white font-medium">My</span>
+                  <span className="block text-white/80">Favorites</span>
+                </h2>
+                <Link 
+                  to="/favorites" 
+                  className="group flex items-center gap-2 text-white/50 hover:text-white transition-colors"
+                >
+                  <span className="text-sm tracking-widest">VIEW ALL FAVORITES</span>
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </div>
 
             {isLoading.favorites ? (
