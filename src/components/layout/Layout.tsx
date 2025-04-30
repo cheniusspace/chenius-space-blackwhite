@@ -28,17 +28,17 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen w-full flex flex-col">
       {/* Navigation */}
-      <nav className="refined-nav w-full">
+      <nav className="refined-nav w-full border-b border-[#434D61]/20 bg-red-500">
         <div className="container mx-auto flex justify-between items-center p-4 md:p-8">
           {/* Brand */}
           <Link to="/" className="nav-brand">
-            <span className="text-white/90 text-lg">CHENIUS</span>
-            <span className="text-white/40 text-lg">SPACE</span>
+            <span className="text-[#E9EDEF] text-lg">CHENIUS</span>
+            <span className="text-[#D5DBDF] text-lg">SPACE</span>
           </Link>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white/50 hover:text-white transition-colors"
+            className="md:hidden text-[#D5DBDF] hover:text-[#E9EDEF] transition-colors"
             onClick={handleMenuClick}
             aria-label="Toggle menu"
           >
@@ -47,11 +47,11 @@ export default function Layout({ children }: LayoutProps) {
 
           {/* Navigation Links */}
           <div 
-            className={`${isMenuOpen || isAnimating ? 'flex' : 'hidden'} ${isMenuOpen ? 'mobile-menu-enter' : isAnimating ? 'mobile-menu-exit' : ''} md:flex flex-col md:flex-row absolute md:relative top-16 md:top-0 left-0 right-0 bg-black/80 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-4 md:p-0 gap-4 md:gap-8 z-50`}
+            className={`${isMenuOpen || isAnimating ? 'flex' : 'hidden'} ${isMenuOpen ? 'mobile-menu-enter' : isAnimating ? 'mobile-menu-exit' : ''} md:flex flex-col md:flex-row absolute md:relative top-16 md:top-0 left-0 right-0 md:bg-transparent p-4 md:p-0 gap-4 md:gap-8 z-50`}
           >
-            <Link to="/creations" className="refined-nav-link" data-text="CREATIONS" onClick={handleMenuClick}>creations</Link>
-            <Link to="/journals" className="refined-nav-link" data-text="JOURNALS" onClick={handleMenuClick}>journals</Link>
-            <Link to="/favorites" className="refined-nav-link" data-text="FAVORITES" onClick={handleMenuClick}>favorites</Link>
+            <Link to="/creations" className="refined-nav-link text-[#D5DBDF] hover:text-[#E9EDEF]" data-text="CREATIONS" onClick={handleMenuClick}>creations</Link>
+            <Link to="/journals" className="refined-nav-link text-[#D5DBDF] hover:text-[#E9EDEF]" data-text="JOURNALS" onClick={handleMenuClick}>journals</Link>
+            <Link to="/favorites" className="refined-nav-link text-[#D5DBDF] hover:text-[#E9EDEF]" data-text="FAVORITES" onClick={handleMenuClick}>favorites</Link>
           </div>
         </div>
       </nav>

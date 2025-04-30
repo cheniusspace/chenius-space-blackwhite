@@ -9,8 +9,9 @@ import { fetchTermOfTheDay, type Term } from "@/services/termsService";
 import { fetchTopics, type Topic } from "@/services/topicsService";
 import { CreationCard } from "@/components/creations/CreationCard";
 import { TopicCard } from "@/components/topics/TopicCard";
-import { ArrowRight, ExternalLink, BookOpen, Palette, Cpu, Brush, Lightbulb, PenTool, Compass, Hammer, Sparkles, Heart } from "lucide-react";
-import UniverseOrbit from '../components/UniverseOrbit';
+import { ArrowRight, ExternalLink, BookOpen, Palette, Cpu, Brush, Lightbulb, PenTool, Compass, Hammer, Sparkles, Heart, ChevronRight, Users, Globe, Book, Building2 } from "lucide-react";
+import ContentSpace from '../components/ContentSpace';
+import { motion } from "framer-motion";
 
 function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -270,72 +271,65 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="w-full subtle-grid bg-[#000000] text-white">
+    <div className="w-full subtle-grid bg-gray-500 text-white">
       <MouseTrail />
       <div className="relative z-[100]">
         <RainEffect />
       </div>
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="min-h-[90vh] relative overflow-hidden">
+        <section className="relative overflow-hidden">
           {/* Background Elements */}
           <div className="absolute inset-0 pointer-events-none z-0">
-            {/* Main Circles */}
-            <div className="absolute top-[20%] right-[10%] w-22 h-22 border border-[#333333]/80 rounded-full" />
-            <div className="absolute bottom-[20%] left-[5%] w-18 h-18 border border-[#333333]/80 rounded-full" />
-            <div className="absolute top-[35%] left-[25%] w-26 h-26 border border-[#333333]/80 rounded-full" />
-            <div className="absolute top-[60%] left-[52%] w-30 h-30 border border-[#333333]/80 rounded-full" />
-            <div className="absolute top-[80%] left-[78%] w-28 h-28 border border-[#333333]/80 rounded-full" />
-
             {/* Small Dots */}
             <div className="absolute top-[15%] right-[20%] w-2 h-2 bg-[#333333]/80 rounded-full" />
             <div className="absolute bottom-[25%] right-[35%] w-2 h-2 bg-[#333333]/80 rounded-full" />
             <div className="absolute top-[35%] right-[48%] w-2 h-2 bg-[#333333]/80 rounded-full" />
             <div className="absolute bottom-[45%] right-[62%] w-2 h-2 bg-[#333333]/80 rounded-full" />
-
-            {/* Lines */}
-            <div className="absolute top-[18%] right-[15%] w-22 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[35deg]" />
-            <div className="absolute bottom-[20%] left-[20%] w-26 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[55deg]" />
-            <div className="absolute top-[38%] left-[30%] w-34 h-0.5 bg-gradient-to-r from-transparent via-[#333333]/80 to-transparent rotate-[95deg]" />
-
-            {/* Large Circles */}
-            <div className="absolute top-[25%] right-[25%] w-40 h-40 border border-[#333333]/70 rounded-full" />
-            <div className="absolute bottom-[40%] right-[38%] w-46 h-46 border border-[#333333]/70 rounded-full" />
-            <div className="absolute top-[55%] right-[52%] w-52 h-52 border border-[#333333]/70 rounded-full" />
-            <div className="absolute top-[72%] left-[72%] w-38 h-38 border border-[#333333]/70 rounded-full" />
-
-            {/* Extra Large Circles */}
-            <div className="absolute top-[5%] left-[10%] w-58 h-58 border border-[#333333]/60 rounded-full" />
-            <div className="absolute top-[65%] right-[15%] w-68 h-68 border border-[#333333]/60 rounded-full" />
           </div>
 
-          <div className="container mx-auto px-4 h-full">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 h-[90vh] items-center">
+          <div className="container mx-auto h-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 h-full items-center max-w-screen-xl mx-auto">
               {/* Left Column - Visual Elements */}
-              <div className="lg:col-span-6 relative z-10">
-                <div className="relative w-full aspect-square max-w-[500px] mx-auto">
+              <div className="lg:col-span-6 relative z-10 order-2 lg:order-1">
+                <div className="relative w-full aspect-[3/4] max-w-[1000px] mx-auto">
+                  {/* Halo Effect */}
+                  <div className="absolute inset-0">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] blur-md" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.1)_0%,_transparent_40%)] blur-sm" />
+                  </div>
                   {/* Main Image Container */}
-                  <div className="relative w-full aspect-square">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-3xl opacity-50 hover:opacity-80 transition-opacity duration-1000" />
-                    <img 
+                  <div className="relative w-full h-full">
+                    {/* Halo Effect */}
+                    <div className="absolute inset-0">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] blur-md" />
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.1)_0%,_transparent_40%)] blur-sm" />
+                    </div>
+                    <motion.img 
                       src="/images/chenius.png" 
                       alt="Chenius Space Home" 
-                      className="relative w-full h-full object-contain transform hover:scale-105 transition-all duration-500 opacity-80 hover:opacity-100 animate-[float_4s_ease-in-out_infinite]"
+                      className="relative w-full h-full object-contain"
+                      animate={{
+                        y: [0, -10, 0],
+                        scale: [1, 1.005, 1],
+                        opacity: [0.95, 1, 0.95],
+                      }}
+                      transition={{
+                        duration: 6,
+                        ease: "easeInOut",
+                        repeat: Infinity,
+                        times: [0, 0.5, 1],
+                      }}
                     />
-                  </div>
-
-                  {/* Status Indicators */}
-                  <div className="absolute top-4 right-4 flex items-center gap-3">
-                    <div className="w-0.5 h-4 bg-white/10" />
                   </div>
                 </div>
               </div>
 
               {/* Right Column - Text Content */}
-              <div className="lg:col-span-6 relative z-10">
-                <div className="space-y-8 sm:space-y-12 text-center lg:text-left">
+              <div className="lg:col-span-6 relative z-10 order-1 lg:order-2">
+                <div className="space-y-6 sm:space-y-8 lg:space-y-12 text-center lg:text-left">
                   <div className="space-y-4 sm:space-y-6">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center justify-center lg:justify-start gap-3">
                       <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
                       <span className="text-xs text-white/50 tracking-widest">MY UNKNOWN JOURNEY</span>
                     </div>
@@ -345,12 +339,12 @@ export default function Index() {
                       <span className="block text-white/80">But Finding</span>
                     </h1>
 
-                    <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-lg leading-relaxed">
+                    <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-lg mx-auto lg:mx-0 leading-relaxed">
                       In the silence of my thoughts, I wander through shadows of uncertainty, seeking fragments of who I might become
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap gap-6">
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-6">
                     <button 
                       onClick={() => {
                         const aboutSection = document.querySelector('.min-h-screen.py-24.border-t.border-white\\/10');
@@ -366,7 +360,7 @@ export default function Index() {
                   </div>
 
                   {/* Progress Indicators */}
-                  <div className="flex flex-wrap gap-4 sm:gap-8">
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-8">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
                       <span className="text-xs text-white/40">WEB DESIGN</span>
@@ -407,7 +401,7 @@ export default function Index() {
         {/* CHENIUS Space Section */}
         <section className="min-h-screen py-24">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-screen-xl mx-auto">
               <div className="space-y-12">
                 <div className="space-y-6">
                   <h2 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight leading-none">
@@ -416,40 +410,57 @@ export default function Index() {
                   </h2>
 
                   <p className="text-lg sm:text-xl text-white/60 max-w-2xl leading-relaxed">
-                    A space where I embrace my imperfections and turn them into creative expressions. Through design, development, and self-discovery, I'm learning to appreciate every piece of myself.
-                  </p>
+                   A space where I embrace my indiscipline and impatience, transforming them into creative expressions. 
+                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-medium text-white/90">Creative Exploration</h3>
-                    <p className="text-white/60">
-                      A collection of projects, experiments, and creations that showcase the intersection of art and technology.
-                    </p>
-                    <Link 
-                      to="/creations"
-                      className="group relative inline-block"
-                    >
-                      <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <button className="relative px-6 py-3 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
-                        <span className="text-sm text-white/90 tracking-widest">VIEW MY CREATIONS</span>
-                      </button>
-                    </Link>
+                {/* Creative Exploration Section */}
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <Link 
+                        to="/creations"
+                        className="block"
+                      >
+                        <div className="relative w-full aspect-[3/2] flex items-center justify-center bg-white/5 group">
+                          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-1000" />
+                          <img 
+                            src="/images/creative-exploration.png" 
+                            alt="Creative Exploration"
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute top-0 right-0 p-4 bg-black/50 backdrop-blur-sm rounded-none border-l border-b border-white/10 group-hover:border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-black/70">
+                            <ChevronRight className="w-8 h-8 text-white/90 -rotate-45" />
+                          </div>
+                        </div>
+                      </Link>
+                      <h3 className="text-xl font-medium text-white/90">Creative Exploration</h3>
+                      <p className="text-white/60">
+                        A collection of projects, experiments, and creations that showcase the intersection of art and technology.
+                      </p>
+                    </div>
+                    <div className="space-y-4">
+                      <Link 
+                        to="/journals"
+                        className="block"
+                      >
+                        <div className="relative w-full aspect-[3/2] flex items-center justify-center bg-white/5 group">
+                          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-1000" />
+                          <img 
+                            src="/images/personal-growth.png" 
+                            alt="Personal Growth"
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute top-0 right-0 p-4 bg-black/50 backdrop-blur-sm rounded-none border-l border-b border-white/10 group-hover:border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-black/70">
+                            <ChevronRight className="w-8 h-8 text-white/90 -rotate-45" />
+                    </div>
                   </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-medium text-white/90">Personal Growth</h3>
-                    <p className="text-white/60">
-                      Documenting the journey of learning, failing, and evolving in the ever-changing landscape of digital creation.
-                    </p>
-                    <Link 
-                      to="/journals"
-                      className="group relative inline-block"
-                    >
-                      <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <button className="relative px-6 py-3 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
-                        <span className="text-sm text-white/90 tracking-widest">READ MY JOURNALS</span>
-                      </button>
-                    </Link>
+                      </Link>
+                      <h3 className="text-xl font-medium text-white/90">Personal Growth</h3>
+                      <p className="text-white/60">
+                        Documenting the journey of learning, failing, and evolving in the ever-changing landscape of digital creation.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -557,30 +568,39 @@ export default function Index() {
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Favorites Section */}
-                <div className="space-y-6 pt-12 border-t border-white/10">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                    <span className="text-xs text-white/50 tracking-widest">MY FAVORITES</span>
-                  </div>
+              {/* Favorites Section */}
+              <div className="space-y-6 pt-12 border-t border-white/10">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+                  <span className="text-xs text-white/50 tracking-widest">MY FAVORITES</span>
+                </div>
 
-                  <div className="space-y-4">
-                    <p className="text-lg text-white/60">
-                      One of the easiest ways to get to know someone is by finding their favorites. I also create a curated list of my favorite things - not just to keep track of what I love, but also to share with the world the incredible people, places, and things that inspire me.
-                    </p>
-                    <Link 
-                      to="/favorites"
-                      className="group relative inline-block"
-                    >
-                      <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <button className="relative px-6 py-3 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
-                        <span className="text-sm text-white/90 tracking-widest">EXPLORE MY FAVORITES</span>
-                      </button>
-                    </Link>
+                <div className="space-y-4">
+                  <p className="text-lg text-white/60">
+                    I don't wanna lose track of my favorite people, places and things
+                  </p>
+                  <div className="flex flex-wrap gap-6">
+                    <div className="flex items-center gap-2">
+                      <Users className="w-5 h-5 text-white/90" />
+                      <span className="text-sm text-white/60">People</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Globe className="w-5 h-5 text-white/90" />
+                      <span className="text-sm text-white/60">Websites</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Book className="w-5 h-5 text-white/90" />
+                      <span className="text-sm text-white/60">Books</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Building2 className="w-5 h-5 text-white/90" />
+                      <span className="text-sm text-white/60">Organizations</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+                </div>
             </div>
           </div>
         </section>
@@ -596,12 +616,17 @@ export default function Index() {
         </div>
 
         {/* Content Section */}
-        <section className="py-20">
+        <section className="py-32">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-light text-center mb-16 text-Pink-300">
-              What You Can Find in the Space
-            </h2>
-            <UniverseOrbit />
+            <div className="text-center mb-32">
+              <h2 className="text-2xl font-bold">What You Can Find in the Space</h2>
+              <p className="text-white/60 mt-4 max-w-[1000px] mx-auto">
+                Explore my journey through various topics - from web design and architecture to music, digital art, and personal growth
+              </p>
+            </div>
+            <div className="relative">
+              <ContentSpace />
+            </div>
           </div>
         </section>
 
@@ -811,7 +836,7 @@ export default function Index() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center text-sm font-medium hover-underline"
                       >
-                        View Details <ExternalLink className="ml-1 h-4 w-4" />
+                        View Details <ArrowRight className="ml-1 h-4 w-4" />
                       </a>
                     )}
                   </div>

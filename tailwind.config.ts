@@ -159,11 +159,29 @@ export default {
           to: {
             height: '0'
           }
+        },
+        'orbit': {
+          '0%': {
+            transform: 'translate(0, 0) scale(1)'
+          },
+          '25%': {
+            transform: 'translate(10px, -10px) scale(1.1)'
+          },
+          '50%': {
+            transform: 'translate(0, -20px) scale(1)'
+          },
+          '75%': {
+            transform: 'translate(-10px, -10px) scale(1.1)'
+          },
+          '100%': {
+            transform: 'translate(0, 0) scale(1)'
+          }
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out'
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'orbit': 'orbit 3s ease-in-out infinite'
       },
       fontFamily: {
         'heading': ['Jost', 'sans-serif'],
