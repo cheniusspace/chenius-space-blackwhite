@@ -13,7 +13,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       size="icon"
       onClick={toggleTheme}
       className={cn(
-        "w-10 h-10 rounded-full",
+        "w-10 h-10 rounded-full relative",
         "transition-all duration-300",
         className
       )}
