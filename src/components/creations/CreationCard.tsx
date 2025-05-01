@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 
 type CreationCardProps = {
@@ -5,7 +6,7 @@ type CreationCardProps = {
   title: string;
   category: string;
   date: string;
-  imageClass: string;
+  imageClass?: string; // Make it optional with the ? mark
   image_url: string | null;
   tags?: { id: string; name: string }[];
 };
@@ -15,7 +16,7 @@ export const CreationCard = ({
   title, 
   category, 
   date, 
-  imageClass, 
+  imageClass = "bg-gray-200", // Provide a default value if not supplied
   image_url, 
   tags 
 }: CreationCardProps) => {
