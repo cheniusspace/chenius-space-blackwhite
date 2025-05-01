@@ -48,8 +48,18 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   useEffect(() => {
     const root = window.document.documentElement;
     
+    // Remove both theme classes and add the current one
     root.classList.remove("light", "dark");
     root.classList.add(theme);
+    
+    // Update body background and text colors based on theme
+    if (theme === "dark") {
+      document.body.style.backgroundColor = "#0C0A17";
+      document.body.style.color = "#E9EDEF";
+    } else {
+      document.body.style.backgroundColor = "#FFFFFF";
+      document.body.style.color = "#0C0A17";
+    }
     
     // Store theme preference
     localStorage.setItem("theme", theme);

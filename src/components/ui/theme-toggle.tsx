@@ -14,7 +14,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       onClick={toggleTheme}
       className={cn(
         "w-10 h-10 rounded-full",
-        "transition-all duration-200",
+        "transition-all duration-300",
         className
       )}
       aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
@@ -22,11 +22,14 @@ export function ThemeToggle({ className }: { className?: string }) {
       <span className="sr-only">
         {theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
       </span>
-      {theme === "light" ? (
-        <Moon className="h-[1.2rem] w-[1.2rem] transition-all" aria-hidden="true" />
-      ) : (
-        <Sun className="h-[1.2rem] w-[1.2rem] transition-all" aria-hidden="true" />
-      )}
+      <Sun 
+        className={`h-[1.2rem] w-[1.2rem] absolute transition-all duration-300 ${theme === 'dark' ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} 
+        aria-hidden={theme === 'light'} 
+      />
+      <Moon 
+        className={`h-[1.2rem] w-[1.2rem] absolute transition-all duration-300 ${theme === 'light' ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} 
+        aria-hidden={theme === 'dark'} 
+      />
     </Button>
   );
 }
