@@ -265,7 +265,7 @@ export default function Index() {
       <div className="relative z-[100]">
         <RainEffect />
       </div>
-      <div className="relative z-10">
+      <div className="relative z-10 font-['Jost']">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
           {/* Background Elements */}
@@ -320,7 +320,7 @@ export default function Index() {
                   <div className="space-y-4 sm:space-y-6">
                     <div className="flex items-center justify-center lg:justify-start gap-3">
                       <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                      <span className="text-xs text-white/50 tracking-widest">MY UNKNOWN JOURNEY</span>
+                      <span className="text-sm text-white/50 tracking-widest">MY UNKNOWN JOURNEY</span>
                     </div>
                     
                     <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none w-full">
@@ -328,7 +328,7 @@ export default function Index() {
                       <span className="block text-white/80">But Finding</span>
                     </h1>
 
-                    <p className="text-base sm:text-lg text-white/60 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                    <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                       In the silence of my thoughts, I wander through shadows of uncertainty, seeking fragments of who I might become
                     </p>
                   </div>
@@ -343,7 +343,7 @@ export default function Index() {
                     >
                       <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
                       <div className="relative px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
-                        <span className="text-sm text-white/90 tracking-widest">TAKE A LOOK, WHO KNOWS WE'RE PART OF EACH OTHER'S JOURNEY</span>
+                        <span className="text-base md:text-lg text-white/90 tracking-widest">TAKE A LOOK, WHO KNOWS WE'RE PART OF EACH OTHER'S JOURNEY</span>
                       </div>
                     </button>
                   </div>
@@ -352,23 +352,23 @@ export default function Index() {
                   <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-8">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
-                      <span className="text-xs text-white/40">WEB DESIGN</span>
+                      <span className="text-sm text-white/60">WEB DESIGN</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
-                      <span className="text-xs text-white/40">ARCHITECTURE</span>
+                      <span className="text-sm text-white/60">ARCHITECTURE</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
-                      <span className="text-xs text-white/40">MUSIC</span>
+                      <span className="text-sm text-white/60">MUSIC</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
-                      <span className="text-xs text-white/40">DIGITAL ART</span>
+                      <span className="text-sm text-white/60">DIGITAL ART</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
-                      <span className="text-xs text-white/40">SELF DEV</span>
+                      <span className="text-sm text-white/60">SELF DEV</span>
                     </div>
                   </div>
                 </div>
@@ -383,7 +383,7 @@ export default function Index() {
             <div className="w-full border-t border-white/10"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="px-4 bg-[#11131F] text-white/50 text-sm tracking-widest">ABOUT THE SPACE</span>
+            <span className="px-4 bg-[#11131F] text-white/50 text-base tracking-widest">ABOUT THE SPACE</span>
           </div>
         </div>
 
@@ -393,14 +393,14 @@ export default function Index() {
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                <span className="text-sm text-white/50 tracking-widest">ABOUT THE SPACE</span>
+                <span className="text-base text-white/50 tracking-widest">ABOUT THE SPACE</span>
               </div>
-              <h2 className="text-4xl font-bold tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
                 <span className="text-white">CHENIUS</span> Space
               </h2>
             </div>
 
-            <p className="text-lg sm:text-xl text-white/60 max-w-2xl leading-relaxed mb-16">
+            <p className="text-xl md:text-2xl text-white/80 max-w-3xl leading-relaxed mb-16">
               A space where I embrace my indiscipline and impatience, transforming them into creative expressions. 
             </p>
 
@@ -424,8 +424,8 @@ export default function Index() {
                       </div>
                     </div>
                   </Link>
-                  <h3 className="text-xl font-medium text-white/90">Creative Exploration</h3>
-                  <p className="text-white/60">
+                  <h3 className="text-xl md:text-2xl font-medium text-white/90">Creative Exploration</h3>
+                  <p className="text-lg md:text-xl text-white/70">
                     A collection of projects, experiments, and creations that showcase the intersection of art and technology.
                   </p>
                 </div>
@@ -446,8 +446,8 @@ export default function Index() {
                       </div>
                     </div>
                   </Link>
-                  <h3 className="text-xl font-medium text-white/90">Personal Growth</h3>
-                  <p className="text-white/60">
+                  <h3 className="text-xl md:text-2xl font-medium text-white/90">Personal Growth</h3>
+                  <p className="text-lg md:text-xl text-white/70">
                     Documenting the journey of learning, failing, and evolving in the ever-changing landscape of digital creation.
                   </p>
                 </div>
@@ -458,13 +458,13 @@ export default function Index() {
             <div className="space-y-6 pt-12 border-t border-white/10 mt-16">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                <span className="text-xs text-white/50 tracking-widest">SONG ABOUT CHENIUS</span>
+                <span className="text-base text-white/50 tracking-widest">SONG ABOUT CHENIUS</span>
               </div>
               
               <div className="space-y-4">
                 <AudioPlayer />
                 <div className="mt-6">
-                  <p className="text-sm text-white/60 mb-4">Also available on:</p>
+                  <p className="text-base md:text-lg text-white/70 mb-4">Also available on:</p>
                   <div className="flex flex-nowrap overflow-x-auto gap-4 pb-4">
                     <a 
                       href="https://music.youtube.com" 
@@ -475,7 +475,7 @@ export default function Index() {
                       <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                       </svg>
-                      <span className="text-sm text-white/90">YouTube Music</span>
+                      <span className="text-base text-white/90">YouTube Music</span>
                     </a>
                     {/* Other music platform links */}
                   </div>
@@ -487,29 +487,29 @@ export default function Index() {
             <div className="space-y-6 pt-12 border-t border-white/10 mt-16">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                <span className="text-xs text-white/50 tracking-widest">MY FAVORITES</span>
+                <span className="text-base text-white/50 tracking-widest">MY FAVORITES</span>
               </div>
 
               <div className="space-y-4">
-                <p className="text-lg text-white/60">
+                <p className="text-xl md:text-2xl text-white/70">
                   I don't wanna lose track of my favorite people, places and things
                 </p>
                 <div className="flex flex-wrap gap-6">
                   <div className="flex items-center gap-2">
                     <Users className="w-5 h-5 text-white/90" />
-                    <span className="text-sm text-white/60">People</span>
+                    <span className="text-base md:text-lg text-white/70">People</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Globe className="w-5 h-5 text-white/90" />
-                    <span className="text-sm text-white/60">Websites</span>
+                    <span className="text-base md:text-lg text-white/70">Websites</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Book className="w-5 h-5 text-white/90" />
-                    <span className="text-sm text-white/60">Books</span>
+                    <span className="text-base md:text-lg text-white/70">Books</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Building2 className="w-5 h-5 text-white/90" />
-                    <span className="text-sm text-white/60">Organizations</span>
+                    <span className="text-base md:text-lg text-white/70">Organizations</span>
                   </div>
                 </div>
               </div>
@@ -523,7 +523,7 @@ export default function Index() {
             <div className="w-full border-t border-white/10"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="px-4 bg-[#11131F] text-white/50 text-sm tracking-widest">EXPLORE THE SPACE</span>
+            <span className="px-4 bg-[#11131F] text-white/50 text-base tracking-widest">EXPLORE THE SPACE</span>
           </div>
         </div>
 
@@ -533,9 +533,9 @@ export default function Index() {
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                <span className="text-xs text-white/50 tracking-widest">EXPLORE THE SPACE</span>
+                <span className="text-base text-white/50 tracking-widest">EXPLORE THE SPACE</span>
               </div>
-              <h2 className="text-5xl font-bold tracking-tight">
+              <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
                 <span className="text-white">Content</span> Space
               </h2>
             </div>
@@ -551,7 +551,7 @@ export default function Index() {
             <div className="w-full border-t border-white/10"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="px-4 bg-[#11131F] text-white/50 text-sm tracking-widest">RECENT CREATIONS</span>
+            <span className="px-4 bg-[#11131F] text-white/50 text-base tracking-widest">RECENT CREATIONS</span>
           </div>
         </div>
 
@@ -624,7 +624,7 @@ export default function Index() {
             <div className="w-full border-t border-white/10"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="px-4 bg-[#11131F] text-white/50 text-sm tracking-widest">LATEST JOURNALS</span>
+            <span className="px-4 bg-[#11131F] text-white/50 text-base tracking-widest">LATEST JOURNALS</span>
           </div>
         </div>
 
@@ -709,7 +709,7 @@ export default function Index() {
             <div className="w-full border-t border-white/10"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="px-4 bg-[#11131F] text-white/50 text-sm tracking-widest">FEATURED FAVORITES</span>
+            <span className="px-4 bg-[#11131F] text-white/50 text-base tracking-widest">FEATURED FAVORITES</span>
           </div>
         </div>
 
@@ -788,5 +788,3 @@ export default function Index() {
     </div>
   );
 }
-
-

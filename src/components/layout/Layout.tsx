@@ -15,7 +15,7 @@ export default function Layout({ children }: LayoutProps) {
     <div className={`min-h-screen w-full flex flex-col transition-colors duration-300 ${theme === "dark" ? "bg-[#0C0A17] text-[#E9EDEF]" : "bg-white text-[#0C0A17]"}`}>
       <Header />
       
-      <main id="main-content" className="flex-grow pt-16 md:pt-24">
+      <main id="main-content" className="flex-grow pt-16 md:pt-24 font-['Jost']">
         {children}
       </main>
 
