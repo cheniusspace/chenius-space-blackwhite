@@ -11,8 +11,8 @@ type ThemeContextType = {
 };
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: "light",
-  isDark: false,
+  theme: "dark",
+  isDark: true,
   setTheme: () => null,
   toggleTheme: () => null,
 });
@@ -26,7 +26,7 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
   
   // Update isDark based on theme
   const isDark = theme === "dark";

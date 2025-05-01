@@ -1,11 +1,14 @@
+
 import { Link } from "react-router-dom";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Menu, X, MessageSquare } from "lucide-react";
 import { useState } from "react";
+import { useTheme } from "@/providers/ThemeProvider";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const { theme } = useTheme();
 
   const handleMenuClick = () => {
     if (isMenuOpen) {
@@ -21,18 +24,23 @@ const Header = () => {
     }
   };
 
+  const bgClass = theme === "dark" ? "bg-[#0C0A17]" : "bg-white/90";
+  const textClass = theme === "dark" ? "text-[#D5DBDF]" : "text-[#0C0A17]";
+  const hoverTextClass = theme === "dark" ? "hover:text-[#E9EDEF]" : "hover:text-[#000000]";
+  const borderClass = theme === "dark" ? "border-[#434D61]/20" : "border-gray-200";
+
   return (
-    <nav className="refined-nav w-full border-b border-[#434D61]/20 bg-[#0C0A17]">
+    <nav className={`refined-nav w-full border-b ${borderClass} ${bgClass} backdrop-blur-sm`}>
       <div className="container mx-auto max-w-screen-xl flex justify-between items-center py-4 md:py-8">
         {/* Brand */}
         <Link to="/" className="nav-brand">
-          <span className="text-[#E9EDEF] text-lg">CHENIUS</span>
-          <span className="text-[#D5DBDF] text-lg">SPACE</span>
+          <span className={textClass}>CHENIUS</span>
+          <span className={`${textClass} opacity-80`}>SPACE</span>
         </Link>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-[#D5DBDF] hover:text-[#E9EDEF] transition-colors"
+          className={`md:hidden ${textClass} ${hoverTextClass} transition-colors`}
           onClick={handleMenuClick}
           aria-label="Toggle menu"
         >
@@ -41,12 +49,12 @@ const Header = () => {
 
         {/* Navigation Links */}
         <div 
-          className={`${isMenuOpen || isAnimating ? 'flex' : 'hidden'} ${isMenuOpen ? 'mobile-menu-enter' : isAnimating ? 'mobile-menu-exit' : ''} md:flex flex-col md:flex-row absolute md:relative top-16 md:top-0 left-0 right-0 md:bg-transparent p-4 md:p-0 gap-2 md:gap-4 z-50`}
+          className={`${isMenuOpen || isAnimating ? 'flex' : 'hidden'} ${isMenuOpen ? 'mobile-menu-enter' : isAnimating ? 'mobile-menu-exit' : ''} md:flex flex-col md:flex-row absolute md:relative top-16 md:top-0 left-0 right-0 ${bgClass} md:bg-transparent p-4 md:p-0 gap-2 md:gap-4 z-50`}
         >
-          <Link to="/creations" className="refined-nav-link text-[#D5DBDF] hover:text-[#E9EDEF] text-sm" data-text="CREATIONS" onClick={handleMenuClick}>creations</Link>
-          <Link to="/journals" className="refined-nav-link text-[#D5DBDF] hover:text-[#E9EDEF] text-sm" data-text="JOURNALS" onClick={handleMenuClick}>journals</Link>
-          <Link to="/favorites" className="refined-nav-link text-[#D5DBDF] hover:text-[#E9EDEF] text-sm" data-text="FAVORITES" onClick={handleMenuClick}>favorites</Link>
-          <a href="mailto:your-email@example.com" className="refined-nav-link text-[#D5DBDF] hover:text-[#E9EDEF] text-sm flex items-center justify-center" aria-label="Contact">
+          <Link to="/creations" className={`refined-nav-link ${textClass} ${hoverTextClass} text-sm`} data-text="CREATIONS" onClick={handleMenuClick}>creations</Link>
+          <Link to="/journals" className={`refined-nav-link ${textClass} ${hoverTextClass} text-sm`} data-text="JOURNALS" onClick={handleMenuClick}>journals</Link>
+          <Link to="/favorites" className={`refined-nav-link ${textClass} ${hoverTextClass} text-sm`} data-text="FAVORITES" onClick={handleMenuClick}>favorites</Link>
+          <a href="mailto:your-email@example.com" className={`refined-nav-link ${textClass} ${hoverTextClass} text-sm flex items-center justify-center`} aria-label="Contact">
             <MessageSquare size={16} />
           </a>
         </div>

@@ -1,3 +1,4 @@
+
 import { ReactNode } from "react";
 import { Footer } from "./Footer";
 import Header from "./Header";
@@ -8,7 +9,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen w-full flex flex-col">
+    <div className="min-h-screen w-full flex flex-col transition-colors duration-200">
       <Header />
       
       <main id="main-content" className="flex-grow pt-16 md:pt-24">
