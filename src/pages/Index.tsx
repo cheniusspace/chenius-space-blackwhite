@@ -200,9 +200,7 @@ export default function Index() {
   const [isLoading, setIsLoading] = useState({
     creations: true,
     journals: true,
-    favorites: true,
-    term: true,
-    topics: true
+    favorites: true
   });
   const [activeSection, setActiveSection] = useState(0);
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
@@ -210,30 +208,21 @@ export default function Index() {
   useEffect(() => {
     const getRecentContent = async () => {
       try {
-        // Fetch creations
-        const creations = await fetchCreations();
+        const [creations, journals, favorites] = await Promise.all([
+          fetchCreations(),
+          fetchJournals(),
+          fetchFavorites()
+        ]);
+
         setRecentCreations(creations.slice(0, 3));
-        setIsLoading(prev => ({ ...prev, creations: false }));
-
-        // Fetch journals
-        const journals = await fetchJournals();
         setRecentJournals(journals.slice(0, 2));
-        setIsLoading(prev => ({ ...prev, journals: false }));
-
-        // Fetch favorites
-        const favorites = await fetchFavorites();
         setFeaturedFavorites(favorites.slice(0, 4));
-        setIsLoading(prev => ({ ...prev, favorites: false }));
-
-        // Fetch term of the day
-        const term = await fetchTermOfTheDay();
-        setTermOfTheDay(term);
-        setIsLoading(prev => ({ ...prev, term: false }));
-
-        // Fetch topics
-        const topicsData = await fetchTopics();
-        setTopics(topicsData);
-        setIsLoading(prev => ({ ...prev, topics: false }));
+        
+        setIsLoading({
+          creations: false,
+          journals: false,
+          favorites: false
+        });
       } catch (error) {
         console.error("Error fetching content:", error);
       }
@@ -334,12 +323,12 @@ export default function Index() {
                       <span className="text-xs text-white/50 tracking-widest">MY UNKNOWN JOURNEY</span>
                     </div>
                     
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight leading-none">
-                      <span className="block text-white font-medium">Lost</span>
+                    <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none w-full">
+                      <span className="block text-white">Lost</span>
                       <span className="block text-white/80">But Finding</span>
                     </h1>
 
-                    <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                    <p className="text-base sm:text-lg text-white/60 max-w-lg mx-auto lg:mx-0 leading-relaxed">
                       In the silence of my thoughts, I wander through shadows of uncertainty, seeking fragments of who I might become
                     </p>
                   </div>
@@ -404,10 +393,10 @@ export default function Index() {
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                <span className="text-xs text-white/50 tracking-widest">ABOUT THE SPACE</span>
+                <span className="text-sm text-white/50 tracking-widest">ABOUT THE SPACE</span>
               </div>
-              <h2 className="text-5xl font-light tracking-tight">
-                <span className="text-white font-medium">CHENIUS</span> Space
+              <h2 className="text-4xl font-bold tracking-tight">
+                <span className="text-white">CHENIUS</span> Space
               </h2>
             </div>
 
@@ -546,8 +535,8 @@ export default function Index() {
                 <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
                 <span className="text-xs text-white/50 tracking-widest">EXPLORE THE SPACE</span>
               </div>
-              <h2 className="text-5xl font-light tracking-tight">
-                <span className="text-white font-medium">Topics</span> I'm Exploring
+              <h2 className="text-5xl font-bold tracking-tight">
+                <span className="text-white">Content</span> Space
               </h2>
             </div>
             <div className="relative">
@@ -575,10 +564,10 @@ export default function Index() {
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                <span className="text-xs text-white/50 tracking-widest">RECENT WORK</span>
+                <span className="text-xs text-white/50 tracking-widest">RECENT PROJECTS</span>
               </div>
-              <h2 className="text-5xl font-light tracking-tight">
-                <span className="text-white font-medium">Creative</span> Explorations
+              <h2 className="text-5xl font-bold tracking-tight">
+                <span className="text-white">My</span> Creations
               </h2>
             </div>
             
@@ -648,10 +637,10 @@ export default function Index() {
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                <span className="text-xs text-white/50 tracking-widest">LATEST JOURNALS</span>
+                <span className="text-sm text-white/50 tracking-widest">LATEST JOURNALS</span>
               </div>
-              <h2 className="text-5xl font-light tracking-tight">
-                <span className="text-white font-medium">Personal</span> Reflections
+              <h2 className="text-4xl font-bold tracking-tight">
+                <span className="text-white">My</span> Journals
               </h2>
             </div>
 
@@ -773,7 +762,7 @@ export default function Index() {
                         />
                       )}
                     </div>
-                    <h3 className="text-xl font-heading mb-3">{favorite.title}</h3>
+                    <h3 className="text-xl font-bold mb-3">{favorite.title}</h3>
                     <p className="text-platinum-500/50 mb-4">{favorite.author}</p>
                     {favorite.external_link && (
                       <a

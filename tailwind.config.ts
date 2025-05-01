@@ -18,6 +18,9 @@ export default {
       }
     },
     extend: {
+      fontFamily: {
+        sans: ['Jost', 'sans-serif'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -183,10 +186,6 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'orbit': 'orbit 3s ease-in-out infinite'
       },
-      fontFamily: {
-        'heading': ['Jost', 'sans-serif'],
-        'body': ['Jost', 'sans-serif'],
-      },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1.25rem' }],
         'sm': ['0.875rem', { lineHeight: '1.5rem' }],
@@ -197,6 +196,13 @@ export default {
         '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
         '4xl': ['2.25rem', { lineHeight: '2.4rem' }],
         '5xl': ['3rem', { lineHeight: '1.15' }],
+        '6xl': ['3.75rem', { lineHeight: '1' }],
+        '7xl': ['4.5rem', { lineHeight: '1' }],
+        '8xl': ['6rem', { lineHeight: '1' }],
+        '9xl': ['8rem', { lineHeight: '1' }],
+        '10xl': ['10rem', { lineHeight: '1' }],
+        '12xl': ['12rem', { lineHeight: '1' }],
+        '14xl': ['14rem', { lineHeight: '1' }],
       },
       letterSpacing: {
         'tighter': '-0.05em',
