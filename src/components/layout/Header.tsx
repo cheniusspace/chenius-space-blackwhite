@@ -21,7 +21,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="refined-nav w-full border-b border-white/10 bg-black/90 backdrop-blur-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-white/10 bg-[#0C0A17]/90">
       <div className="container mx-auto max-w-screen-xl flex justify-between items-center py-4 md:py-8">
         {/* Brand */}
         <Link to="/" className="nav-brand">
