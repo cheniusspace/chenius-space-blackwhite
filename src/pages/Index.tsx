@@ -320,55 +320,40 @@ export default function Index() {
                   <div className="space-y-4 sm:space-y-6">
                     <div className="flex items-center justify-center lg:justify-start gap-3">
                       <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                      <span className="text-sm text-white/50 tracking-widest">MY UNKNOWN JOURNEY</span>
+                      <span className="text-xs text-white/50 tracking-widest">MY UNKNOWN JOURNEY</span>
                     </div>
                     
-                    <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none w-full">
-                      <span className="block text-white">Lost</span>
-                      <span className="block text-white/80">But Finding</span>
+                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl w-full">
+                      <span className="block text-white tracking-wide font-semibold">Lost</span>
+                      <span className="block text-white/80 font-extralight tracking-normal">But Finding</span>
                     </h1>
 
-                    <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                       In the silence of my thoughts, I wander through shadows of uncertainty, seeking fragments of who I might become
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap justify-center lg:justify-start gap-6">
-                    <button 
-                      onClick={() => {
-                        const aboutSection = document.querySelector('.min-h-screen.py-24.border-t.border-white\\/10');
-                        aboutSection?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="group relative"
-                    >
-                      <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <div className="relative px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-sm rounded-none border border-white/10 hover:border-white/20 transition-all duration-300">
-                        <span className="text-base md:text-lg text-white/90 tracking-widest">TAKE A LOOK, WHO KNOWS WE'RE PART OF EACH OTHER'S JOURNEY</span>
-                      </div>
-                    </button>
-                  </div>
-
                   {/* Progress Indicators */}
-                  <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-8">
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-8 tracking-widest">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
-                      <span className="text-sm text-white/60">WEB DESIGN</span>
+                      <span className="text-xs text-white/60">WEB DESIGN</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
-                      <span className="text-sm text-white/60">ARCHITECTURE</span>
+                      <span className="text-xs text-white/60">ARCHITECTURE</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
-                      <span className="text-sm text-white/60">MUSIC</span>
+                      <span className="text-xs text-white/60">MUSIC</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
-                      <span className="text-sm text-white/60">DIGITAL ART</span>
+                      <span className="text-xs text-white/60">DIGITAL ART</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-white/30 rounded-full" />
-                      <span className="text-sm text-white/60">SELF DEV</span>
+                      <span className="text-xs text-white/60">SELF DEV</span>
                     </div>
                   </div>
                 </div>
@@ -383,7 +368,7 @@ export default function Index() {
             <div className="w-full border-t border-white/10"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="px-4 bg-[#11131F] text-white/50 text-base tracking-widest">ABOUT THE SPACE</span>
+            <span className="px-4 bg-[#11131F] text-white/50 text-base tracking-widest">ABOUT CHENIUS SPACE</span>
           </div>
         </div>
 
@@ -393,15 +378,16 @@ export default function Index() {
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                <span className="text-base text-white/50 tracking-widest">ABOUT THE SPACE</span>
+                <span className="text-sm text-white/50 tracking-widest uppercase">ABOUT Me and ChEnius space</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-                <span className="text-white">CHENIUS</span> Space
+              <h2 className="text-3xl md:text-4xl font-bold tracking-normal">
+                <span className="text-white font-extralight">a girl called herself </span>
+                <span className="text-white/80 font-bold">Chenius</span>
               </h2>
             </div>
 
-            <p className="text-xl md:text-2xl text-white/80 max-w-3xl leading-relaxed mb-16">
-              A space where I embrace my indiscipline and impatience, transforming them into creative expressions. 
+            <p className="text-lg md:text-xl text-white/80 max-w-3xl leading-relaxed mb-16">
+             My name is Tran and I want to called myself Chenius, as a way to self courage me to do what I want to do. Here is a space where I share my journey to discover myself.
             </p>
 
             {/* Creative Exploration Section */}
@@ -424,8 +410,8 @@ export default function Index() {
                       </div>
                     </div>
                   </Link>
-                  <h3 className="text-xl md:text-2xl font-medium text-white/90">Creative Exploration</h3>
-                  <p className="text-lg md:text-xl text-white/70">
+                  <h3 className="text-lg md:text-xl font-medium text-white/90">Creations</h3>
+                  <p className="text-base md:text-lg text-white/70">
                     A collection of projects, experiments, and creations that showcase the intersection of art and technology.
                   </p>
                 </div>
@@ -446,8 +432,8 @@ export default function Index() {
                       </div>
                     </div>
                   </Link>
-                  <h3 className="text-xl md:text-2xl font-medium text-white/90">Personal Growth</h3>
-                  <p className="text-lg md:text-xl text-white/70">
+                  <h3 className="text-lg md:text-xl font-medium text-white/90">Journals</h3>
+                  <p className="text-base md:text-lg text-white/70">
                     Documenting the journey of learning, failing, and evolving in the ever-changing landscape of digital creation.
                   </p>
                 </div>
@@ -483,37 +469,7 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Favorites Section */}
-            <div className="space-y-6 pt-12 border-t border-white/10 mt-16">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                <span className="text-base text-white/50 tracking-widest">MY FAVORITES</span>
-              </div>
-
-              <div className="space-y-4">
-                <p className="text-xl md:text-2xl text-white/70">
-                  I don't wanna lose track of my favorite people, places and things
-                </p>
-                <div className="flex flex-wrap gap-6">
-                  <div className="flex items-center gap-2">
-                    <Users className="w-5 h-5 text-white/90" />
-                    <span className="text-base md:text-lg text-white/70">People</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Globe className="w-5 h-5 text-white/90" />
-                    <span className="text-base md:text-lg text-white/70">Websites</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Book className="w-5 h-5 text-white/90" />
-                    <span className="text-base md:text-lg text-white/70">Books</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Building2 className="w-5 h-5 text-white/90" />
-                    <span className="text-base md:text-lg text-white/70">Organizations</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </section>
 
@@ -533,10 +489,11 @@ export default function Index() {
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                <span className="text-base text-white/50 tracking-widest">EXPLORE THE SPACE</span>
+                <span className="text-sm text-white/50 tracking-widest uppercase">what you can find here</span>
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
-                <span className="text-white">Content</span> Space
+              <h2 className="text-4xl md:text-5xl font-bold tracking-wide">
+                <span className="font-extralight">Discover my </span>
+                <span className="font-semibold">Interests</span>
               </h2>
             </div>
             <div className="relative">
