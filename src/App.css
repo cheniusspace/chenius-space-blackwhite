@@ -14,10 +14,10 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #FFA5B9);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #FFCCD0);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -111,7 +111,7 @@ body {
 
 /* Enhance readability and aesthetics */
 .text-gradient {
-  background: linear-gradient(to right, #E9EDEF, #ADB5BD);
+  background: linear-gradient(to right, #FFA5B9, #FFD6E0);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -134,10 +134,32 @@ body {
 }
 
 .card-shadow {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(255, 165, 185, 0.15);
   transition: box-shadow 0.3s ease;
 }
 
 .card-shadow:hover {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 30px rgba(255, 165, 185, 0.25);
 }
+
+/* Light mode pastel colors */
+.light {
+  --color-Dark-50: #5A5A7A;
+  --color-Dark-100: #7A7A9A;
+  --color-Dark-600: #FEF7ED;
+  --color-Purple-300: #FFB6C1;
+  --color-Purple-400: #FFA5B9;
+  --color-Purple-500: #FF91A7;
+}
+
+/* Dark mode pastel colors */
+.dark {
+  --color-Dark-50: #E9EDEF;
+  --color-Dark-100: #A5BED5;
+  --color-Dark-600: #1A1B26;
+  --color-Purple-300: #C8B6FF;
+  --color-Purple-400: #B8A5FF;
+  --color-Purple-500: #A891FF;
+}
+
+/* ... keep existing code */

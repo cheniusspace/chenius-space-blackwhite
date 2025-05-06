@@ -55,19 +55,21 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
         },
-        chenius: {
-          black: '#000000',
-          white: '#FFFFFF',
-          gray: {
-            100: '#F1F1F1',
-            200: '#E1E1E1',
-            300: '#C8C8C9',
-            400: '#888888',
-            500: '#555555',
-            600: '#333333',
-            700: '#222222',
-            800: '#111111'
-          }
+        pastel: {
+          pink: '#FFB6C1',
+          lightPink: '#FFC8DD',
+          hotPink: '#FF91A7',
+          accent: '#FFA5B9',
+          purple: '#C8B6FF',
+          lightPurple: '#E0B0FF',
+          blue: '#A5BED5',
+          mint: '#BDFFD8',
+          yellow: '#FFF9B6',
+          peach: '#FFDAB9',
+          cream: '#FEF7ED',
+          darkBlue: '#1A1B26',
+          textDark: '#5A5A7A',
+          textLight: '#E9EDEF',
         },
         sidebar: {
           DEFAULT: 'hsl(var(--sidebar-background))',
