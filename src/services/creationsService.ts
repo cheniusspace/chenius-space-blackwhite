@@ -74,7 +74,7 @@ export const fetchCreations = async (tagFilter?: string | null): Promise<Creatio
     }
 
     // Transform the data to match our Creation type
-    const transformedData = (data || []).map(creation => {
+    const transformedData: Creation[] = (data || []).map(creation => {
       // Extract tags from nested structure
       const tags = creation.tags?.map(tag => tag.tags) || [];
       
@@ -85,46 +85,46 @@ export const fetchCreations = async (tagFilter?: string | null): Promise<Creatio
       return {
         id: creation.id,
         title: creation.title,
-        // Use image_url or empty string when featured_image is not available
-        featured_image: creation.featured_image || creation.image_url || "",
+        // Handle the image field - featured_image doesn't exist in DB yet
+        featured_image: creation.image_url || "",
         date: creation.date,
         created_at: creation.created_at,
         updated_at: creation.updated_at,
         status: status,
         // Create default structure for new fields
-        overview: creation.overview ? creation.overview : {
+        overview: {
           text: creation.description || "",
           images: []
         },
-        motivation: creation.motivation ? creation.motivation : {
+        motivation: {
           text: "",
           images: []
         },
-        tools: creation.tools ? creation.tools : {
-          text: "",
-          list: [],
-          images: []
-        },
-        achievements: creation.achievements ? creation.achievements : {
+        tools: {
           text: "",
           list: [],
           images: []
         },
-        downsides: creation.downsides ? creation.downsides : {
+        achievements: {
           text: "",
           list: [],
           images: []
         },
-        gallery: creation.gallery ? creation.gallery : {
+        downsides: {
+          text: "",
+          list: [],
+          images: []
+        },
+        gallery: {
           images: [],
           captions: []
         },
-        future_plans: creation.future_plans ? creation.future_plans : {
+        future_plans: {
           text: "",
           list: [],
           images: []
         },
-        conclusion: creation.conclusion ? creation.conclusion : {
+        conclusion: {
           text: "",
           images: []
         },
