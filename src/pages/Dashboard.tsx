@@ -39,6 +39,15 @@ type ActivityItem = {
   icon: React.ReactNode;
 };
 
+type DashboardCreationForm = {
+  title: string;
+  overviewText: string;
+  date: string;
+  featured_image: string;
+  status: CreationStatus;
+  selectedTags: string[];
+}
+
 const Dashboard = () => {
   const { toast } = useToast();
   const { tags } = useTagsList();
@@ -140,13 +149,13 @@ const Dashboard = () => {
   }, [toast]);
 
   // Creation form state
-  const [creation, setCreation] = useState({
+  const [creation, setCreation] = useState<DashboardCreationForm>({
     title: "",
-    description: "",
+    overviewText: "",
     date: new Date().toISOString().split("T")[0],
-    image_url: "",
-    status: "in_progress" as CreationStatus,
-    selectedTags: [] as string[]
+    featured_image: "",
+    status: "in_progress",
+    selectedTags: []
   });
 
   // Handle edit button click
@@ -161,9 +170,9 @@ const Dashboard = () => {
           setEditingCreation(creationToEdit);
           setCreation({
             title: creationToEdit.title,
-            description: creationToEdit.description || "",
+            overviewText: creationToEdit.overview?.text || "",
             date: creationToEdit.date,
-            image_url: creationToEdit.image_url || "",
+            featured_image: creationToEdit.featured_image || "",
             status: creationToEdit.status,
             selectedTags: creationToEdit.tags?.map(tag => tag.id) || []
           });
@@ -196,10 +205,10 @@ const Dashboard = () => {
           .from("creations")
           .update({
             title: creation.title,
-            description: creation.description || null,
+            image_url: creation.featured_image || null, // Use old field name for database compatibility
             date: creation.date,
-            image_url: creation.image_url || null,
-            status: creation.status
+            status: creation.status,
+            description: creation.overviewText || null // Use old field name for database compatibility
           })
           .eq("id", editingCreation.id);
 
@@ -238,10 +247,10 @@ const Dashboard = () => {
           .from("creations")
           .insert({
             title: creation.title,
-            description: creation.description || null,
+            image_url: creation.featured_image || null, // Use old field name for database compatibility
             date: creation.date,
-            image_url: creation.image_url || null,
-            status: creation.status
+            status: creation.status,
+            description: creation.overviewText || null // Use old field name for database compatibility
           })
           .select()
           .single();
@@ -273,9 +282,9 @@ const Dashboard = () => {
       setEditingCreation(null);
       setCreation({
         title: "",
-        description: "",
+        overviewText: "",
         date: new Date().toISOString().split("T")[0],
-        image_url: "",
+        featured_image: "",
         status: "in_progress",
         selectedTags: []
       });
@@ -499,4 +508,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard; 
+export default Dashboard;

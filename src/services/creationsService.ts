@@ -1,3 +1,4 @@
+
 import { supabase } from "@/integrations/supabase/client";
 
 export type Creation = {
@@ -49,32 +50,97 @@ export type Creation = {
   creations_tags?: { tag_id: string }[];
 };
 
-export const fetchCreations = async (): Promise<Creation[]> => {
-  const { data, error } = await supabase
-    .from('creations')
-    .select(`
-      *,
-      creations_tags (
-        tag_id
-      ),
-      tags:creations_tags!inner (
-        tags!inner (
-          id,
-          name
+export const fetchCreations = async (tagFilter?: string | null): Promise<Creation[]> => {
+  try {
+    const { data, error } = await supabase
+      .from('creations')
+      .select(`
+        *,
+        creations_tags (
+          tag_id
+        ),
+        tags:creations_tags!inner (
+          tags!inner (
+            id,
+            name
+          )
         )
-      )
-    `)
-    .order('date', { ascending: false });
+      `)
+      .order('date', { ascending: false });
 
-  if (error) {
-    console.error('Error fetching creations:', error);
-    throw error;
+    if (error) {
+      console.error('Error fetching creations:', error);
+      throw error;
+    }
+
+    // Transform the data to match our Creation type
+    const transformedData = (data || []).map(creation => {
+      // Extract tags from nested structure
+      const tags = creation.tags?.map(tag => tag.tags) || [];
+      
+      // Map database fields to our Creation type
+      return {
+        id: creation.id,
+        title: creation.title,
+        featured_image: creation.image_url || "",  // Map old image_url to featured_image
+        date: creation.date,
+        created_at: creation.created_at,
+        updated_at: creation.updated_at,
+        status: creation.status,
+        // Create default structure for new fields
+        overview: {
+          text: creation.description || "",
+          images: []
+        },
+        motivation: {
+          text: "",
+          images: []
+        },
+        tools: {
+          text: "",
+          list: [],
+          images: []
+        },
+        achievements: {
+          text: "",
+          list: [],
+          images: []
+        },
+        downsides: {
+          text: "",
+          list: [],
+          images: []
+        },
+        gallery: {
+          images: [],
+          captions: []
+        },
+        future_plans: {
+          text: "",
+          list: [],
+          images: []
+        },
+        conclusion: {
+          text: "",
+          images: []
+        },
+        tags,
+        creations_tags: creation.creations_tags
+      };
+    });
+    
+    // Apply tag filtering if a tag is provided
+    if (tagFilter) {
+      return transformedData.filter(creation => 
+        creation.tags?.some(tag => tag.name === tagFilter)
+      );
+    }
+    
+    return transformedData;
+  } catch (error) {
+    console.error('Error in fetchCreations:', error);
+    return creationsData;
   }
-
-  return (data || []).map(creation => ({
-    ...creation,
-    tags: creation.tags?.map(tag => tag.tags) || []
-  }));
 };
 
 // Fallback data in case the API fails

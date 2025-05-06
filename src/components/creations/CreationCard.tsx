@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Creation } from "@/services/creationsService";
 
@@ -41,7 +42,7 @@ export const CreationCard = ({
 
   // Function to strip HTML tags from text
   const stripHtmlTags = (text: string) => {
-    return text.replace(/<[^>]*>/g, '');
+    return text?.replace(/<[^>]*>/g, '') || '';
   };
 
   return (

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -6,17 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, Calendar, Tag as TagIcon, Edit2, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MouseTrail } from "@/components/effects/MouseTrail";
-
-type Creation = {
-  id: string;
-  title: string;
-  description: string | null;
-  category: string;
-  date: string;
-  image_url: string | null;
-  status: 'in_progress' | 'completed' | 'archived';
-  tags?: { id: string; name: string }[];
-};
+import { Creation } from "@/services/creationsService";
 
 const CreationDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -45,17 +36,55 @@ const CreationDetail = () => {
         }
         
         if (data) {
-          const normalizedData = {
-            ...data,
-            date: new Date(data.date).toLocaleDateString('default', { 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric' 
-            }),
-            tags: data.tags ? data.tags.map((tagItem: any) => tagItem.tags) : []
+          // Transform the data to match our Creation type
+          const transformedData: Creation = {
+            id: data.id,
+            title: data.title,
+            featured_image: data.image_url || "",
+            date: data.date,
+            created_at: data.created_at,
+            updated_at: data.updated_at,
+            status: data.status as 'in_progress' | 'completed' | 'archived',
+            tags: data.tags ? data.tags.map((tagItem: any) => tagItem.tags) : [],
+            overview: {
+              text: data.description || "",
+              images: []
+            },
+            motivation: {
+              text: "",
+              images: []
+            },
+            tools: {
+              text: "",
+              list: [],
+              images: []
+            },
+            achievements: {
+              text: "",
+              list: [],
+              images: []
+            },
+            downsides: {
+              text: "",
+              list: [],
+              images: []
+            },
+            gallery: {
+              images: [],
+              captions: []
+            },
+            future_plans: {
+              text: "",
+              list: [],
+              images: []
+            },
+            conclusion: {
+              text: "",
+              images: []
+            }
           };
           
-          setCreation(normalizedData);
+          setCreation(transformedData);
         }
       } catch (error) {
         console.error("Error fetching creation:", error);
@@ -155,7 +184,7 @@ const CreationDetail = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                  <span className="text-sm text-white/50 tracking-widest uppercase">{creation.category}</span>
+                  <span className="text-sm text-white/50 tracking-widest uppercase">{creation.overview?.text.substring(0, 20)}...</span>
                 </div>
                 <h1 className="text-4xl md:text-5xl font-light tracking-tight">
                   {creation.title}
@@ -166,7 +195,11 @@ const CreationDetail = () => {
                   </span>
                   <span className="text-white/50 flex items-center gap-2">
                     <Calendar size={16} />
-                    {creation.date}
+                    {new Date(creation.date).toLocaleDateString('default', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}
                   </span>
                 </div>
               </div>
@@ -179,10 +212,10 @@ const CreationDetail = () => {
           {/* Content */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2 space-y-8">
-              {creation.image_url ? (
+              {creation.featured_image ? (
                 <div className="relative aspect-video rounded-none overflow-hidden bg-white/5">
                   <img 
-                    src={creation.image_url} 
+                    src={creation.featured_image} 
                     alt={creation.title} 
                     className="w-full h-full object-cover object-center"
                   />
@@ -195,10 +228,10 @@ const CreationDetail = () => {
               )}
               
               <div className="prose prose-invert max-w-none">
-                {creation.description ? (
+                {creation.overview?.text ? (
                   <div 
                     className="text-lg leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: creation.description }}
+                    dangerouslySetInnerHTML={{ __html: creation.overview.text }}
                   />
                 ) : (
                   <p className="text-white/50">No description available.</p>
@@ -215,7 +248,11 @@ const CreationDetail = () => {
                     <Calendar className="h-5 w-5 text-white/50 mt-0.5" />
                     <div>
                       <p className="text-sm text-white/50">Date</p>
-                      <p className="font-medium">{creation.date}</p>
+                      <p className="font-medium">{new Date(creation.date).toLocaleDateString('default', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                      })}</p>
                     </div>
                   </div>
                   
