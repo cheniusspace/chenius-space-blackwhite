@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const Rain = () => {
@@ -20,4 +21,4 @@ const Rain = () => {
   );
 };
 
-export default Rain; 
+export default Rain;
