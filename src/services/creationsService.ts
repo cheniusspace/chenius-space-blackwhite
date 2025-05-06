@@ -78,15 +78,18 @@ export const fetchCreations = async (tagFilter?: string | null): Promise<Creatio
       // Extract tags from nested structure
       const tags = creation.tags?.map(tag => tag.tags) || [];
       
+      // Cast status to the correct type to ensure it matches our union type
+      const status = creation.status as 'in_progress' | 'completed' | 'archived';
+      
       // Map database fields to our Creation type
       return {
         id: creation.id,
         title: creation.title,
-        featured_image: creation.image_url || "",  // Map old image_url to featured_image
+        featured_image: creation.featured_image || creation.image_url || "",  // Map both image fields
         date: creation.date,
         created_at: creation.created_at,
         updated_at: creation.updated_at,
-        status: creation.status,
+        status: status,
         // Create default structure for new fields
         overview: {
           text: creation.description || "",

@@ -662,9 +662,9 @@ export default function Index() {
                     className={`group ${index === 0 ? 'md:col-span-2' : ''}`}
                   >
                     <div className="relative aspect-[4/3] overflow-hidden rounded-none bg-white/5">
-                      {creation.image_url && (
+                      {creation.featured_image && (
                         <img
-                          src={creation.image_url}
+                          src={creation.featured_image}
                           alt={creation.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
@@ -674,10 +674,14 @@ export default function Index() {
                         <div className="space-y-4">
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
-                            <span className="text-xs text-white/50 tracking-widest">{creation.category}</span>
+                            <span className="text-xs text-white/50 tracking-widest">
+                              {creation.tags && creation.tags.length > 0 ? creation.tags[0].name : "Creation"}
+                            </span>
                           </div>
                           <h3 className="text-2xl font-light">{creation.title}</h3>
-                          <p className="text-sm text-white/70 line-clamp-2">{creation.description}</p>
+                          <p className="text-sm text-white/70 line-clamp-2">
+                            {creation.overview && creation.overview.text}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -904,200 +908,4 @@ export default function Index() {
                       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <div className="relative flex items-center gap-3">
                         <svg className="w-6 h-6 text-white/60 group-hover:text-white/90 transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
-                        </svg>
-                        <span className="text-sm text-white/60 group-hover:text-white/90 transition-colors">Join Discord Channel</span>
-                      </div>
-                    </a>
-                  </div>
-                  <p className="text-xl text-white/80 leading-relaxed">
-                    Have a project in mind or just want to say hello? I'd love to hear from you.
-                  </p>
-                  <form className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label htmlFor="name" className="block text-sm text-white/50 tracking-widest">NAME</label>
-                        <input
-                          type="text"
-                          id="name"
-                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-none text-white placeholder-white/30 focus:outline-none focus:border-white/20 transition-colors"
-                          placeholder="Your name"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="email" className="block text-sm text-white/50 tracking-widest">EMAIL</label>
-                        <input
-                          type="email"
-                          id="email"
-                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-none text-white placeholder-white/30 focus:outline-none focus:border-white/20 transition-colors"
-                          placeholder="your@email.com"
-                        />
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="message" className="block text-sm text-white/50 tracking-widest">MESSAGE</label>
-                      <textarea
-                        id="message"
-                        rows={4}
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-none text-white placeholder-white/30 focus:outline-none focus:border-white/20 transition-colors resize-none"
-                        placeholder="Your message..."
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="group flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 rounded-none transition-all duration-300"
-                    >
-                      <span className="text-white group-hover:text-white/90 transition-colors tracking-widest">SEND MESSAGE</span>
-                      <MessageSquare size={20} className="text-white/60 group-hover:text-white/90 transition-colors" />
-                    </button>
-                  </form>
-                </div>
-
-                {/* Right Column - Stalk Me */}
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-none" />
-                  <div className="relative h-full min-h-[300px] flex items-center justify-center p-8">
-                    <div className="text-center space-y-8 w-full">
-                      <div className="grid grid-cols-1 gap-12">
-                        {/* Music Platforms */}
-                        <div className="space-y-4">
-                          <p className="text-white/50 text-sm tracking-widest">MUSIC</p>
-                          <div className="grid grid-cols-3 gap-4">
-                            <a 
-                              href="https://music.youtube.com" 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="group relative flex items-center justify-center bg-white/5 hover:bg-white/10 transition-all duration-300 overflow-hidden p-4 rounded-none"
-                            >
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                              <div className="relative flex items-center gap-3">
-                                <svg className="w-6 h-6 text-white/60 group-hover:text-white/90 transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                                </svg>
-                                <span className="text-sm text-white/90">YouTube Music</span>
-                              </div>
-                            </a>
-                            <a 
-                              href="https://open.spotify.com" 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="group relative flex items-center justify-center bg-white/5 hover:bg-white/10 transition-all duration-300 overflow-hidden p-4 rounded-none"
-                            >
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                              <div className="relative flex items-center gap-3">
-                                <svg className="w-6 h-6 text-white/60 group-hover:text-white/90 transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-2 10c0 1.657 1.343 3 3 3s3-1.343 3-3-1.343-3-3-3-3 1.343-3 3zm3-5c-2.761 0-5 2.239-5 5s2.239 5 5 5 5-2.239 5-5-2.239-5-5-5zm0 2c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3 3z"/>
-                                </svg>
-                                <span className="text-sm text-white/90">Spotify</span>
-                              </div>
-                            </a>
-                            <a 
-                              href="https://music.apple.com" 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="group relative flex items-center justify-center bg-white/5 hover:bg-white/10 transition-all duration-300 overflow-hidden p-4 rounded-none"
-                            >
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                              <div className="relative flex items-center gap-3">
-                                <svg className="w-6 h-6 text-white/60 group-hover:text-white/90 transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-2 10c0 1.657 1.343 3 3 3s3-1.343 3-3-1.343-3-3-3-3 1.343-3 3zm3-5c-2.761 0-5 2.239-5 5s2.239 5 5 5 5-2.239 5-5-2.239-5-5-5zm0 2c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3 3z"/>
-                                </svg>
-                                <span className="text-sm text-white/90">Apple Music</span>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-
-                        {/* Design & Visual */}
-                        <div className="space-y-4">
-                          <p className="text-white/50 text-sm tracking-widest">DESIGN & VISUAL</p>
-                          <div className="grid grid-cols-3 gap-4">
-                            <a 
-                              href="https://dribbble.com/cheniusspace" 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="group relative flex items-center justify-center bg-white/5 hover:bg-white/10 transition-all duration-300 overflow-hidden p-4 rounded-none"
-                            >
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                              <div className="relative flex items-center gap-3">
-                                <svg className="w-6 h-6 text-white/60 group-hover:text-white/90 transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M12 24c-6.627 0-12-5.373-12-12s5.373-12 12-12 12 5.373 12 12-5.373 12-12 12zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                </svg>
-                                <span className="text-sm text-white/60 group-hover:text-white/90 transition-colors">Dribbble</span>
-                              </div>
-                            </a>
-                            <a 
-                              href="https://www.pinterest.com/cheniusspace/" 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="group relative flex items-center justify-center bg-white/5 hover:bg-white/10 transition-all duration-300 overflow-hidden p-4 rounded-none"
-                            >
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                              <div className="relative flex items-center gap-3">
-                                <svg className="w-6 h-6 text-white/60 group-hover:text-white/90 transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-2 10c0 1.657 1.343 3 3 3s3-1.343 3-3-1.343-3-3-3-3 1.343-3 3zm3-5c-2.761 0-5 2.239-5 5s2.239 5 5 5 5-2.239 5-5-2.239-5-5-5zm0 2c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3 3z"/>
-                                </svg>
-                                <span className="text-sm text-white/60 group-hover:text-white/90 transition-colors">Pinterest</span>
-                              </div>
-                            </a>
-                            <a 
-                              href="https://www.instagram.com/cheniusspace" 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="group relative flex items-center justify-center bg-white/5 hover:bg-white/10 transition-all duration-300 overflow-hidden p-4 rounded-none"
-                            >
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                              <div className="relative flex items-center gap-3">
-                                <svg className="w-6 h-6 text-white/60 group-hover:text-white/90 transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M12 2.163c3.204 0 3.584.014 4.85.072 4.358.2 6.78 2.618 6.98 6.98.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                </svg>
-                                <span className="text-sm text-white/60 group-hover:text-white/90 transition-colors">Instagram</span>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-
-                        {/* Social & Development Platforms */}
-                        <div className="space-y-4">
-                          <p className="text-white/50 text-sm tracking-widest">SOCIAL & DEVELOPMENT</p>
-                          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <a 
-                              href="https://discord.gg/yWuTjstH" 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="group relative flex items-center justify-center bg-white/5 hover:bg-white/10 transition-all duration-300 overflow-hidden p-4 rounded-none"
-                            >
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                              <div className="relative flex items-center gap-3">
-                                <svg className="w-6 h-6 text-white/60 group-hover:text-white/90 transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
-                                </svg>
-                                <span className="text-sm text-white/60 group-hover:text-white/90 transition-colors">Discord</span>
-                              </div>
-                            </a>
-                            <a 
-                              href="mailto:your-email@example.com" 
-                              className="group relative flex items-center justify-center bg-white/5 hover:bg-white/10 transition-all duration-300 overflow-hidden p-4 rounded-none"
-                            >
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                              <div className="relative flex items-center gap-3">
-                                <svg className="w-6 h-6 text-white/60 group-hover:text-white/90 transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
-                                </svg>
-                                <span className="text-sm text-white/60 group-hover:text-white/90 transition-colors">Email</span>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  );
-}
+                          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.37
