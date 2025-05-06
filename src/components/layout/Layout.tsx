@@ -16,7 +16,7 @@ export default function Layout({ children }: LayoutProps) {
     <div className={`min-h-screen w-full flex flex-col transition-colors duration-300 ${
       isDark 
         ? "bg-[var(--color-Dark-600)] text-[var(--color-Dark-50)]" 
-        : "bg-[var(--color-Dark-600)] text-[var(--color-Dark-50)]"
+        : "bg-[var(--color-Light-600)] text-[var(--color-Light-50)]"
     }`}>
       <Rain />
       <Header />

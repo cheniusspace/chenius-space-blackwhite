@@ -10,7 +10,7 @@ const Rain = () => {
       {Array.from({ length: 100 }).map((_, i) => (
         <div
           key={i}
-          className={`rain-drop absolute w-[1px] ${isDark ? 'bg-pastel-purple/30' : 'bg-pastel-pink/30'}`}
+          className={`rain-drop absolute w-[1px] ${isDark ? 'bg-[#C8B6FF]/30' : 'bg-[#FFB6C1]/30'}`}
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
