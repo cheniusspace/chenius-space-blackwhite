@@ -85,45 +85,46 @@ export const fetchCreations = async (tagFilter?: string | null): Promise<Creatio
       return {
         id: creation.id,
         title: creation.title,
-        featured_image: creation.featured_image || creation.image_url || "",  // Map both image fields
+        // Use image_url or empty string when featured_image is not available
+        featured_image: creation.featured_image || creation.image_url || "",
         date: creation.date,
         created_at: creation.created_at,
         updated_at: creation.updated_at,
         status: status,
         // Create default structure for new fields
-        overview: {
+        overview: creation.overview ? creation.overview : {
           text: creation.description || "",
           images: []
         },
-        motivation: {
+        motivation: creation.motivation ? creation.motivation : {
           text: "",
           images: []
         },
-        tools: {
-          text: "",
-          list: [],
-          images: []
-        },
-        achievements: {
+        tools: creation.tools ? creation.tools : {
           text: "",
           list: [],
           images: []
         },
-        downsides: {
+        achievements: creation.achievements ? creation.achievements : {
           text: "",
           list: [],
           images: []
         },
-        gallery: {
+        downsides: creation.downsides ? creation.downsides : {
+          text: "",
+          list: [],
+          images: []
+        },
+        gallery: creation.gallery ? creation.gallery : {
           images: [],
           captions: []
         },
-        future_plans: {
+        future_plans: creation.future_plans ? creation.future_plans : {
           text: "",
           list: [],
           images: []
         },
-        conclusion: {
+        conclusion: creation.conclusion ? creation.conclusion : {
           text: "",
           images: []
         },
