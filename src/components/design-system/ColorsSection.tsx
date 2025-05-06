@@ -20,17 +20,17 @@ const ColorsSection = () => {
               </div>
             </div>
             <div className="space-y-2">
-              <div className={`h-24 ${isDark ? "bg-[#C8B6FF]" : "bg-[#FFB6C1]"} rounded-lg border border-white/10`}></div>
+              <div className={`h-24 ${isDark ? "bg-[#C8B6FF]" : "bg-[#FFD6FF]"} rounded-lg border border-white/10`}></div>
               <div className="text-center">
                 <p className="font-bold">{isDark ? "Pastel Purple" : "Pastel Pink"}</p>
-                <p className="text-sm text-white/60">{isDark ? "#C8B6FF" : "#FFB6C1"}</p>
+                <p className="text-sm text-white/60">{isDark ? "#C8B6FF" : "#FFD6FF"}</p>
               </div>
             </div>
             <div className="space-y-2">
-              <div className={`h-24 ${isDark ? "bg-[#A5BED5]" : "bg-[#FFC8DD]"} rounded-lg border border-white/10`}></div>
+              <div className={`h-24 ${isDark ? "bg-[#A5BED5]" : "bg-[#D3E4FD]"} rounded-lg border border-white/10`}></div>
               <div className="text-center">
-                <p className="font-bold">{isDark ? "Pastel Blue" : "Light Pink"}</p>
-                <p className="text-sm text-white/60">{isDark ? "#A5BED5" : "#FFC8DD"}</p>
+                <p className="font-bold">{isDark ? "Pastel Blue" : "Soft Blue"}</p>
+                <p className="text-sm text-white/60">{isDark ? "#A5BED5" : "#D3E4FD"}</p>
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@ const ColorsSection = () => {
                   <p className={`${isDark ? "text-[#E9EDEF]/80" : "text-[#5A5A7A]/80"}`}>Secondary Text</p>
                   <p className={`${isDark ? "text-[#E9EDEF]/60" : "text-[#5A5A7A]/60"}`}>Tertiary Text</p>
                 </div>
-                <div className={`p-4 ${isDark ? "bg-[#A5BED5]/10" : "bg-[#FFB6C1]/10"} rounded-lg`}>
+                <div className={`p-4 ${isDark ? "bg-[#C8B6FF]/10" : "bg-[#FFD6FF]/10"} rounded-lg`}>
                   <p className={`${isDark ? "text-[#E9EDEF]" : "text-[#5A5A7A]"}`}>Primary Text</p>
                   <p className={`${isDark ? "text-[#E9EDEF]/90" : "text-[#5A5A7A]/90"}`}>Secondary Text</p>
                 </div>
@@ -56,13 +56,13 @@ const ColorsSection = () => {
             <div className="space-y-4">
               <h4 className="font-bold">Accent Colors</h4>
               <div className="space-y-2">
-                <div className={`p-4 ${isDark ? "bg-[#A891FF]" : "bg-[#FF91A7]"} rounded-lg`}>
+                <div className={`p-4 ${isDark ? "bg-[#B8A5FF]" : "bg-[#FFA5B9]"} rounded-lg`}>
                   <p className="text-white">Accent Color Primary</p>
                 </div>
-                <div className={`p-4 ${isDark ? "bg-[#B8A5FF]" : "bg-[#FFA5B9]"} rounded-lg`}>
+                <div className={`p-4 ${isDark ? "bg-[#C8B6FF]" : "bg-[#FFB6C1]"} rounded-lg`}>
                   <p className="text-white">Accent Color Secondary</p>
                 </div>
-                <div className={`p-4 ${isDark ? "bg-[#C8B6FF]" : "bg-[#FFB6C1]"} rounded-lg`}>
+                <div className={`p-4 ${isDark ? "bg-[#D1BFFF]" : "bg-[#FFD6FF]"} rounded-lg`}>
                   <p className="text-white">Accent Color Tertiary</p>
                 </div>
               </div>
@@ -76,7 +76,7 @@ const ColorsSection = () => {
             <li>Use {isDark ? "dark blue (#1A1B26)" : "soft cream (#FEF7ED)"} as the primary background color</li>
             <li>Use {isDark ? "light blue/white (#E9EDEF)" : "muted purple (#5A5A7A)"} for primary text</li>
             <li>Apply accent colors for highlighting and interactive elements</li>
-            <li>Use {isDark ? "pastel purple (#C8B6FF)" : "pastel pink (#FFB6C1)"} for borders and decorative elements</li>
+            <li>Use {isDark ? "pastel purple (#C8B6FF)" : "pastel pink (#FFD6FF)"} for borders and decorative elements</li>
             <li>Use text with 80% opacity for secondary text</li>
             <li>Use text with 60% opacity for tertiary text and less important elements</li>
             <li>Maintain consistent border opacity (10%) for subtle separation</li>

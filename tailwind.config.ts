@@ -56,13 +56,13 @@ export default {
           foreground: 'hsl(var(--card-foreground))'
         },
         pastel: {
-          pink: '#FFB6C1',
-          lightPink: '#FFC8DD',
-          hotPink: '#FF91A7',
+          pink: '#FFD6FF',
+          lightPink: '#FFB6C1', 
+          hotPink: '#FFA5B9',
           accent: '#FFA5B9',
           purple: '#C8B6FF',
           lightPurple: '#E0B0FF',
-          blue: '#A5BED5',
+          blue: '#D3E4FD',
           mint: '#BDFFD8',
           yellow: '#FFF9B6',
           peach: '#FFDAB9',
@@ -142,11 +142,11 @@ export default {
           900: '#050608',
         },
         homepage: {
-          pink: '#ffd6ff',
-          blue: '#37c6ff',
-          purple: '#c8bff',
-          lavender: '#b8c0ff',
-          lightBlue: '#bbd0ff'
+          pink: '#FFD6FF',
+          blue: '#D3E4FD',
+          purple: '#C8B6FF',
+          lavender: '#E0B0FF',
+          lightBlue: '#D3E4FD'
         },
       },
       borderRadius: {
