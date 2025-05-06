@@ -139,6 +139,13 @@ export default {
           800: '#0A0B0F',
           900: '#050608',
         },
+        homepage: {
+          pink: '#ffd6ff',
+          blue: '#37c6ff',
+          purple: '#c8bff',
+          lavender: '#b8c0ff',
+          lightBlue: '#bbd0ff'
+        },
       },
       borderRadius: {
         lg: '0',
@@ -187,9 +194,9 @@ export default {
         'orbit': 'orbit 3s ease-in-out infinite'
       },
       fontSize: {
-        'xs': ['0.675rem', { lineHeight: '1.125rem' }],
-        'sm': ['0.7875rem', { lineHeight: '1.35rem' }],
-        'base': ['0.9rem', { lineHeight: '1.53rem' }],
+        'xs': ['0.7rem', { lineHeight: '1.125rem' }],
+        'sm': ['0.8rem', { lineHeight: '1.35rem' }],
+        'base': ['1rem', { lineHeight: '1.53rem' }],
         'lg': ['1.0125rem', { lineHeight: '1.62rem' }],
         'xl': ['1.125rem', { lineHeight: '1.71rem' }],
         '2xl': ['1.35rem', { lineHeight: '1.8rem' }],
@@ -234,4 +241,11 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
+  corePlugins: {
+    preflight: false,
+  },
+  important: true,
+  safelist: [
+    'tracking-wide'
+  ]
 } satisfies Config;

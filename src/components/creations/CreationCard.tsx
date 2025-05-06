@@ -1,58 +1,104 @@
-
 import { Link } from "react-router-dom";
+import { Creation } from "@/services/creationsService";
 
-type CreationCardProps = {
-  id: string;
-  title: string;
-  category: string;
-  date: string;
-  imageClass?: string; // Make it optional with the ? mark
-  image_url: string | null;
-  tags?: { id: string; name: string }[];
-};
+type CreationCardProps = Creation;
 
 export const CreationCard = ({ 
   id, 
   title, 
-  category, 
   date, 
-  imageClass = "bg-gray-200", // Provide a default value if not supplied
-  image_url, 
-  tags 
+  imageClass = "bg-gray-200",
+  featured_image, 
+  status,
+  tags,
+  overview
 }: CreationCardProps) => {
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'in_progress':
+        return 'bg-white/10 text-white/70';
+      case 'completed':
+        return 'bg-white/20 text-white/90';
+      case 'archived':
+        return 'bg-white/5 text-white/50';
+      default:
+        return 'bg-white/10 text-white/70';
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case 'in_progress':
+        return 'In Progress';
+      case 'completed':
+        return 'Completed';
+      case 'archived':
+        return 'Archived';
+      default:
+        return status;
+    }
+  };
+
+  // Function to strip HTML tags from text
+  const stripHtmlTags = (text: string) => {
+    return text.replace(/<[^>]*>/g, '');
+  };
+
   return (
     <Link 
       to={`/creations/${id}`} 
-      className="group block"
+      className="group block relative overflow-hidden bg-white/5 hover:bg-white/10 transition-colors duration-300"
     >
-      {image_url ? (
-        <div className="aspect-[4/5] mb-4 transition-transform duration-500 group-hover:scale-[0.98]">
+      <div className="relative aspect-[4/3] overflow-hidden">
+        {featured_image ? (
           <img 
-            src={image_url} 
-            alt={title} 
-            className="w-full h-full object-cover"
+            src={featured_image} 
+            alt={stripHtmlTags(title)} 
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-        </div>
-      ) : (
-        <div className={`aspect-[4/5] ${imageClass} mb-4 transition-transform duration-500 group-hover:scale-[0.98]`} />
-      )}
-      <h3 className="text-lg font-heading font-light">{title}</h3>
-      <div className="flex justify-between mt-2 text-sm text-chenius-gray-500 font-body">
-        <span>{category}</span>
-        <span>{date}</span>
+        ) : (
+          <div className={`w-full h-full ${imageClass} transition-transform duration-500 group-hover:scale-105`} />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
-      {tags && tags.length > 0 && (
-        <div className="mt-2 flex flex-wrap gap-2">
-          {tags.map((tag, index) => (
-            <span 
-              key={tag.id || index} 
-              className="text-xs bg-chenius-gray-100 px-2 py-1 rounded-none font-body font-light uppercase tracking-wider"
-            >
-              {tag.name}
-            </span>
-          ))}
+      
+      <div className="p-6">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+          <span className={`text-sm tracking-widest uppercase px-2 py-1 ${getStatusColor(status)}`}>
+            {getStatusText(status)}
+          </span>
         </div>
-      )}
+        
+        <h3 className="text-xl font-light mb-2">{stripHtmlTags(title)}</h3>
+        
+        {overview && (
+          <p className="text-sm text-white/70 mb-4 line-clamp-2">
+            {stripHtmlTags(overview.text)}
+          </p>
+        )}
+        
+        <div className="flex justify-between items-center text-sm text-white/50">
+          <span>{new Date(date).toLocaleDateString('default', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          })}</span>
+        </div>
+
+        {tags && tags.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {tags.map((tag, index) => (
+              <span 
+                key={tag.id || index} 
+                className="text-xs bg-white/10 text-white/70 px-3 py-1 rounded-none font-medium uppercase tracking-wider"
+              >
+                {tag.name}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
     </Link>
   );
 };

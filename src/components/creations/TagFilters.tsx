@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -6,7 +5,7 @@ import { useTagsList } from "@/hooks/useTagsList";
 
 interface TagFiltersProps {
   selectedTag: string | null;
-  onTagFilter: (tagId: string | null) => void;
+  onTagFilter: (tagName: string | null) => void;
 }
 
 export const TagFilters = ({ selectedTag, onTagFilter }: TagFiltersProps) => {
@@ -14,13 +13,13 @@ export const TagFilters = ({ selectedTag, onTagFilter }: TagFiltersProps) => {
   
   return (
     <div className="mb-12">
-      <div className="flex space-x-4 overflow-x-auto pb-4">
+      <div className="flex flex-wrap gap-2">
         <button 
           onClick={() => onTagFilter(null)}
-          className={`px-4 py-2 rounded-none text-sm whitespace-nowrap font-body uppercase tracking-wider ${
+          className={`px-4 py-2 rounded-none text-sm font-medium transition-all duration-200 ${
             selectedTag === null 
-              ? "bg-black text-white" 
-              : "bg-white border border-chenius-gray-200 hover:bg-chenius-gray-100"
+              ? "bg-white text-black" 
+              : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
           }`}
         >
           All Works
@@ -28,11 +27,11 @@ export const TagFilters = ({ selectedTag, onTagFilter }: TagFiltersProps) => {
         {tags.map(tag => (
           <button 
             key={tag.id}
-            onClick={() => onTagFilter(tag.id)}
-            className={`px-4 py-2 rounded-none text-sm whitespace-nowrap font-body uppercase tracking-wider ${
-              selectedTag === tag.id 
-                ? "bg-black text-white" 
-                : "bg-white border border-chenius-gray-200 hover:bg-chenius-gray-100"
+            onClick={() => onTagFilter(tag.name)}
+            className={`px-4 py-2 rounded-none text-sm font-medium transition-all duration-200 ${
+              selectedTag === tag.name 
+                ? "bg-white text-black" 
+                : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
             }`}
           >
             {tag.name}

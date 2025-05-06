@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CardGrid } from "@/components/ui/card-grid";
-import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import { TagFilters } from "@/components/creations/TagFilters";
 import { CreationCard } from "@/components/creations/CreationCard";
 import { fetchCreations, creationsData, type Creation } from "@/services/creationsService";
+import { MouseTrail } from "@/components/effects/MouseTrail";
 
 const Creations = () => {
   const [creations, setCreations] = useState<Creation[]>([]);
@@ -38,42 +36,48 @@ const Creations = () => {
   }, [selectedTag, toast]);
 
   return (
-    <div className="container px-4 md:px-6 max-w-7xl mx-auto py-12">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
-        <SectionHeading
-          title="Creations"
-          description="A collection of visual works, designs, and creative projects presented in monochromatic elegance."
-          className="mb-0"
-        />
-        
-        <Button asChild>
-          <Link to="/add-content" className="flex items-center gap-2 whitespace-nowrap">
-            <Plus size={16} />
-            Add Creation
-          </Link>
-        </Button>
+    <div className="w-full subtle-grid bg-gray-500 text-white">
+      <MouseTrail />
+      <div className="relative z-10 font-['Jost']">
+        <div className="container mx-auto px-4 max-w-screen-xl py-24">
+          <div className="mb-16">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-0.5 bg-gradient-to-r from-white/50 to-transparent" />
+              <span className="text-sm text-white/50 tracking-widest uppercase">Creative Works</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl tracking-wide">
+              <span className="text-white font-extralight">CHENIUS </span>
+              <span className="text-white/80 font-bold">Creations</span>
+            </h2>
+            <p className="text-lg md:text-xl text-white/80 max-w-3xl leading-relaxed mt-6">
+              A collection of visual works, designs, and creative projects made with heart and boba.
+            </p>
+          </div>
+
+          <div className="mb-8">
+            <TagFilters 
+              selectedTag={selectedTag} 
+              onTagFilter={setSelectedTag} 
+            />
+          </div>
+
+          {isLoading ? (
+            <div className="min-h-[300px] flex items-center justify-center">
+              <div className="animate-pulse text-white/50">Loading...</div>
+            </div>
+          ) : creations.length > 0 ? (
+            <CardGrid>
+              {creations.map((item) => (
+                <CreationCard key={item.id} {...item} />
+              ))}
+            </CardGrid>
+          ) : (
+            <div className="min-h-[300px] flex items-center justify-center">
+              <div className="text-white/50">No creations found</div>
+            </div>
+          )}
+        </div>
       </div>
-
-      <TagFilters 
-        selectedTag={selectedTag} 
-        onTagFilter={setSelectedTag} 
-      />
-
-      {isLoading ? (
-        <div className="min-h-[300px] flex items-center justify-center">
-          <div className="animate-pulse text-platinum-500/50">Loading...</div>
-        </div>
-      ) : creations.length > 0 ? (
-        <CardGrid>
-          {creations.map((item) => (
-            <CreationCard key={item.id} {...item} />
-          ))}
-        </CardGrid>
-      ) : (
-        <div className="min-h-[300px] flex items-center justify-center">
-          <div className="text-platinum-500/50">No creations found</div>
-        </div>
-      )}
     </div>
   );
 };

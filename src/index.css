@@ -21,52 +21,52 @@
 
 @layer base {
   :root {
-    --background: #FFFFFF;
-    --foreground: #0C0A17;
-    --card: #FFFFFF;
-    --card-foreground: #0C0A17;
-    --popover: #FFFFFF;
-    --popover-foreground: #0C0A17;
-    --primary: #0C0A17;
-    --primary-foreground: #FFFFFF;
-    --secondary: #F1F3F5;
-    --secondary-foreground: #0C0A17;
-    --muted: #F1F3F5;
-    --muted-foreground: #6B7280;
-    --accent: #F1F3F5;
-    --accent-foreground: #0C0A17;
-    --destructive: #EF4444;
-    --destructive-foreground: #FFFFFF;
-    --border: #E5E7EB;
-    --input: #E5E7EB;
-    --ring: #0C0A17;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: #0C0A17;
-    --foreground: #E9EDEF;
-    --card: #0C0A17;
-    --card-foreground: #E9EDEF;
-    --popover: #0C0A17;
-    --popover-foreground: #E9EDEF;
-    --primary: #E9EDEF;
-    --primary-foreground: #0C0A17;
-    --secondary: #434D61;
-    --secondary-foreground: #E9EDEF;
-    --muted: #61697D;
-    --muted-foreground: #D5DBDF;
-    --accent: #434D61;
-    --accent-foreground: #E9EDEF;
-    --destructive: #434D61;
-    --destructive-foreground: #E9EDEF;
-    --border: #434D61;
-    --input: #434D61;
-    --ring: #D5DBDF;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
 
   * {
-    @apply border-border;
+    @apply border-border tracking-wide;
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, auto;
   }
 
@@ -79,10 +79,10 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground tracking-wide;
     font-family: 'Jost', sans-serif;
     font-weight: 300;
-    background-color: #0C0A17;
+    background-color: #111111;
     color: #E9EDEF;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -235,8 +235,8 @@
 
 /* Subtle Grid Background */
 .subtle-grid {
-  background-color: #0C0A17;
-  background-image: radial-gradient(circle at center, rgba(246, 192, 198, 0.15) 1px, transparent 1px);
+  background-color: #111111;
+  background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
   background-size: 30px 30px;
   background-position: center;
   position: relative;
@@ -245,12 +245,8 @@
 
 /* Refined Navigation */
 .refined-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  backdrop-filter: blur(4px);
+  @apply fixed top-0 left-0 right-0 z-50 backdrop-blur-sm;
+  background-color: rgba(18, 18, 18, 0.8);
   border-bottom: 1px solid rgba(32, 34, 46, 0.1);
 }
 
@@ -951,5 +947,40 @@
 .button-pink:hover {
   border-color: #F2A6AD;
   color: #F2A6AD;
+}
+
+/* Enhance readability and aesthetics */
+.text-gradient {
+  background: linear-gradient(to right, #ffd6ff, #37c6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #ffd6ff 0%, #37c6ff 50%, #b8c0ff 100%);
+}
+
+.gradient-border {
+  border: 1px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, #ffd6ff, #37c6ff, #b8c0ff) border-box;
+}
+
+.section-transition {
+  transition: all 0.5s ease;
+}
+
+.section-transition:hover {
+  transform: translateY(-5px);
+}
+
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, rgba(255, 214, 255, 0.1), rgba(55, 198, 255, 0.1));
 }
 

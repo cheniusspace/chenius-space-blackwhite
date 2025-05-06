@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 
 export const MouseTrail = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const isHoveringClickable = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -29,10 +30,10 @@ export const MouseTrail = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       for (let i = 0; i < trail.length; i++) {
-        const alpha = 0.3 - (i / trailLength) * 0.3; // Reduced opacity
+        const alpha = isHoveringClickable.current ? 0.5 : 0.3 - (i / trailLength) * 0.3; // Increased opacity for clickable elements
         ctx.save();
         ctx.beginPath();
-        ctx.arc(trail[i].x, trail[i].y, 5, 0, Math.PI * 2);
+        ctx.arc(trail[i].x, trail[i].y, isHoveringClickable.current ? 8 : 5, 0, Math.PI * 2); // Larger size for clickable elements
         ctx.fillStyle = `rgba(${trailColor},${alpha})`;
         ctx.closePath();
         ctx.fill();
@@ -50,6 +51,17 @@ export const MouseTrail = () => {
 
     const handleMouseMove = (e: MouseEvent) => {
       addTrailPoint(e.clientX, e.clientY);
+      
+      // Check if mouse is over a clickable element
+      const element = document.elementFromPoint(e.clientX, e.clientY);
+      const isClickable = element?.tagName === 'A' || 
+                         element?.tagName === 'BUTTON' || 
+                         element?.closest('a') !== null || 
+                         element?.closest('button') !== null ||
+                         element?.role === 'button' ||
+                         (element as HTMLElement)?.onclick !== null;
+      
+      isHoveringClickable.current = isClickable || false;
     };
 
     canvas.addEventListener("mousemove", handleMouseMove);

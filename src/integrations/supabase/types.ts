@@ -11,7 +11,6 @@ export type Database = {
     Tables: {
       creations: {
         Row: {
-          category: string
           created_at: string
           date: string
           description: string | null
@@ -19,9 +18,9 @@ export type Database = {
           image_url: string | null
           title: string
           updated_at: string
+          status: 'in_progress' | 'completed' | 'archived'
         }
         Insert: {
-          category: string
           created_at?: string
           date: string
           description?: string | null
@@ -29,9 +28,9 @@ export type Database = {
           image_url?: string | null
           title: string
           updated_at?: string
+          status?: 'in_progress' | 'completed' | 'archived'
         }
         Update: {
-          category?: string
           created_at?: string
           date?: string
           description?: string | null
@@ -39,6 +38,7 @@ export type Database = {
           image_url?: string | null
           title?: string
           updated_at?: string
+          status?: 'in_progress' | 'completed' | 'archived'
         }
         Relationships: []
       }
