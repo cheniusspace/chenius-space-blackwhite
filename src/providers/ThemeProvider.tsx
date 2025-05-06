@@ -42,7 +42,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       // Update CSS variables for the pastel dark theme
       document.documentElement.style.setProperty('--color-Dark-50', '#E9EDEF');
       document.documentElement.style.setProperty('--color-Dark-100', '#C8B6FF');
-      document.documentElement.style.setProperty('--color-Dark-600', '#1A1B26');
+      document.documentElement.style.setProperty('--color-Dark-600', '#211F30');
       document.documentElement.style.setProperty('--color-Purple-300', '#D1BFFF');
       document.documentElement.style.setProperty('--color-Purple-400', '#C8B6FF');
       document.documentElement.style.setProperty('--color-Purple-500', '#B8A5FF');
@@ -52,7 +52,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       // Update CSS variables for the pastel light theme
       document.documentElement.style.setProperty('--color-Dark-50', '#5A5A7A');
       document.documentElement.style.setProperty('--color-Dark-100', '#FFB6C1');
-      document.documentElement.style.setProperty('--color-Dark-600', '#FEF7ED');
+      document.documentElement.style.setProperty('--color-Dark-600', '#FFF2F5');
       document.documentElement.style.setProperty('--color-Purple-300', '#FFD6FF');
       document.documentElement.style.setProperty('--color-Purple-400', '#FFB6C1');
       document.documentElement.style.setProperty('--color-Purple-500', '#FFA5B9');

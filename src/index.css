@@ -82,8 +82,8 @@
     @apply bg-background text-foreground tracking-wide;
     font-family: 'Jost', sans-serif;
     font-weight: 300;
-    background-color: #111111;
-    color: #E9EDEF;
+    background-color: var(--color-Dark-600);
+    color: var(--color-Dark-50);
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Jost', sans-serif;
@@ -149,8 +149,8 @@
     @apply bg-[var(--color-Dark-600)] text-[var(--color-Dark-50)];
     font-family: 'Jost', sans-serif;
     font-weight: 300;
-    background-color: #0C0A17;
-    color: #E9EDEF;
+    background-color: var(--color-Dark-600);
+    color: var(--color-Dark-50);
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Jost', sans-serif;
@@ -984,3 +984,22 @@
   background: linear-gradient(135deg, rgba(255, 214, 255, 0.1), rgba(55, 198, 255, 0.1));
 }
 
+/* Light mode pastel colors */
+.light {
+  --color-Dark-50: #5A5A7A;
+  --color-Dark-100: #FFB6C1;
+  --color-Dark-600: #FFF2F5;
+  --color-Purple-300: #FFD6FF;
+  --color-Purple-400: #FFB6C1;
+  --color-Purple-500: #FFA5B9;
+}
+
+/* Dark mode pastel colors */
+.dark {
+  --color-Dark-50: #E9EDEF;
+  --color-Dark-100: #C8B6FF;
+  --color-Dark-600: #211F30;
+  --color-Purple-300: #D1BFFF;
+  --color-Purple-400: #C8B6FF;
+  --color-Purple-500: #B8A5FF;
+}
