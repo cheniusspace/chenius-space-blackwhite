@@ -1,13 +1,10 @@
-
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { useTheme } from "@/providers/ThemeProvider";
 
 interface RainEffectProps extends React.CanvasHTMLAttributes<HTMLCanvasElement> {}
 
 export const RainEffect = ({ className, ...props }: RainEffectProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { isDark } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -54,10 +51,7 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(this.x, this.y + this.length);
-        // Use pastel colors based on theme
-        const colorLight = 'rgba(255, 182, 193, '; // Pastel Pink
-        const colorDark = 'rgba(200, 182, 255, '; // Pastel Purple
-        ctx.strokeStyle = `${isDark ? colorDark : colorLight}${this.opacity})`;
+        ctx.strokeStyle = `rgba(200, 200, 200, ${this.opacity})`;
         ctx.lineWidth = this.width;
         ctx.stroke();
       }
@@ -95,7 +89,7 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
     return () => {
       window.removeEventListener("resize", resizeCanvas);
     };
-  }, [isDark]);
+  }, []);
 
   return (
     <canvas

@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Index from "./pages/Index";
@@ -13,7 +12,6 @@ import AddContent from "./pages/AddContent";
 import { ThemeProvider } from "./providers/ThemeProvider";
 import { Toaster } from "./components/ui/toaster";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import "./App.css";
 
 function App() {
   return (

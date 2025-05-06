@@ -3,7 +3,6 @@ import { ReactNode } from "react";
 import { Footer } from "./Footer";
 import Header from "./Header";
 import { useTheme } from "@/providers/ThemeProvider";
-import Rain from "../effects/Rain";
 
 interface LayoutProps {
   children: ReactNode;
@@ -14,11 +13,8 @@ export default function Layout({ children }: LayoutProps) {
   
   return (
     <div className={`min-h-screen w-full flex flex-col transition-colors duration-300 ${
-      isDark 
-        ? "bg-[var(--color-Dark-600)] text-[var(--color-Dark-50)]" 
-        : "bg-[var(--color-Light-600)] text-[var(--color-Light-50)]"
+      isDark ? "bg-[#1A1B26]" : "bg-[#FEF7ED]"
     }`}>
-      <Rain />
       <Header />
       
       <main id="main-content" className="flex-grow pt-16 md:pt-24">
