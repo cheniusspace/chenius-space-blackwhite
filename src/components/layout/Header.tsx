@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import { Menu, X, MessageSquare } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { useTheme } from "@/providers/ThemeProvider";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,36 +30,103 @@ const Header = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-white/10 bg-[#111111]/90">
-      <div className="container mx-auto max-w-screen-xl flex justify-between items-center py-4 md:py-8">
-        {/* Brand */}
-        <Link to="/" className="nav-brand">
-          <span className="text-white font-semibold">CHENIUS</span>
-          <span className="text-white opacity-80 font-thin">SPACE</span>
-        </Link>
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-border bg-background/95">
+      <div className="container mx-auto max-w-screen-xl px-4">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Left Logo */}
+          <div className="flex items-center">
+            <Link to="/" className="nav-brand flex items-center no-underline">
+              <span className="font-semibold text-xl md:text-2xl text-cs-blue-500 dark:text-cs-blue-400">
+                CHENIUS
+              </span>
+              <span className="font-thin text-xl md:text-2xl text-cs-pink-500 dark:text-cs-pink-400 tracking-tight">
+                SPACE
+              </span>
+            </Link>
+          </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-white hover:text-white/90 transition-colors"
-          onClick={handleMenuClick}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* Right Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            <Link
+              to="/dashboard#creations"
+              className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-blue-500 dark:hover:text-cs-blue-400"
+              data-text="CREATIONS"
+            >
+              creations
+            </Link>
+            <Link
+              to="/journals"
+              className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-pink-500 dark:hover:text-cs-pink-400"
+              data-text="JOURNALS"
+            >
+              journals
+            </Link>
+            <Link
+              to="/favorites"
+              className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-blue-500 dark:hover:text-cs-blue-400"
+              data-text="FAVORITES"
+            >
+              favorites
+            </Link>
+            <button
+              onClick={handleContactClick}
+              className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-pink-500 dark:hover:text-cs-pink-400"
+              aria-label="Poke me"
+            >
+              poke me
+            </button>
+            <ThemeToggle />
+          </div>
 
-        {/* Navigation Links */}
-        <div 
-          className={`${isMenuOpen || isAnimating ? 'flex' : 'hidden'} ${isMenuOpen ? 'mobile-menu-enter' : isAnimating ? 'mobile-menu-exit' : ''} md:flex flex-col md:flex-row absolute md:relative top-16 md:top-0 left-0 right-0 bg-[#111111]/95 md:bg-transparent p-4 md:p-0 gap-2 md:gap-4 z-50`}
+          {/* Mobile Menu Button and Theme Toggle */}
+          <div className="flex items-center gap-4 md:hidden">
+            <ThemeToggle />
+            <button
+              className="transition-colors text-foreground hover:text-cs-blue-500 dark:hover:text-cs-blue-400"
+              onClick={handleMenuClick}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <div
+          className={`${isMenuOpen || isAnimating ? 'flex' : 'hidden'} ${
+            isMenuOpen ? 'mobile-menu-enter' : isAnimating ? 'mobile-menu-exit' : ''
+          } md:hidden flex-col absolute top-16 left-0 right-0 p-4 gap-4 z-50 bg-background/95 border-t border-border`}
         >
-          <Link to="/creations" className="refined-nav-link text-white hover:text-white/90 text-sm" data-text="CREATIONS" onClick={handleMenuClick}>creations</Link>
-          <Link to="/journals" className="refined-nav-link text-white hover:text-white/90 text-sm" data-text="JOURNALS" onClick={handleMenuClick}>journals</Link>
-          <Link to="/favorites" className="refined-nav-link text-white hover:text-white/90 text-sm" data-text="FAVORITES" onClick={handleMenuClick}>favorites</Link>
-          <button 
-            onClick={handleContactClick}
-            className="refined-nav-link text-white hover:text-white/90 text-sm flex items-center justify-center" 
-            aria-label="Contact"
+          <Link
+            to="/dashboard#creations"
+            className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-blue-500 dark:hover:text-cs-blue-400"
+            data-text="CREATIONS"
+            onClick={handleMenuClick}
           >
-            <MessageSquare size={16} />
+            creations
+          </Link>
+          <Link
+            to="/journals"
+            className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-pink-500 dark:hover:text-cs-pink-400"
+            data-text="JOURNALS"
+            onClick={handleMenuClick}
+          >
+            journals
+          </Link>
+          <Link
+            to="/favorites"
+            className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-blue-500 dark:hover:text-cs-blue-400"
+            data-text="FAVORITES"
+            onClick={handleMenuClick}
+          >
+            favorites
+          </Link>
+          <button
+            onClick={handleContactClick}
+            className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-pink-500 dark:hover:text-cs-pink-400"
+            aria-label="Poke me"
+          >
+            poke me
           </button>
         </div>
       </div>

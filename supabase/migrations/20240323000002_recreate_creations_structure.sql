@@ -21,12 +21,17 @@ CREATE TABLE creations (
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Create tags table
-CREATE TABLE tags (
-    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-    name TEXT NOT NULL UNIQUE,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
+-- Create tags table if it doesn't exist
+DO $$ 
+BEGIN
+    IF NOT EXISTS (SELECT FROM pg_tables WHERE schemaname = 'public' AND tablename = 'tags') THEN
+        CREATE TABLE tags (
+            id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+            name TEXT NOT NULL UNIQUE,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+        );
+    END IF;
+END $$;
 
 -- Create creations_tags junction table
 CREATE TABLE creations_tags (
@@ -46,6 +51,7 @@ END;
 $$ language 'plpgsql';
 
 -- Create trigger for creations table
+DROP TRIGGER IF EXISTS update_creations_updated_at ON creations;
 CREATE TRIGGER update_creations_updated_at
     BEFORE UPDATE ON creations
     FOR EACH ROW

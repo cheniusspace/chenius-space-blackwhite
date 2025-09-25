@@ -80,10 +80,12 @@ export const CreationCard = ({
         )}
         
         <div className="flex justify-between items-center text-sm text-white/50">
-          <span>{new Date(date).toLocaleDateString('default', { 
+          <span>{new Date(created_at).toLocaleString('default', { 
             year: 'numeric', 
             month: 'long', 
-            day: 'numeric' 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
           })}</span>
         </div>
 

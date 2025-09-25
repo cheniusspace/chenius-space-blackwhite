@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Plus } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { fetchJournals, journalsData, type Journal } from "@/services/journalsService";
+import { Button } from "@/components/ui/button";
 
 const Journals = () => {
   const [journals, setJournals] = useState<Journal[]>([]);
@@ -34,10 +35,18 @@ const Journals = () => {
 
   return (
     <div className="container px-4 md:px-6 max-w-5xl mx-auto py-12">
-      <SectionHeading
-        title="Journals"
-        description="Thoughts, reflections, and narratives exploring creativity, design, and personal experiences."
-      />
+      <div className="flex justify-between items-center mb-8">
+        <SectionHeading
+          title="Journals"
+          description="Thoughts, reflections, and narratives exploring creativity, design, and personal experiences."
+        />
+        <Button asChild>
+          <Link to="/journals/new">
+            <Plus className="mr-2 h-4 w-4" />
+            New Journal
+          </Link>
+        </Button>
+      </div>
 
       {isLoading ? (
         <div className="min-h-[300px] flex items-center justify-center">

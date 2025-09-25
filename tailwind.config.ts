@@ -55,21 +55,19 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
         },
-        pastel: {
-          pink: '#FFD6FF',
-          lightPink: '#FFB6C1', 
-          hotPink: '#FFA5B9',
-          accent: '#FFA5B9',
-          purple: '#C8B6FF',
-          lightPurple: '#E0B0FF',
-          blue: '#D3E4FD',
-          mint: '#BDFFD8',
-          yellow: '#FFF9B6',
-          peach: '#FFDAB9',
-          cream: '#FEF7ED',
-          darkBlue: '#1A1B26',
-          textDark: '#5A5A7A',
-          textLight: '#E9EDEF',
+        chenius: {
+          black: '#000000',
+          white: '#FFFFFF',
+          gray: {
+            100: '#F1F1F1',
+            200: '#E1E1E1',
+            300: '#C8C8C9',
+            400: '#888888',
+            500: '#555555',
+            600: '#333333',
+            700: '#222222',
+            800: '#111111'
+          }
         },
         sidebar: {
           DEFAULT: 'hsl(var(--sidebar-background))',
@@ -141,13 +139,52 @@ export default {
           800: '#0A0B0F',
           900: '#050608',
         },
-        homepage: {
-          pink: '#FFD6FF',
-          blue: '#D3E4FD',
-          purple: '#C8B6FF',
-          lavender: '#E0B0FF',
-          lightBlue: '#D3E4FD'
-        },
+        cs: {
+          blue: {
+            100: '#edeff9',
+            200: '#d2d8f0',
+            300: '#b7c1e7',
+            400: '#8293d6',
+            500: '#4d65c6',
+            600: '#455bb2',
+            700: '#2e3c76',
+            800: '#222d58',
+            900: '#171e3b',
+          },
+          pink: {
+            100: '#fcf2f4',
+            200: '#f9e0e6',
+            300: '#f6cdd7',
+            400: '#f2a9ba',
+            500: '#ee8691',
+            600: '#d7788d',
+            700: '#8f505e',
+            800: '#6b3c47',
+            900: '#47272f',
+          },
+          purple: {
+            100: '#f3f5fc',
+            200: '#e7eaf9',
+            300: '#cbd3f1',
+            400: '#acb8e7',
+            500: '#8697da',
+            600: '#4d65c6',
+            700: '#334db2',
+            800: '#293e94',
+            900: '#1c2b69',
+          },
+          gray: {
+            100: '#f7f8f9',
+            200: '#e1e5e9',
+            300: '#c7cdd3',
+            400: '#9aa0a6',
+            500: '#5f6368',
+            600: '#3c4043',
+            700: '#202124',
+            800: '#171717',
+            900: '#0a0a0a',
+          }
+        }
       },
       borderRadius: {
         lg: '0',

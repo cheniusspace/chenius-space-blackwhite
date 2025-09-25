@@ -1,66 +1,43 @@
-
 import { supabase } from "@/integrations/supabase/client";
 
 export type Creation = {
   id: string;
   title: string;
-  featured_image: string;
-  imageClass?: string;
-  overview: {
-    text: string;
-    images?: string[];
-  };
-  motivation: {
-    text: string;
-    images?: string[];
-  };
-  tools: {
-    text: string;
-    images?: string[];
-    list: string[];
-  };
-  achievements: {
-    text: string;
-    images?: string[];
-    list: string[];
-  };
-  downsides: {
-    text: string;
-    images?: string[];
-    list: string[];
-  };
-  gallery: {
-    images: string[];
-    captions?: string[];
-  };
-  future_plans: {
-    text: string;
-    images?: string[];
-    list: string[];
-  };
-  conclusion: {
-    text: string;
-    images?: string[];
-  };
+  description: string;
+  image_url: string;
   date: string;
+  status: 'in_progress' | 'completed' | 'archived';
   created_at: string;
   updated_at: string;
-  status: 'in_progress' | 'completed' | 'archived';
   tags?: { id: string; name: string }[];
   creations_tags?: { tag_id: string }[];
 };
 
-export const fetchCreations = async (tagFilter?: string | null): Promise<Creation[]> => {
+export const fetchCreations = async (tagId?: string | null): Promise<Creation[]> => {
   try {
+    // First, let's check what fields are actually available
+    const { data: schemaData, error: schemaError } = await supabase
+      .from('creations')
+      .select('*')
+      .limit(1);
+
+    if (schemaError) {
+      console.error('Schema error:', schemaError);
+      return [];
+    }
+
+    console.log('Available fields:', schemaData?.[0] ? Object.keys(schemaData[0]) : 'No data');
+
+    // Now try to fetch the actual data
     const { data, error } = await supabase
       .from('creations')
       .select(`
         *,
-        creations_tags (
+        creations_tags!left (
           tag_id
         ),
-        tags:creations_tags!inner (
-          tags!inner (
+        tags:creations_tags!left (
+          tags!left (
             id,
             name
           )
@@ -70,80 +47,22 @@ export const fetchCreations = async (tagFilter?: string | null): Promise<Creatio
 
     if (error) {
       console.error('Error fetching creations:', error);
-      throw error;
+      return [];
     }
 
-    // Transform the data to match our Creation type
-    const transformedData: Creation[] = (data || []).map(creation => {
-      // Extract tags from nested structure
-      const tags = creation.tags?.map(tag => tag.tags) || [];
-      
-      // Cast status to the correct type to ensure it matches our union type
-      const status = creation.status as 'in_progress' | 'completed' | 'archived';
-      
-      // Map database fields to our Creation type
-      return {
-        id: creation.id,
-        title: creation.title,
-        // Handle the image field - featured_image doesn't exist in DB yet
-        featured_image: creation.image_url || "",
-        date: creation.date,
-        created_at: creation.created_at,
-        updated_at: creation.updated_at,
-        status: status,
-        // Create default structure for new fields
-        overview: {
-          text: creation.description || "",
-          images: []
-        },
-        motivation: {
-          text: "",
-          images: []
-        },
-        tools: {
-          text: "",
-          list: [],
-          images: []
-        },
-        achievements: {
-          text: "",
-          list: [],
-          images: []
-        },
-        downsides: {
-          text: "",
-          list: [],
-          images: []
-        },
-        gallery: {
-          images: [],
-          captions: []
-        },
-        future_plans: {
-          text: "",
-          list: [],
-          images: []
-        },
-        conclusion: {
-          text: "",
-          images: []
-        },
-        tags,
-        creations_tags: creation.creations_tags
-      };
-    });
-    
-    // Apply tag filtering if a tag is provided
-    if (tagFilter) {
-      return transformedData.filter(creation => 
-        creation.tags?.some(tag => tag.name === tagFilter)
-      );
+    if (!data || data.length === 0) {
+      console.log('No creations found in database');
+      return [];
     }
-    
-    return transformedData;
+
+    console.log('First creation:', data[0]);
+    return data.map(creation => ({
+      ...creation,
+      tags: creation.tags?.map(tag => tag.tags).filter(Boolean) || []
+    }));
   } catch (error) {
     console.error('Error in fetchCreations:', error);
-    return creationsData;
+    return [];
   }
 };
 
@@ -152,88 +71,12 @@ export const creationsData: Creation[] = [
   {
     id: "healing-journey",
     title: "Scars of Yesterday - A Healing Journey",
-    featured_image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2800&auto=format&fit=crop",
-    imageClass: "healing-journey",
-    overview: {
-      text: "A deeply personal album created with SUNO AI, exploring the path of healing from childhood trauma and parental relationships. Each track represents a step in the journey of self-discovery and emotional recovery.",
-      images: [
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2800&auto=format&fit=crop"
-      ]
-    },
-    motivation: {
-      text: "This project was born from a deep need to process and heal from childhood experiences. Music has always been a therapeutic outlet, and with the advent of AI tools like SUNO, I found a way to express these emotions in a new form.",
-      images: [
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2800&auto=format&fit=crop"
-      ]
-    },
-    tools: {
-      text: "The album was created using a combination of AI tools and traditional music production software.",
-      list: [
-        "SUNO AI for music generation",
-        "Ableton Live for post-processing",
-        "iZotope RX for audio cleanup",
-        "Logic Pro for final mixing"
-      ],
-      images: [
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2800&auto=format&fit=crop"
-      ]
-    },
-    achievements: {
-      text: "The project has helped me process difficult emotions and connect with others who have had similar experiences.",
-      list: [
-        "Created 8 emotionally resonant tracks",
-        "Developed a unique sound that blends AI and human emotion",
-        "Received positive feedback from listeners who related to the themes",
-        "Successfully processed and released difficult emotions through music"
-      ],
-      images: [
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2800&auto=format&fit=crop"
-      ]
-    },
-    downsides: {
-      text: "While the project was therapeutic, there were challenges in the process.",
-      list: [
-        "AI limitations in capturing complex emotional nuances",
-        "Technical challenges in post-processing AI-generated music",
-        "Emotional difficulty in revisiting painful memories",
-        "Time-consuming process of refining AI outputs"
-      ],
-      images: [
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2800&auto=format&fit=crop"
-      ]
-    },
-    gallery: {
-      images: [
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2800&auto=format&fit=crop"
-      ],
-      captions: [
-        "Studio setup during production",
-        "Final album artwork"
-      ]
-    },
-    future_plans: {
-      text: "This project has opened new possibilities for combining AI and emotional expression.",
-      list: [
-        "Create a follow-up album exploring different aspects of healing",
-        "Develop a workshop on using AI for emotional expression",
-        "Collaborate with other artists on similar projects",
-        "Create a visual component to accompany the music"
-      ],
-      images: [
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2800&auto=format&fit=crop"
-      ]
-    },
-    conclusion: {
-      text: "This project has shown me that technology can be a powerful tool for emotional healing and self-expression. The combination of AI and human emotion has created something unique and meaningful.",
-      images: [
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2800&auto=format&fit=crop"
-      ]
-    },
+    description: "A deeply personal album created with SUNO AI, exploring the path of healing from childhood trauma and parental relationships. Each track represents a step in the journey of self-discovery and emotional recovery.",
+    image_url: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2800&auto=format&fit=crop",
     date: "2024-03-20",
+    status: "completed",
     created_at: "2024-03-20T00:00:00",
     updated_at: "2024-03-20T00:00:00",
-    status: "completed",
     tags: [
       { id: "9", name: "music" },
       { id: "10", name: "healing" },
@@ -250,72 +93,12 @@ export const creationsData: Creation[] = [
   {
     id: "1",
     title: "Building Chenius Space",
-    featured_image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2800&auto=format&fit=crop",
-    imageClass: "building-chenius-space",
-    overview: {
-      text: "A modern web application built with React, TypeScript, and Supabase.",
-      images: [
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2800&auto=format&fit=crop"
-      ]
-    },
-    motivation: {
-      text: "To create a personal space for sharing creative works and experiences.",
-      images: []
-    },
-    tools: {
-      text: "Built with modern web technologies and tools.",
-      list: [
-        "React for frontend",
-        "TypeScript for type safety",
-        "Supabase for backend",
-        "Tailwind CSS for styling"
-      ],
-      images: []
-    },
-    achievements: {
-      text: "Successfully created a modern, responsive web application.",
-      list: [
-        "Implemented responsive design",
-        "Set up authentication",
-        "Created content management system",
-        "Integrated image upload"
-      ],
-      images: []
-    },
-    downsides: {
-      text: "Some challenges were encountered during development.",
-      list: [
-        "Learning curve with new technologies",
-        "Time constraints",
-        "Complex state management",
-        "Performance optimization"
-      ],
-      images: []
-    },
-    gallery: {
-      images: [
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2800&auto=format&fit=crop"
-      ],
-      captions: ["Homepage design"]
-    },
-    future_plans: {
-      text: "Plans for future development and improvements.",
-      list: [
-        "Add more interactive features",
-        "Improve performance",
-        "Add analytics",
-        "Expand content types"
-      ],
-      images: []
-    },
-    conclusion: {
-      text: "A successful project that demonstrates modern web development practices.",
-      images: []
-    },
+    description: "A modern web application built with React, TypeScript, and Supabase.",
+    image_url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2800&auto=format&fit=crop",
     date: "2024-03-20",
+    status: "in_progress",
     created_at: "2024-03-20T00:00:00",
     updated_at: "2024-03-20T00:00:00",
-    status: "in_progress",
     tags: [
       { id: "6", name: "development" },
       { id: "7", name: "web" },
@@ -330,72 +113,12 @@ export const creationsData: Creation[] = [
   {
     id: "2",
     title: "Minimalist Photography Series",
-    featured_image: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2800&auto=format&fit=crop",
-    imageClass: "minimalist-photography-series",
-    overview: {
-      text: "A series of black and white photographs exploring urban architecture and negative space.",
-      images: [
-        "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2800&auto=format&fit=crop"
-      ]
-    },
-    motivation: {
-      text: "To explore the beauty of minimalism in urban environments.",
-      images: []
-    },
-    tools: {
-      text: "Used professional photography equipment and editing software.",
-      list: [
-        "Sony A7III camera",
-        "Adobe Lightroom",
-        "Adobe Photoshop",
-        "Professional lighting equipment"
-      ],
-      images: []
-    },
-    achievements: {
-      text: "Created a cohesive series of minimalist photographs.",
-      list: [
-        "Developed unique style",
-        "Exhibited in local gallery",
-        "Published in photography magazine",
-        "Built portfolio"
-      ],
-      images: []
-    },
-    downsides: {
-      text: "Some challenges in the creative process.",
-      list: [
-        "Weather constraints",
-        "Location access",
-        "Time management",
-        "Technical limitations"
-      ],
-      images: []
-    },
-    gallery: {
-      images: [
-        "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2800&auto=format&fit=crop"
-      ],
-      captions: ["Urban minimalism"]
-    },
-    future_plans: {
-      text: "Plans for future photography projects.",
-      list: [
-        "Expand series",
-        "New locations",
-        "Different techniques",
-        "Collaborations"
-      ],
-      images: []
-    },
-    conclusion: {
-      text: "A successful exploration of minimalism in photography.",
-      images: []
-    },
+    description: "A series of black and white photographs exploring urban architecture and negative space.",
+    image_url: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2800&auto=format&fit=crop",
     date: "2023-04-15",
+    status: "completed",
     created_at: "2023-04-15T00:00:00",
     updated_at: "2023-04-15T00:00:00",
-    status: "completed",
     tags: [
       { id: "1", name: "photography" },
       { id: "2", name: "minimalism" },
@@ -410,72 +133,12 @@ export const creationsData: Creation[] = [
   {
     id: "3",
     title: "Typography Exploration",
-    featured_image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=2787&auto=format&fit=crop",
-    imageClass: "typography-exploration",
-    overview: {
-      text: "An experimental typography project focusing on minimal forms and negative space.",
-      images: [
-        "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=2787&auto=format&fit=crop"
-      ]
-    },
-    motivation: {
-      text: "To explore the boundaries of typography and minimalism.",
-      images: []
-    },
-    tools: {
-      text: "Used various design tools and software.",
-      list: [
-        "Adobe Illustrator",
-        "Adobe InDesign",
-        "FontLab",
-        "Custom brushes"
-      ],
-      images: []
-    },
-    achievements: {
-      text: "Created innovative typographic designs.",
-      list: [
-        "Developed new typeface",
-        "Created experimental layouts",
-        "Published in design journal",
-        "Won design award"
-      ],
-      images: []
-    },
-    downsides: {
-      text: "Challenges in the design process.",
-      list: [
-        "Technical limitations",
-        "Time constraints",
-        "Client feedback",
-        "Printing issues"
-      ],
-      images: []
-    },
-    gallery: {
-      images: [
-        "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=2787&auto=format&fit=crop"
-      ],
-      captions: ["Typography samples"]
-    },
-    future_plans: {
-      text: "Plans for future typography projects.",
-      list: [
-        "New typeface design",
-        "Digital applications",
-        "Collaborations",
-        "Exhibitions"
-      ],
-      images: []
-    },
-    conclusion: {
-      text: "A successful exploration of typography and minimalism.",
-      images: []
-    },
+    description: "An experimental typography project focusing on minimal forms and negative space.",
+    image_url: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=2787&auto=format&fit=crop",
     date: "2023-03-22",
+    status: "completed",
     created_at: "2023-03-22T00:00:00",
     updated_at: "2023-03-22T00:00:00",
-    status: "completed",
     tags: [
       { id: "4", name: "typography" },
       { id: "2", name: "minimalism" },

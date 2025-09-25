@@ -5,25 +5,25 @@ import Image from '@tiptap/extension-image';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { Button } from './button';
-import { Bold, Italic, List, ListOrdered, Code, Link as LinkIcon, Image as ImageIcon, Eye, Code2 } from 'lucide-react';
+import { Bold, Italic, List, ListOrdered, Code, Link as LinkIcon, Image as ImageIcon, Eye, Code2, Quote, Undo, Redo } from 'lucide-react';
 
-interface RichTextEditorProps {
-  value: string;
-  onChange: (value: string) => void;
+export interface RichTextEditorProps {
+  content: string;
+  onChange: (content: string) => void;
   placeholder?: string;
   className?: string;
   onImageUpload?: (file: File) => Promise<string | null>;
 }
 
 export const RichTextEditor = ({
-  value,
+  content,
   onChange,
   placeholder = 'Write something...',
   className,
   onImageUpload,
 }: RichTextEditorProps) => {
   const [showSource, setShowSource] = useState(false);
-  const [sourceCode, setSourceCode] = useState(value);
+  const [sourceCode, setSourceCode] = useState(content);
 
   const editor = useEditor({
     extensions: [
@@ -40,11 +40,10 @@ export const RichTextEditor = ({
         },
       }),
     ],
-    content: value,
+    content,
     onUpdate: ({ editor }) => {
-      const html = editor.getHTML();
-      onChange(html);
-      setSourceCode(html);
+      onChange(editor.getHTML());
+      setSourceCode(editor.getHTML());
     },
     editorProps: {
       attributes: {
@@ -83,46 +82,58 @@ export const RichTextEditor = ({
     input.click();
   };
 
+  if (!editor) {
+    return null;
+  }
+
   return (
     <div className={cn('rounded-md border border-input bg-background', className)}>
       <div className="flex items-center gap-2 p-2 border-b">
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => editor?.chain().focus().toggleBold().run()}
-          className={editor?.isActive('bold') ? 'bg-accent' : ''}
+          onClick={() => editor.chain().focus().toggleBold().run()}
+          className={editor.isActive('bold') ? 'bg-accent' : ''}
         >
           <Bold className="h-4 w-4" />
         </Button>
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => editor?.chain().focus().toggleItalic().run()}
-          className={editor?.isActive('italic') ? 'bg-accent' : ''}
+          onClick={() => editor.chain().focus().toggleItalic().run()}
+          className={editor.isActive('italic') ? 'bg-accent' : ''}
         >
           <Italic className="h-4 w-4" />
         </Button>
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => editor?.chain().focus().toggleBulletList().run()}
-          className={editor?.isActive('bulletList') ? 'bg-accent' : ''}
+          onClick={() => editor.chain().focus().toggleBulletList().run()}
+          className={editor.isActive('bulletList') ? 'bg-accent' : ''}
         >
           <List className="h-4 w-4" />
         </Button>
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => editor?.chain().focus().toggleOrderedList().run()}
-          className={editor?.isActive('orderedList') ? 'bg-accent' : ''}
+          onClick={() => editor.chain().focus().toggleOrderedList().run()}
+          className={editor.isActive('orderedList') ? 'bg-accent' : ''}
         >
           <ListOrdered className="h-4 w-4" />
         </Button>
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => editor?.chain().focus().toggleCodeBlock().run()}
-          className={editor?.isActive('codeBlock') ? 'bg-accent' : ''}
+          onClick={() => editor.chain().focus().toggleBlockquote().run()}
+          className={editor.isActive('blockquote') ? 'bg-accent' : ''}
+        >
+          <Quote className="h-4 w-4" />
+        </Button>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+          className={editor.isActive('codeBlock') ? 'bg-accent' : ''}
         >
           <Code className="h-4 w-4" />
         </Button>
@@ -132,7 +143,7 @@ export const RichTextEditor = ({
           onClick={() => {
             const url = window.prompt('Enter URL');
             if (url) {
-              editor?.chain().focus().setLink({ href: url }).run();
+              editor.chain().focus().setLink({ href: url }).run();
             }
           }}
         >
@@ -146,6 +157,22 @@ export const RichTextEditor = ({
           <ImageIcon className="h-4 w-4" />
         </Button>
         <div className="flex-1" />
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => editor.chain().focus().undo().run()}
+          disabled={!editor.can().undo()}
+        >
+          <Undo className="h-4 w-4" />
+        </Button>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => editor.chain().focus().redo().run()}
+          disabled={!editor.can().redo()}
+        >
+          <Redo className="h-4 w-4" />
+        </Button>
         <Button
           variant="ghost"
           size="sm"
@@ -166,7 +193,10 @@ export const RichTextEditor = ({
           placeholder="Write your HTML here..."
         />
       ) : (
-        <EditorContent editor={editor} />
+        <EditorContent
+          editor={editor}
+          className="prose prose-invert max-w-none bg-white/5 border border-white/10 rounded-lg p-4 min-h-[400px] focus:outline-none focus:ring-2 focus:ring-white/20"
+        />
       )}
     </div>
   );

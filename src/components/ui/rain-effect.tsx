@@ -51,7 +51,7 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(this.x, this.y + this.length);
-        ctx.strokeStyle = `rgba(200, 200, 200, ${this.opacity})`;
+        ctx.strokeStyle = `rgba(233, 233, 233, ${this.opacity})`;
         ctx.lineWidth = this.width;
         ctx.stroke();
       }

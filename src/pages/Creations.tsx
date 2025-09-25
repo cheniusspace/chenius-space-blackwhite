@@ -6,13 +6,19 @@ import { TagFilters } from "@/components/creations/TagFilters";
 import { CreationCard } from "@/components/creations/CreationCard";
 import { fetchCreations, creationsData, type Creation } from "@/services/creationsService";
 import { MouseTrail } from "@/components/effects/MouseTrail";
+import { useNavigate } from "react-router-dom";
 
 const Creations = () => {
   const [creations, setCreations] = useState<Creation[]>([]);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
+  const navigate = useNavigate();
   
+  useEffect(() => {
+    navigate("/dashboard#creations");
+  }, [navigate]);
+
   useEffect(() => {
     const getCreations = async () => {
       setIsLoading(true);
