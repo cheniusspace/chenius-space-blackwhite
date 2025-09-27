@@ -43,10 +43,10 @@
     --radius: 0.5rem;
 
     /* Custom colors */
-    --cs-pink-400: 346 85% 65%;
-    --cs-pink-500: 346 85% 55%;
-    --cs-blue-400: 230 85% 65%;
-    --cs-blue-500: 230 85% 55%;
+    --cs-slate-400: 215 20% 65%;
+    --cs-slate-500: 215 20% 55%;
+    --cs-black-400: 0 0% 40%;
+    --cs-black-500: 0 0% 30%;
   }
 
   .dark {
@@ -71,10 +71,10 @@
     --ring: 212.7 26.8% 83.9%;
 
     /* Custom colors */
-    --cs-pink-400: 346 85% 75%;
-    --cs-pink-500: 346 85% 65%;
-    --cs-blue-400: 230 85% 75%;
-    --cs-blue-500: 230 85% 65%;
+    --cs-slate-400: 215 20% 75%;
+    --cs-slate-500: 215 20% 65%;
+    --cs-black-400: 0 0% 50%;
+    --cs-black-500: 0 0% 40%;
   }
 
   * {
@@ -914,7 +914,7 @@
 }
 
 /* Button Styles */
-.button-pink {
+.button-slate {
   position: relative;
   overflow: hidden;
   background: transparent;
@@ -922,7 +922,7 @@
   transition: all 0.3s ease;
 }
 
-.button-pink::before {
+.button-slate::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -932,11 +932,11 @@
   transition: transform 0.3s ease;
 }
 
-.button-pink:hover::before {
+.button-slate:hover::before {
   transform: scaleX(1);
 }
 
-.button-pink::after {
+.button-slate::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -949,12 +949,12 @@
   transition: transform 0.3s ease;
 }
 
-.button-pink:hover::after {
+.button-slate:hover::after {
   transform: scaleX(1);
   transform-origin: left;
 }
 
-.button-pink:hover {
+.button-slate:hover {
   @apply border-primary/30 text-primary/80;
 }
 

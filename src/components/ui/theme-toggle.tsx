@@ -20,13 +20,13 @@ export function ThemeToggle({ className }: { className?: string }) {
       )}
     >
       <div className="relative z-10">
-        <Sun className="h-5 w-5 text-yellow-200 rotate-0 scale-100 transition-all duration-500 ease-out dark:-rotate-180 dark:scale-0 drop-shadow-sm" />
-        <Moon className="absolute inset-0 h-5 w-5 text-blue-200 rotate-180 scale-0 transition-all duration-500 ease-out dark:rotate-0 dark:scale-100 drop-shadow-sm" />
+        <Sun className="h-5 w-5 text-cs-slate-600 rotate-0 scale-100 transition-all duration-500 ease-out dark:-rotate-180 dark:scale-0 drop-shadow-sm" />
+        <Moon className="absolute inset-0 h-5 w-5 text-cs-white-200 rotate-180 scale-0 transition-all duration-500 ease-out dark:rotate-0 dark:scale-100 drop-shadow-sm" />
       </div>
       
       {/* Animated background glow */}
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-yellow-400/10 to-orange-400/10 opacity-0 dark:opacity-0 transition-opacity duration-500" />
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-400/10 to-purple-400/10 opacity-0 dark:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cs-slate-200/10 to-cs-slate-300/10 opacity-0 dark:opacity-0 transition-opacity duration-500" />
+      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cs-black-200/10 to-cs-slate-400/10 opacity-0 dark:opacity-100 transition-opacity duration-500" />
       
       {/* Pulse effect on hover */}
       <div className="absolute inset-0 rounded-xl bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 opacity-0 hover:opacity-100" />

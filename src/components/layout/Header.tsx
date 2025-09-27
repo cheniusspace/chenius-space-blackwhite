@@ -36,10 +36,10 @@ const Header = () => {
           {/* Left Logo */}
           <div className="flex items-center">
             <Link to="/" className="nav-brand flex items-center no-underline">
-              <span className="font-semibold text-xl md:text-2xl text-cs-blue-500 dark:text-cs-blue-400">
+              <span className="font-semibold text-xl md:text-2xl text-cs-slate-600 dark:text-cs-slate-400">
                 CHENIUS
               </span>
-              <span className="font-thin text-xl md:text-2xl text-cs-pink-500 dark:text-cs-pink-400 tracking-tight">
+              <span className="font-thin text-xl md:text-2xl text-cs-black-600 dark:text-cs-white-400 tracking-tight">
                 SPACE
               </span>
             </Link>
@@ -49,28 +49,28 @@ const Header = () => {
           <div className="hidden md:flex items-center gap-8">
             <Link
               to="/dashboard#creations"
-              className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-blue-500 dark:hover:text-cs-blue-400"
+              className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-slate-500 dark:hover:text-cs-slate-400"
               data-text="CREATIONS"
             >
               creations
             </Link>
             <Link
               to="/journals"
-              className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-pink-500 dark:hover:text-cs-pink-400"
+              className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-black-500 dark:hover:text-cs-white-400"
               data-text="JOURNALS"
             >
               journals
             </Link>
             <Link
               to="/favorites"
-              className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-blue-500 dark:hover:text-cs-blue-400"
+              className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-slate-500 dark:hover:text-cs-slate-400"
               data-text="FAVORITES"
             >
               favorites
             </Link>
             <button
               onClick={handleContactClick}
-              className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-pink-500 dark:hover:text-cs-pink-400"
+              className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-black-500 dark:hover:text-cs-white-400"
               aria-label="Poke me"
             >
               poke me
@@ -82,7 +82,7 @@ const Header = () => {
           <div className="flex items-center gap-4 md:hidden">
             <ThemeToggle />
             <button
-              className="transition-colors text-foreground hover:text-cs-blue-500 dark:hover:text-cs-blue-400"
+              className="transition-colors text-foreground hover:text-cs-slate-500 dark:hover:text-cs-slate-400"
               onClick={handleMenuClick}
               aria-label="Toggle menu"
             >
@@ -99,7 +99,7 @@ const Header = () => {
         >
           <Link
             to="/dashboard#creations"
-            className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-blue-500 dark:hover:text-cs-blue-400"
+            className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-slate-500 dark:hover:text-cs-slate-400"
             data-text="CREATIONS"
             onClick={handleMenuClick}
           >
@@ -107,7 +107,7 @@ const Header = () => {
           </Link>
           <Link
             to="/journals"
-            className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-pink-500 dark:hover:text-cs-pink-400"
+            className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-black-500 dark:hover:text-cs-white-400"
             data-text="JOURNALS"
             onClick={handleMenuClick}
           >
@@ -115,7 +115,7 @@ const Header = () => {
           </Link>
           <Link
             to="/favorites"
-            className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-blue-500 dark:hover:text-cs-blue-400"
+            className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-slate-500 dark:hover:text-cs-slate-400"
             data-text="FAVORITES"
             onClick={handleMenuClick}
           >
@@ -123,7 +123,7 @@ const Header = () => {
           </Link>
           <button
             onClick={handleContactClick}
-            className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-pink-500 dark:hover:text-cs-pink-400"
+            className="refined-nav-link text-sm font-medium transition-colors text-foreground hover:text-cs-black-500 dark:hover:text-cs-white-400"
             aria-label="Poke me"
           >
             poke me

@@ -13,6 +13,63 @@ import { ArrowRight, ExternalLink, BookOpen, Palette, Cpu, Brush, Lightbulb, Pen
 import ContentSpace from '../components/ContentSpace';
 import { motion } from "framer-motion";
 
+// Typing animation component
+function TypingText({ text, speed = 50 }: { text: string; speed?: number }) {
+  const [displayedText, setDisplayedText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting && currentIndex < text.length) {
+        // Typing forward
+        setDisplayedText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      } else if (isDeleting && currentIndex > 0) {
+        // Deleting backward
+        setDisplayedText(prev => prev.slice(0, -1));
+        setCurrentIndex(prev => prev - 1);
+      } else if (currentIndex === text.length) {
+        // Finished typing, wait then start deleting
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (currentIndex === 0 && isDeleting) {
+        // Finished deleting, start typing again
+        setIsDeleting(false);
+      }
+    }, isDeleting ? speed / 2 : speed); // Delete faster than type
+
+    return () => clearTimeout(timeout);
+  }, [currentIndex, text, speed, isVisible, isDeleting]);
+
+  return (
+    <span ref={ref}>
+      {displayedText}
+      <span className="inline-block w-0.5 h-5 bg-gray-200 animate-pulse ml-1"></span>
+    </span>
+  );
+}
+
 function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -357,37 +414,153 @@ export default function Index() {
       </div>
       <div className="relative z-10 font-['Jost']">
         {/* Hero Section */}
-        <section className="relative overflow-hidden">
+        <section className="relative overflow-hidden h-screen">
           {/* Background Elements */}
           <div className="absolute inset-0 pointer-events-none z-0">
-            {/* Small Dots */}
-            <div className="absolute top-[15%] right-[20%] w-2 h-2 bg-homepage-purple/80 rounded-full" />
-            <div className="absolute bottom-[25%] right-[35%] w-2 h-2 bg-homepage-lavender/80 rounded-full" />
-            <div className="absolute top-[35%] right-[48%] w-2 h-2 bg-homepage-lightBlue/80 rounded-full" />
-            <div className="absolute bottom-[45%] right-[62%] w-2 h-2 bg-homepage-pink/80 rounded-full" />
+            {/* Hollow Circles with White Shadows - Ultra Random Distribution */}
+            {/* Large Hollow Circles */}
+            <div className="absolute top-[17%] right-[43%] w-10 h-10 border-2 border-black/25 rounded-full shadow-lg shadow-white/25" />
+            <div className="absolute bottom-[73%] left-[67%] w-9 h-9 border-2 border-black/30 rounded-full shadow-lg shadow-white/30" />
+            <div className="absolute top-[84%] right-[19%] w-8 h-8 border border-black/20 rounded-full shadow-md shadow-white/35" />
+            <div className="absolute bottom-[29%] left-[81%] w-7 h-7 border border-black/25 rounded-full shadow-md shadow-white/30" />
+            <div className="absolute top-[56%] left-[14%] w-6 h-6 border border-black/20 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[41%] right-[76%] w-8 h-8 border border-black/25 rounded-full shadow-md shadow-white/30" />
+            <div className="absolute top-[3%] left-[93%] w-7 h-7 border border-black/30 rounded-full shadow-md shadow-white/35" />
+            <div className="absolute bottom-[88%] right-[7%] w-6 h-6 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[91%] left-[23%] w-9 h-9 border-2 border-black/25 rounded-full shadow-lg shadow-white/25" />
+            <div className="absolute bottom-[12%] right-[58%] w-8 h-8 border border-black/30 rounded-full shadow-md shadow-white/30" />
+            <div className="absolute top-[68%] left-[89%] w-7 h-7 border border-black/20 rounded-full shadow-md shadow-white/35" />
+            <div className="absolute bottom-[52%] right-[31%] w-6 h-6 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[6%] left-[37%] w-7 h-7 border border-black/20 rounded-full shadow-md shadow-white/35" />
+            <div className="absolute top-[47%] right-[94%] w-6 h-6 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[95%] left-[49%] w-9 h-9 border-2 border-black/30 rounded-full shadow-lg shadow-white/35" />
+            
+            {/* Medium Hollow Circles */}
+            <div className="absolute top-[33%] right-[71%] w-6 h-6 border border-black/30 rounded-full shadow-md shadow-white/30" />
+            <div className="absolute bottom-[78%] left-[29%] w-5 h-5 border border-black/20 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[62%] left-[86%] w-4 h-4 border border-black/25 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute bottom-[19%] right-[44%] w-4.5 h-4.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[8%] right-[82%] w-5 h-5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[63%] left-[51%] w-4 h-4 border border-black/20 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[96%] left-[17%] w-3.5 h-3.5 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute bottom-[34%] right-[13%] w-4 h-4 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[41%] left-[73%] w-5 h-5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[87%] right-[66%] w-4.5 h-4.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[74%] left-[38%] w-4 h-4 border border-black/20 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[26%] right-[95%] w-3.5 h-3.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[59%] left-[4%] w-5 h-5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[71%] right-[57%] w-4 h-4 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[15%] left-[61%] w-4.5 h-4.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[48%] right-[24%] w-4 h-4 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute top-[82%] left-[92%] w-4 h-4 border border-black/20 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[53%] right-[89%] w-5 h-5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[27%] left-[8%] w-3.5 h-3.5 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute bottom-[91%] right-[42%] w-4 h-4 border border-black/20 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[2%] left-[65%] w-4 h-4 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[69%] right-[6%] w-3.5 h-3.5 border border-black/20 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[98%] left-[34%] w-4 h-4 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            
+            {/* Small Hollow Circles */}
+            <div className="absolute top-[23%] left-[76%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[67%] right-[19%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[89%] right-[83%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute bottom-[14%] left-[35%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[51%] left-[92%] w-2 h-2 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[39%] right-[57%] w-2.5 h-2.5 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute top-[76%] right-[26%] w-2.5 h-2.5 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[81%] left-[43%] w-2 h-2 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[34%] left-[15%] w-3 h-3 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute bottom-[28%] right-[74%] w-2 h-2 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[65%] left-[68%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[46%] right-[11%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute top-[12%] left-[54%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[93%] right-[38%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[98%] left-[87%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute bottom-[72%] right-[61%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[44%] left-[31%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[55%] right-[86%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute top-[87%] left-[59%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[17%] right-[33%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[6%] left-[78%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute bottom-[84%] right-[47%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[71%] left-[24%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[36%] right-[69%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute top-[29%] left-[97%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[61%] right-[4%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[95%] left-[41%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute bottom-[9%] right-[91%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[18%] left-[66%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[77%] right-[16%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute top-[83%] left-[12%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[42%] right-[52%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[57%] left-[85%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            
+            {/* Tiny Hollow Circles */}
+            <div className="absolute top-[37%] right-[63%] w-1.5 h-1.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[73%] left-[27%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute top-[84%] left-[71%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[16%] right-[39%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[59%] left-[13%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute bottom-[41%] right-[87%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[26%] right-[74%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[68%] left-[56%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute top-[91%] left-[44%] w-1 h-1 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[7%] right-[62%] w-1.5 h-1.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[14%] left-[88%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute bottom-[82%] right-[18%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[67%] left-[32%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[33%] right-[76%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute top-[43%] left-[69%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[57%] right-[31%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[78%] left-[85%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute bottom-[22%] right-[49%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[5%] left-[21%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[95%] right-[79%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute top-[96%] left-[97%] w-1 h-1 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[4%] right-[3%] w-1.5 h-1.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[2%] left-[5%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute bottom-[98%] right-[95%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[98%] left-[3%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[2%] right-[97%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute top-[4%] left-[7%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[96%] right-[93%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[96%] left-[93%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute bottom-[4%] right-[7%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[6%] left-[9%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[94%] right-[91%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute top-[94%] left-[91%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[6%] right-[9%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[8%] left-[11%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute bottom-[92%] right-[89%] w-1 h-1 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[92%] left-[89%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[8%] right-[11%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute top-[10%] left-[13%] w-1 h-1 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[90%] right-[87%] w-1.5 h-1.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[90%] left-[87%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute bottom-[10%] right-[13%] w-1 h-1 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute top-[12%] left-[15%] w-1.5 h-1.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute bottom-[88%] right-[85%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
+            <div className="absolute top-[88%] left-[85%] w-1 h-1 border border-black/30 rounded-full shadow-sm shadow-white/35" />
+            <div className="absolute bottom-[12%] right-[15%] w-1.5 h-1.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
           </div>
 
-          <div className="container mx-auto h-full">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 h-full items-center max-w-screen-xl mx-auto">
+          <div className="container mx-auto h-full px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-full items-center max-w-screen-xl mx-auto">
               {/* Left Column - Visual Elements */}
-              <div className="lg:col-span-6 relative z-10 order-2 lg:order-1">
-                <div className="relative w-full aspect-[3/4] max-w-[1000px] mx-auto">
-                  {/* Halo Effect */}
-                  <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--background)_0%,_transparent_60%)] blur-md" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--background)_0%,_transparent_40%)] blur-sm" />
+                   <div className="lg:col-span-6 relative z-10 order-2 lg:order-1 flex items-start justify-center">
+                     <div className="relative w-full aspect-[3/4] max-w-[450px] mx-auto">
+                       {/* Gradient Light Effect - More Visible */}
+                       <div className="absolute inset-0 -m-2">
+                         {/* Single radial gradient with higher opacity */}
+                         <div className="absolute inset-0 bg-gradient-radial from-white/50 via-white/15 via-white/20 via-white/10 to-transparent rounded-full blur-xl scale-75" />
                   </div>
+                       
                   {/* Main Image Container */}
-                  <div className="relative w-full h-full">
-                    {/* Halo Effect */}
-                    <div className="absolute inset-0">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--background)_0%,_transparent_60%)] blur-md" />
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--background)_0%,_transparent_40%)] blur-sm" />
-                    </div>
+                       <div className="relative w-full h-full z-10">
                     <motion.img 
                       src="/images/chenius.png" 
                       alt="Chenius Space Home" 
-                      className="relative w-full h-full object-contain"
+                           className="relative w-full h-full object-contain drop-shadow-xl"
                       animate={{
                         y: [0, -10, 0],
                         scale: [1, 1.005, 1],
@@ -405,45 +578,26 @@ export default function Index() {
               </div>
 
               {/* Right Column - Text Content */}
-              <div className="lg:col-span-6 relative z-10 order-1 lg:order-2">
-                <div className="space-y-6 sm:space-y-8 lg:space-y-12 text-center lg:text-left">
-                  <div className="space-y-4 sm:space-y-6">
-                    <div className="flex items-center justify-center lg:justify-start gap-3">
+              <div className="lg:col-span-6 relative z-10 order-1 lg:order-2 flex items-center justify-center h-full">
+                <div className="space-y-6 sm:space-y-8 lg:space-y-12 text-center lg:text-left w-full">
+                  <div className="space-y-2 sm:space-y-3">
+                    <div className="flex items-center justify-center lg:justify-start gap-3 mb-2">
                       <div className="w-8 h-0.5 bg-gradient-to-r from-foreground/50 to-transparent" />
-                      <span className="text-xs text-foreground/50 tracking-widest">MY UNKNOWN JOURNEY</span>
+                           <span className="text-base sm:text-lg md:text-xl text-cs-black-400 tracking-[0.1em]">DREAMING BY CREATING</span>
                     </div>
                     
                     <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl w-full">
-                      <span className="block text-cs-blue-500 dark:text-cs-blue-400 tracking-wide font-semibold">Lost</span>
-                      <span className="block text-foreground/80 font-extralight tracking-normal">But Finding</span>
+                      <span className="block text-cs-gray-600 dark:text-cs-white-400 tracking-wide font-semibold">Digital & Physical</span>
+                      <span className="block text-cs-black-400 font-extralight tracking-normal">designs</span>
                     </h1>
-
-                    <p className="text-base sm:text-lg md:text-xl text-foreground/80 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                      In the silence of my thoughts, I wander through shadows of uncertainty, seeking fragments of who I might become
-                    </p>
                   </div>
 
-                  {/* Progress Indicators */}
-                  <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-8 tracking-widest">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-foreground/30 rounded-full" />
-                      <span className="text-xs text-foreground/60">WEB DESIGN</span>
+                       <p className="text-base sm:text-lg md:text-xl text-cs-black-400 dark:text-cs-gray-800 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                         Here I gather <Link to="/creations" className="text-white hover:text-gray-200 underline decoration-white/30 hover:decoration-white/60 transition-all duration-200 hover:bg-white/5 px-1 py-0.5 rounded-sm">What I Make</Link>, <Link to="/journals" className="text-white hover:text-gray-200 underline decoration-white/30 hover:decoration-white/60 transition-all duration-200 hover:bg-white/5 px-1 py-0.5 rounded-sm">What I Like</Link>, and <Link to="/favorites" className="text-white hover:text-gray-200 underline decoration-white/30 hover:decoration-white/60 transition-all duration-200 hover:bg-white/5 px-1 py-0.5 rounded-sm">What Inspires Me</Link> along the way.
+                       </p>
+
                     </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-foreground/30 rounded-full" />
-                      <span className="text-xs text-foreground/60">ARCHITECTURE</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-foreground/30 rounded-full" />
-                      <span className="text-xs text-foreground/60">SELF DISCOVERY</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-foreground/30 rounded-full" />
-                      <span className="text-xs text-foreground/60">TECHNOLOGY</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
