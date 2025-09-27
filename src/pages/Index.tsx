@@ -414,145 +414,145 @@ export default function Index() {
       </div>
       <div className="relative z-10 font-['Jost']">
         {/* Hero Section */}
-        <section className="relative overflow-hidden h-screen">
+        <section id="home" className="relative overflow-hidden h-screen">
           {/* Background Elements */}
           <div className="absolute inset-0 pointer-events-none z-0">
-            {/* Hollow Circles with White Shadows - Ultra Random Distribution */}
+            {/* Hollow Circles with Theme-Aware Shadows - Ultra Random Distribution */}
             {/* Large Hollow Circles */}
-            <div className="absolute top-[17%] right-[43%] w-10 h-10 border-2 border-black/25 rounded-full shadow-lg shadow-white/25" />
-            <div className="absolute bottom-[73%] left-[67%] w-9 h-9 border-2 border-black/30 rounded-full shadow-lg shadow-white/30" />
-            <div className="absolute top-[84%] right-[19%] w-8 h-8 border border-black/20 rounded-full shadow-md shadow-white/35" />
-            <div className="absolute bottom-[29%] left-[81%] w-7 h-7 border border-black/25 rounded-full shadow-md shadow-white/30" />
-            <div className="absolute top-[56%] left-[14%] w-6 h-6 border border-black/20 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[41%] right-[76%] w-8 h-8 border border-black/25 rounded-full shadow-md shadow-white/30" />
-            <div className="absolute top-[3%] left-[93%] w-7 h-7 border border-black/30 rounded-full shadow-md shadow-white/35" />
-            <div className="absolute bottom-[88%] right-[7%] w-6 h-6 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[91%] left-[23%] w-9 h-9 border-2 border-black/25 rounded-full shadow-lg shadow-white/25" />
-            <div className="absolute bottom-[12%] right-[58%] w-8 h-8 border border-black/30 rounded-full shadow-md shadow-white/30" />
-            <div className="absolute top-[68%] left-[89%] w-7 h-7 border border-black/20 rounded-full shadow-md shadow-white/35" />
-            <div className="absolute bottom-[52%] right-[31%] w-6 h-6 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[6%] left-[37%] w-7 h-7 border border-black/20 rounded-full shadow-md shadow-white/35" />
-            <div className="absolute top-[47%] right-[94%] w-6 h-6 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[95%] left-[49%] w-9 h-9 border-2 border-black/30 rounded-full shadow-lg shadow-white/35" />
+            <div className="absolute top-[17%] right-[43%] w-10 h-10 border-2 border-cs-gray-600/60 dark:border-black/25 rounded-full shadow-lg shadow-cs-gray-300/40 dark:shadow-white/25" />
+            <div className="absolute bottom-[73%] left-[67%] w-9 h-9 border-2 border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-lg shadow-cs-gray-300/50 dark:shadow-white/30" />
+            <div className="absolute top-[84%] right-[19%] w-8 h-8 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[29%] left-[81%] w-7 h-7 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[56%] left-[14%] w-6 h-6 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[41%] right-[76%] w-8 h-8 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[3%] left-[93%] w-7 h-7 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[88%] right-[7%] w-6 h-6 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[91%] left-[23%] w-9 h-9 border-2 border-cs-gray-600/60 dark:border-black/25 rounded-full shadow-lg shadow-cs-gray-300/40 dark:shadow-white/25" />
+            <div className="absolute bottom-[12%] right-[58%] w-8 h-8 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[68%] left-[89%] w-7 h-7 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[52%] right-[31%] w-6 h-6 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[6%] left-[37%] w-7 h-7 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[47%] right-[94%] w-6 h-6 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[95%] left-[49%] w-9 h-9 border-2 border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-lg shadow-cs-gray-300/45 dark:shadow-white/35" />
             
             {/* Medium Hollow Circles */}
-            <div className="absolute top-[33%] right-[71%] w-6 h-6 border border-black/30 rounded-full shadow-md shadow-white/30" />
-            <div className="absolute bottom-[78%] left-[29%] w-5 h-5 border border-black/20 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[62%] left-[86%] w-4 h-4 border border-black/25 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute bottom-[19%] right-[44%] w-4.5 h-4.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[8%] right-[82%] w-5 h-5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[63%] left-[51%] w-4 h-4 border border-black/20 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[96%] left-[17%] w-3.5 h-3.5 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute bottom-[34%] right-[13%] w-4 h-4 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[41%] left-[73%] w-5 h-5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[87%] right-[66%] w-4.5 h-4.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[74%] left-[38%] w-4 h-4 border border-black/20 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[26%] right-[95%] w-3.5 h-3.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[59%] left-[4%] w-5 h-5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[71%] right-[57%] w-4 h-4 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[15%] left-[61%] w-4.5 h-4.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[48%] right-[24%] w-4 h-4 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute top-[82%] left-[92%] w-4 h-4 border border-black/20 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[53%] right-[89%] w-5 h-5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[27%] left-[8%] w-3.5 h-3.5 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute bottom-[91%] right-[42%] w-4 h-4 border border-black/20 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[2%] left-[65%] w-4 h-4 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[69%] right-[6%] w-3.5 h-3.5 border border-black/20 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[98%] left-[34%] w-4 h-4 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[33%] right-[71%] w-6 h-6 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[78%] left-[29%] w-5 h-5 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[62%] left-[86%] w-4 h-4 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/50 dark:shadow-white/40" />
+            <div className="absolute bottom-[19%] right-[44%] w-4.5 h-4.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[8%] right-[82%] w-5 h-5 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[63%] left-[51%] w-4 h-4 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[96%] left-[17%] w-3.5 h-3.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/50 dark:shadow-white/40" />
+            <div className="absolute bottom-[34%] right-[13%] w-4 h-4 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[41%] left-[73%] w-5 h-5 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[87%] right-[66%] w-4.5 h-4.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[74%] left-[38%] w-4 h-4 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[26%] right-[95%] w-3.5 h-3.5 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[59%] left-[4%] w-5 h-5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[71%] right-[57%] w-4 h-4 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[15%] left-[61%] w-4.5 h-4.5 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[48%] right-[24%] w-4 h-4 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/50 dark:shadow-white/40" />
+            <div className="absolute top-[82%] left-[92%] w-4 h-4 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[53%] right-[89%] w-5 h-5 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[27%] left-[8%] w-3.5 h-3.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/50 dark:shadow-white/40" />
+            <div className="absolute bottom-[91%] right-[42%] w-4 h-4 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[2%] left-[65%] w-4 h-4 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[69%] right-[6%] w-3.5 h-3.5 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[98%] left-[34%] w-4 h-4 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
             
             {/* Small Hollow Circles */}
-            <div className="absolute top-[23%] left-[76%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[67%] right-[19%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[89%] right-[83%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute bottom-[14%] left-[35%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[51%] left-[92%] w-2 h-2 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[39%] right-[57%] w-2.5 h-2.5 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute top-[76%] right-[26%] w-2.5 h-2.5 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[81%] left-[43%] w-2 h-2 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[34%] left-[15%] w-3 h-3 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute bottom-[28%] right-[74%] w-2 h-2 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[65%] left-[68%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[46%] right-[11%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute top-[12%] left-[54%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[93%] right-[38%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[98%] left-[87%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute bottom-[72%] right-[61%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[44%] left-[31%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[55%] right-[86%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute top-[87%] left-[59%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[17%] right-[33%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[6%] left-[78%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute bottom-[84%] right-[47%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[71%] left-[24%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[36%] right-[69%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute top-[29%] left-[97%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[61%] right-[4%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[95%] left-[41%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute bottom-[9%] right-[91%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[18%] left-[66%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[77%] right-[16%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
-            <div className="absolute top-[83%] left-[12%] w-3 h-3 border border-black/20 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[42%] right-[52%] w-2.5 h-2.5 border border-black/25 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[57%] left-[85%] w-2 h-2 border border-black/30 rounded-full shadow-sm shadow-white/40" />
+            <div className="absolute top-[23%] left-[76%] w-3 h-3 border-2 border-cs-gray-800/80 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-400/60 dark:shadow-white/30" />
+            <div className="absolute bottom-[67%] right-[19%] w-2.5 h-2.5 border-2 border-cs-gray-900/90 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-400/70 dark:shadow-white/35" />
+            <div className="absolute top-[89%] right-[83%] w-2 h-2 border-2 border-cs-gray-900/95 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-400/80 dark:shadow-white/40" />
+            <div className="absolute bottom-[14%] left-[35%] w-3 h-3 border-2 border-cs-gray-800/80 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-400/60 dark:shadow-white/30" />
+            <div className="absolute top-[51%] left-[92%] w-2 h-2 border-2 border-cs-gray-900/90 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-400/70 dark:shadow-white/35" />
+            <div className="absolute bottom-[39%] right-[57%] w-2.5 h-2.5 border-2 border-cs-gray-900/95 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-400/80 dark:shadow-white/40" />
+            <div className="absolute top-[76%] right-[26%] w-2.5 h-2.5 border-2 border-cs-gray-800/80 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-400/60 dark:shadow-white/30" />
+            <div className="absolute bottom-[81%] left-[43%] w-2 h-2 border-2 border-cs-gray-900/90 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-400/70 dark:shadow-white/35" />
+            <div className="absolute top-[34%] left-[15%] w-3 h-3 border-2 border-cs-gray-900/95 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-400/80 dark:shadow-white/40" />
+            <div className="absolute bottom-[28%] right-[74%] w-2 h-2 border-2 border-cs-gray-800/80 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-400/60 dark:shadow-white/30" />
+            <div className="absolute top-[65%] left-[68%] w-2.5 h-2.5 border-2 border-cs-gray-900/90 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-400/70 dark:shadow-white/35" />
+            <div className="absolute bottom-[46%] right-[11%] w-2 h-2 border-2 border-cs-gray-900/95 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-400/80 dark:shadow-white/40" />
+            <div className="absolute top-[12%] left-[54%] w-3 h-3 border-2 border-cs-gray-800/80 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-400/60 dark:shadow-white/30" />
+            <div className="absolute bottom-[93%] right-[38%] w-2.5 h-2.5 border-2 border-cs-gray-900/90 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-400/70 dark:shadow-white/35" />
+            <div className="absolute top-[98%] left-[87%] w-2 h-2 border-2 border-cs-gray-900/95 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-400/80 dark:shadow-white/40" />
+            <div className="absolute bottom-[72%] right-[61%] w-3 h-3 border-2 border-cs-gray-800/80 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-400/60 dark:shadow-white/30" />
+            <div className="absolute top-[44%] left-[31%] w-2.5 h-2.5 border-2 border-cs-gray-900/90 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-400/70 dark:shadow-white/35" />
+            <div className="absolute bottom-[55%] right-[86%] w-2 h-2 border-2 border-cs-gray-900/95 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-400/80 dark:shadow-white/40" />
+            <div className="absolute top-[87%] left-[59%] w-3 h-3 border-2 border-cs-gray-800/80 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-400/60 dark:shadow-white/30" />
+            <div className="absolute bottom-[17%] right-[33%] w-2.5 h-2.5 border-2 border-cs-gray-900/90 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-400/70 dark:shadow-white/35" />
+            <div className="absolute top-[6%] left-[78%] w-2 h-2 border-2 border-cs-gray-900/95 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-400/80 dark:shadow-white/40" />
+            <div className="absolute bottom-[84%] right-[47%] w-3 h-3 border-2 border-cs-gray-800/80 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-400/60 dark:shadow-white/30" />
+            <div className="absolute top-[71%] left-[24%] w-2.5 h-2.5 border-2 border-cs-gray-900/90 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-400/70 dark:shadow-white/35" />
+            <div className="absolute bottom-[36%] right-[69%] w-2 h-2 border-2 border-cs-gray-900/95 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-400/80 dark:shadow-white/40" />
+            <div className="absolute top-[29%] left-[97%] w-3 h-3 border-2 border-cs-gray-800/80 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-400/60 dark:shadow-white/30" />
+            <div className="absolute bottom-[61%] right-[4%] w-2.5 h-2.5 border-2 border-cs-gray-900/90 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-400/70 dark:shadow-white/35" />
+            <div className="absolute top-[95%] left-[41%] w-2 h-2 border-2 border-cs-gray-900/95 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-400/80 dark:shadow-white/40" />
+            <div className="absolute bottom-[9%] right-[91%] w-3 h-3 border-2 border-cs-gray-800/80 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-400/60 dark:shadow-white/30" />
+            <div className="absolute top-[18%] left-[66%] w-2.5 h-2.5 border-2 border-cs-gray-900/90 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-400/70 dark:shadow-white/35" />
+            <div className="absolute bottom-[77%] right-[16%] w-2 h-2 border-2 border-cs-gray-900/95 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-400/80 dark:shadow-white/40" />
+            <div className="absolute top-[83%] left-[12%] w-3 h-3 border-2 border-cs-gray-800/80 dark:border-black/20 rounded-full shadow-md shadow-cs-gray-400/60 dark:shadow-white/30" />
+            <div className="absolute bottom-[42%] right-[52%] w-2.5 h-2.5 border-2 border-cs-gray-900/90 dark:border-black/25 rounded-full shadow-md shadow-cs-gray-400/70 dark:shadow-white/35" />
+            <div className="absolute top-[57%] left-[85%] w-2 h-2 border-2 border-cs-gray-900/95 dark:border-black/30 rounded-full shadow-md shadow-cs-gray-400/80 dark:shadow-white/40" />
             
             {/* Tiny Hollow Circles */}
-            <div className="absolute top-[37%] right-[63%] w-1.5 h-1.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[73%] left-[27%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute top-[84%] left-[71%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[16%] right-[39%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[59%] left-[13%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute bottom-[41%] right-[87%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[26%] right-[74%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[68%] left-[56%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute top-[91%] left-[44%] w-1 h-1 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[7%] right-[62%] w-1.5 h-1.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[14%] left-[88%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute bottom-[82%] right-[18%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[67%] left-[32%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[33%] right-[76%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute top-[43%] left-[69%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[57%] right-[31%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[78%] left-[85%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute bottom-[22%] right-[49%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[5%] left-[21%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[95%] right-[79%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute top-[96%] left-[97%] w-1 h-1 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[4%] right-[3%] w-1.5 h-1.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[2%] left-[5%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute bottom-[98%] right-[95%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[98%] left-[3%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[2%] right-[97%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute top-[4%] left-[7%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[96%] right-[93%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[96%] left-[93%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute bottom-[4%] right-[7%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[6%] left-[9%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[94%] right-[91%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute top-[94%] left-[91%] w-1.5 h-1.5 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[6%] right-[9%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[8%] left-[11%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute bottom-[92%] right-[89%] w-1 h-1 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[92%] left-[89%] w-1 h-1 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[8%] right-[11%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute top-[10%] left-[13%] w-1 h-1 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[90%] right-[87%] w-1.5 h-1.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute top-[90%] left-[87%] w-1.5 h-1.5 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute bottom-[10%] right-[13%] w-1 h-1 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute top-[12%] left-[15%] w-1.5 h-1.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
-            <div className="absolute bottom-[88%] right-[85%] w-1 h-1 border border-black/20 rounded-full shadow-sm shadow-white/25" />
-            <div className="absolute top-[88%] left-[85%] w-1 h-1 border border-black/30 rounded-full shadow-sm shadow-white/35" />
-            <div className="absolute bottom-[12%] right-[15%] w-1.5 h-1.5 border border-black/25 rounded-full shadow-sm shadow-white/30" />
+            <div className="absolute top-[37%] right-[63%] w-1.5 h-1.5 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[73%] left-[27%] w-1 h-1 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute top-[84%] left-[71%] w-1.5 h-1.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[16%] right-[39%] w-1 h-1 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[59%] left-[13%] w-1 h-1 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute bottom-[41%] right-[87%] w-1.5 h-1.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[26%] right-[74%] w-1 h-1 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[68%] left-[56%] w-1.5 h-1.5 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute top-[91%] left-[44%] w-1 h-1 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[7%] right-[62%] w-1.5 h-1.5 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[14%] left-[88%] w-1 h-1 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute bottom-[82%] right-[18%] w-1.5 h-1.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[67%] left-[32%] w-1 h-1 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[33%] right-[76%] w-1.5 h-1.5 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute top-[43%] left-[69%] w-1.5 h-1.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[57%] right-[31%] w-1 h-1 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[78%] left-[85%] w-1 h-1 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute bottom-[22%] right-[49%] w-1.5 h-1.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[5%] left-[21%] w-1 h-1 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[95%] right-[79%] w-1.5 h-1.5 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute top-[96%] left-[97%] w-1 h-1 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[4%] right-[3%] w-1.5 h-1.5 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[2%] left-[5%] w-1 h-1 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute bottom-[98%] right-[95%] w-1.5 h-1.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[98%] left-[3%] w-1 h-1 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[2%] right-[97%] w-1.5 h-1.5 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute top-[4%] left-[7%] w-1.5 h-1.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[96%] right-[93%] w-1 h-1 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[96%] left-[93%] w-1 h-1 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute bottom-[4%] right-[7%] w-1.5 h-1.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[6%] left-[9%] w-1 h-1 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[94%] right-[91%] w-1.5 h-1.5 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute top-[94%] left-[91%] w-1.5 h-1.5 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[6%] right-[9%] w-1 h-1 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[8%] left-[11%] w-1.5 h-1.5 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute bottom-[92%] right-[89%] w-1 h-1 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[92%] left-[89%] w-1 h-1 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[8%] right-[11%] w-1.5 h-1.5 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute top-[10%] left-[13%] w-1 h-1 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[90%] right-[87%] w-1.5 h-1.5 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute top-[90%] left-[87%] w-1.5 h-1.5 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute bottom-[10%] right-[13%] w-1 h-1 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute top-[12%] left-[15%] w-1.5 h-1.5 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
+            <div className="absolute bottom-[88%] right-[85%] w-1 h-1 border border-cs-gray-600/55 dark:border-black/20 rounded-full shadow-sm shadow-cs-gray-300/35 dark:shadow-white/25" />
+            <div className="absolute top-[88%] left-[85%] w-1 h-1 border border-cs-gray-700/70 dark:border-black/30 rounded-full shadow-sm shadow-cs-gray-300/45 dark:shadow-white/35" />
+            <div className="absolute bottom-[12%] right-[15%] w-1.5 h-1.5 border border-cs-gray-700/65 dark:border-black/25 rounded-full shadow-sm shadow-cs-gray-300/40 dark:shadow-white/30" />
           </div>
 
-          <div className="container mx-auto h-full px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-full items-center max-w-screen-xl mx-auto">
+          <div className="container mx-auto h-full px-4 max-w-screen-xl">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-full items-center">
               {/* Left Column - Visual Elements */}
                    <div className="lg:col-span-6 relative z-10 order-2 lg:order-1 flex items-start justify-center">
                      <div className="relative w-full aspect-[3/4] max-w-[450px] mx-auto">
-                       {/* Gradient Light Effect - More Visible */}
+                       {/* Gradient Light Effect - Theme Aware */}
                        <div className="absolute inset-0 -m-2">
-                         {/* Single radial gradient with higher opacity */}
-                         <div className="absolute inset-0 bg-gradient-radial from-white/50 via-white/15 via-white/20 via-white/10 to-transparent rounded-full blur-xl scale-75" />
+                         {/* Light mode: slate background, Dark mode: slate light */}
+                         <div className="absolute inset-0 bg-gradient-radial from-slate-600/60 via-slate-500/30 via-slate-400/20 via-slate-300/10 to-transparent dark:from-slate-400/50 dark:via-slate-300/15 dark:via-slate-200/20 dark:via-slate-100/10 rounded-full blur-xl scale-75" />
                   </div>
                        
                   {/* Main Image Container */}
@@ -583,18 +583,18 @@ export default function Index() {
                   <div className="space-y-2 sm:space-y-3">
                     <div className="flex items-center justify-center lg:justify-start gap-3 mb-2">
                       <div className="w-8 h-0.5 bg-gradient-to-r from-foreground/50 to-transparent" />
-                           <span className="text-base sm:text-lg md:text-xl text-cs-black-400 tracking-[0.1em]">DREAMING BY CREATING</span>
+                           <span className="text-base sm:text-lg md:text-xl text-cs-slate-400 tracking-[0.1em]">DREAMING BY CREATING</span>
                     </div>
                     
                     <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl w-full">
                       <span className="block text-cs-gray-600 dark:text-cs-white-400 tracking-wide font-semibold">Digital & Physical</span>
-                      <span className="block text-cs-black-400 font-extralight tracking-normal">designs</span>
+                      <span className="block text-cs-slate-400 font-extralight tracking-normal">designs</span>
                     </h1>
                   </div>
 
-                       <p className="text-base sm:text-lg md:text-xl text-cs-black-400 dark:text-cs-gray-800 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                         Here I gather <Link to="/creations" className="text-white hover:text-gray-200 underline decoration-white/30 hover:decoration-white/60 transition-all duration-200 hover:bg-white/5 px-1 py-0.5 rounded-sm">What I Make</Link>, <Link to="/journals" className="text-white hover:text-gray-200 underline decoration-white/30 hover:decoration-white/60 transition-all duration-200 hover:bg-white/5 px-1 py-0.5 rounded-sm">What I Like</Link>, and <Link to="/favorites" className="text-white hover:text-gray-200 underline decoration-white/30 hover:decoration-white/60 transition-all duration-200 hover:bg-white/5 px-1 py-0.5 rounded-sm">What Inspires Me</Link> along the way.
-                       </p>
+                       <p className="text-base sm:text-lg md:text-xl text-cs-gray-600 dark:text-cs-gray-800 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                         Here I gather <Link to="/creations" className="text-cs-slate-600 dark:text-white hover:text-cs-black-800 dark:hover:text-gray-200 underline decoration-cs-slate-400/30 dark:decoration-white/30 hover:decoration-cs-slate-600/60 dark:hover:decoration-white/60 transition-all duration-200 hover:bg-cs-slate-100/10 dark:hover:bg-white/5 px-1 py-0.5 rounded-sm font-medium">What I Make</Link>, <Link to="/journals" className="text-cs-slate-600 dark:text-white hover:text-cs-black-800 dark:hover:text-gray-200 underline decoration-cs-slate-400/30 dark:decoration-white/30 hover:decoration-cs-slate-600/60 dark:hover:decoration-white/60 transition-all duration-200 hover:bg-cs-slate-100/10 dark:hover:bg-white/5 px-1 py-0.5 rounded-sm font-medium">What I Like</Link>, and <Link to="/favorites" className="text-cs-slate-600 dark:text-white hover:text-cs-black-800 dark:hover:text-gray-200 underline decoration-cs-slate-400/30 dark:decoration-white/30 hover:decoration-cs-slate-600/60 dark:hover:decoration-white/60 transition-all duration-200 hover:bg-cs-slate-100/10 dark:hover:bg-white/5 px-1 py-0.5 rounded-sm font-medium">What Inspires Me</Link> along the way.
+                    </p>
 
                     </div>
                     </div>
@@ -682,6 +682,7 @@ export default function Index() {
 
         {/* Creations Preview */}
         <section 
+          id="creations"
           ref={(el) => (sectionsRef.current[1] = el)}
           className="py-24"
         >
@@ -762,6 +763,7 @@ export default function Index() {
 
         {/* Journals Preview */}
         <section 
+          id="journals"
           ref={(el) => (sectionsRef.current[2] = el)}
           className="py-24"
         >
@@ -835,6 +837,27 @@ export default function Index() {
             <span className="px-4 bg-background text-foreground/50 text-base tracking-widest">LET'S TALK OR JUST STALK</span>
           </div>
         </div>
+
+        {/* Favorites Section */}
+        <section id="favorites" className="py-24">
+          <div className="container mx-auto px-4 max-w-screen-xl">
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-gradient-to-r from-foreground/50 to-transparent" />
+                <span className="text-sm text-foreground/50 tracking-widest">FAVORITES</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl tracking-wide">
+                <span className="text-foreground font-bold">What </span>
+                <span className="text-foreground/80 font-extralight">Inspires Me</span>
+              </h2>
+              </div>
+            <div className="text-center">
+              <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
+                A collection of things that spark my creativity and keep me motivated in my journey.
+              </p>
+            </div>
+          </div>
+        </section>
 
         {/* Contact Me Section */}
         <section id="contact" className="py-32">

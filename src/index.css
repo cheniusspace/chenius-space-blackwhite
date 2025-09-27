@@ -21,25 +21,25 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
+    --background: 215 25% 92%;
+    --foreground: 215 20% 25%;
+    --card: 215 25% 96%;
+    --card-foreground: 215 20% 25%;
+    --popover: 215 25% 96%;
+    --popover-foreground: 215 20% 25%;
+    --primary: 215 20% 15%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: 215 20% 15%;
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted-foreground: 215 20% 35%;
     --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent-foreground: 215 20% 15%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 215 20% 15%;
     --radius: 0.5rem;
 
     /* Custom colors */
@@ -246,11 +246,16 @@
 /* Subtle Grid Background */
 .subtle-grid {
   background-color: hsl(var(--background));
-  background-image: radial-gradient(circle at center, hsl(var(--foreground) / 0.08), transparent 1px);
+  background-image: radial-gradient(circle at center, hsl(var(--foreground) / 0.15), transparent 1.5px);
   background-size: 24px 24px;
   background-position: center;
   position: relative;
   z-index: 0;
+}
+
+/* Enhanced dot grid for dark mode */
+.dark .subtle-grid {
+  background-image: radial-gradient(circle at center, hsl(var(--foreground) / 0.25), transparent 2px);
 }
 
 /* Refined Navigation */
@@ -274,31 +279,59 @@
   transition: all 0.3s ease;
 }
 
-.refined-nav-link::before {
-  content: '';
-  @apply absolute inset-0;
-  background-color: var(--cs-dark-700) / 0.1;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+/* Popup-style navbar links */
+.popup-nav-link {
+  @apply relative text-sm transition-all duration-200;
+  color: hsl(var(--foreground));
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0.75rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.5rem;
+  background-color: hsl(var(--popover));
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  min-height: 120px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
 
-.refined-nav-link:hover::before {
-  transform: scaleX(1);
+.popup-nav-link:hover {
+  background-color: hsl(var(--accent));
+  border-color: hsl(var(--accent));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
-.refined-nav-link::after {
-  content: '';
-  @apply absolute bottom-0 left-0 w-full h-0.5;
-  background-color: var(--cs-dark-700) / 0.3;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
+.popup-nav-link:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 
-.refined-nav-link:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+/* Underline effect removed */
+
+/* Ensure no underlines on navbar links */
+.refined-nav-link {
+  text-decoration: none !important;
+}
+
+.refined-nav-link:hover {
+  text-decoration: none !important;
+}
+
+.refined-nav-link:focus {
+  text-decoration: none !important;
+}
+
+.refined-nav-link:visited {
+  text-decoration: none !important;
 }
 
 .refined-nav-link:hover {
@@ -319,6 +352,11 @@
   transition: all 0.3s ease;
 }
 
+/* Remove border in light mode */
+:root .nav-brand {
+  border: none;
+}
+
 .nav-brand::before {
   content: '';
   position: absolute;
@@ -333,26 +371,15 @@
   transform: scaleX(1);
 }
 
-.nav-brand::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: rgba(32, 34, 46, 0.3);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-}
-
-.nav-brand:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
+/* Nav brand underline removed */
 
 .nav-brand:hover {
   border-color: rgba(32, 34, 46, 0.3);
+}
+
+/* Remove hover border in light mode */
+:root .nav-brand:hover {
+  border-color: transparent;
 }
 
 .nav-brand span:last-child {

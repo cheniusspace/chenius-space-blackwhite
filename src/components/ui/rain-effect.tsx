@@ -51,7 +51,15 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(this.x, this.y + this.length);
-        ctx.strokeStyle = `rgba(233, 233, 233, ${this.opacity})`;
+        
+        // Theme-aware rain color
+        const isDarkMode = document.documentElement.classList.contains('dark');
+        if (isDarkMode) {
+          ctx.strokeStyle = `rgba(233, 233, 233, ${this.opacity})`; // Light gray for dark mode
+        } else {
+          ctx.strokeStyle = `rgba(75, 85, 99, ${this.opacity})`; // Dark gray for light mode
+        }
+        
         ctx.lineWidth = this.width;
         ctx.stroke();
       }
