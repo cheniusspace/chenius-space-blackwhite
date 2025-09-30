@@ -81,30 +81,30 @@
     @apply border-border tracking-wide;
   }
 
-  /* Light mode cursor */
+  /* Light mode cursor - cs-gray-600 color (#57534e) */
   :root * {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='none' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, auto;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='none' stroke='%2357534e' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, auto;
   }
 
   :root button, :root a, :root input, :root textarea, :root select {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='none' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, pointer;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='none' stroke='%2357534e' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, pointer;
   }
 
   :root button:hover, :root a:hover {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='black' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, pointer !important;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='%2357534e' stroke='%2357534e' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, pointer !important;
   }
 
-  /* Dark mode cursor */
+  /* Dark mode cursor - cs-white-400 color (#e5e5e5) */
   .dark * {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, auto;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='none' stroke='%23e5e5e5' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, auto;
   }
 
   .dark button, .dark a, .dark input, .dark textarea, .dark select {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, pointer;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='none' stroke='%23e5e5e5' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, pointer;
   }
 
   .dark button:hover, .dark a:hover {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='white' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, pointer !important;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5,5 L14,24 L17,18 L23,14 Z' fill='%23e5e5e5' stroke='%23e5e5e5' stroke-width='1.5'/%3E%3C/svg%3E") 5 5, pointer !important;
   }
 
   body {
