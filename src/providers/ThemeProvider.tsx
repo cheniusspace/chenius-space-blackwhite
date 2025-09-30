@@ -24,10 +24,8 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     // Check if theme preference is stored in localStorage
     const savedTheme = localStorage.getItem("theme");
-    // Check if user prefers dark mode
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    // Return saved theme, or system preference, or default to light
-    return (savedTheme as "light" | "dark") || (prefersDark ? "dark" : "light");
+    // Return saved theme, or default to dark
+    return (savedTheme as "light" | "dark") || "dark";
   });
   
   const isDark = theme === "dark";
