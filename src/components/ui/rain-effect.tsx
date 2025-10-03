@@ -21,6 +21,9 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
+    // Check if mobile device
+    const isMobile = window.innerWidth < 768;
+
     // Rain drop class
     class RainDrop {
       x: number;
@@ -35,8 +38,14 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
         this.y = Math.random() * canvas.height;
         this.length = Math.random() * 15 + 10;
         this.speed = Math.random() * 1 + 0.5;
-        this.opacity = Math.random() * 0.3 + 0.1;
-        this.width = Math.random() * 0.8 + 0.3;
+        // Mobile: much lighter opacity (0.05-0.15), Desktop: original (0.1-0.4)
+        this.opacity = isMobile 
+          ? Math.random() * 0.1 + 0.05
+          : Math.random() * 0.3 + 0.1;
+        // Mobile: thinner drops (0.2-0.4), Desktop: original (0.3-1.1)
+        this.width = isMobile
+          ? Math.random() * 0.2 + 0.2
+          : Math.random() * 0.8 + 0.3;
       }
 
       update() {
@@ -67,7 +76,8 @@ export const RainEffect = ({ className, ...props }: RainEffectProps) => {
 
     // Create rain drops
     const drops: RainDrop[] = [];
-    const dropCount = 100;
+    // Mobile: fewer drops (50), Desktop: original (100)
+    const dropCount = isMobile ? 50 : 100;
     const columnCount = 20; // Number of vertical columns for rain
     const columnWidth = canvas.width / columnCount;
     
