@@ -596,105 +596,27 @@ export default function Index() {
                          Here I gather <Link to="/creations" className="text-cs-slate-600 dark:text-white hover:text-cs-black-800 dark:hover:text-gray-200 underline decoration-cs-slate-400/30 dark:decoration-white/30 hover:decoration-cs-slate-600/60 dark:hover:decoration-white/60 transition-all duration-200 hover:bg-cs-slate-100/10 dark:hover:bg-white/5 px-1 py-0.5 rounded-sm font-medium">What I Make</Link>, <Link to="/journals" className="text-cs-slate-600 dark:text-white hover:text-cs-black-800 dark:hover:text-gray-200 underline decoration-cs-slate-400/30 dark:decoration-white/30 hover:decoration-cs-slate-600/60 dark:hover:decoration-white/60 transition-all duration-200 hover:bg-cs-slate-100/10 dark:hover:bg-white/5 px-1 py-0.5 rounded-sm font-medium">What I Like</Link>, and <Link to="/favorites" className="text-cs-slate-600 dark:text-white hover:text-cs-black-800 dark:hover:text-gray-200 underline decoration-cs-slate-400/30 dark:decoration-white/30 hover:decoration-cs-slate-600/60 dark:hover:decoration-white/60 transition-all duration-200 hover:bg-cs-slate-100/10 dark:hover:bg-white/5 px-1 py-0.5 rounded-sm font-medium">What Inspires Me</Link> along the way.
                     </p>
 
+                      </div>
                     </div>
-                    </div>
-            </div>
+                </div>
           </div>
         </section>
-
-        {/* Section Divider */}
-        <div className="relative py-12">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-foreground/10"></div>
-          </div>
-          <div className="relative flex justify-center">
-            <span className="px-4 bg-background text-foreground text-base tracking-widest">ABOUT CHENIUS SPACE</span>
-          </div>
-        </div>
-
-        {/* About Section */}
-        <section className="py-32">
-          <div className="container mx-auto px-4 max-w-screen-xl">
-            <div className="space-y-6">
-              <div className="max-w-3xl mx-auto text-center mb-16">
-                <h2 className="text-3xl md:text-4xl tracking-wide mb-6">
-                  <span className="text-foreground font-extralight">Welcome to </span>
-                  <span className="text-foreground/80 font-bold">Chenius Space</span>
-              </h2>
-                <p className="text-lg text-foreground/80 leading-relaxed">
-                  A digital sanctuary where creativity meets technology. Here, I explore the intersection of design, 
-                  development, and personal growth through various projects and writings. This space serves as both 
-                  a portfolio of my work and a journal of my journey in the digital landscape.
-                </p>
-            </div>
-
-              <div className="flex flex-wrap justify-center gap-4">
-                <div className="px-4 py-2 bg-foreground/5 hover:bg-foreground/10 transition-colors rounded-none">
-                  <span className="text-sm text-foreground/80">Web Design</span>
-                      </div>
-                <div className="px-4 py-2 bg-foreground/5 hover:bg-foreground/10 transition-colors rounded-none">
-                  <span className="text-sm text-foreground/80">UI/UX</span>
-                    </div>
-                <div className="px-4 py-2 bg-foreground/5 hover:bg-foreground/10 transition-colors rounded-none">
-                  <span className="text-sm text-foreground/80">Frontend Development</span>
-                </div>
-                <div className="px-4 py-2 bg-foreground/5 hover:bg-foreground/10 transition-colors rounded-none">
-                  <span className="text-sm text-foreground/80">React</span>
-                      </div>
-                <div className="px-4 py-2 bg-foreground/5 hover:bg-foreground/10 transition-colors rounded-none">
-                  <span className="text-sm text-foreground/80">TypeScript</span>
-                    </div>
-                <div className="px-4 py-2 bg-foreground/5 hover:bg-foreground/10 transition-colors rounded-none">
-                  <span className="text-sm text-foreground/80">Tailwind CSS</span>
-                </div>
-                <div className="px-4 py-2 bg-foreground/5 hover:bg-foreground/10 transition-colors rounded-none">
-                  <span className="text-sm text-foreground/80">Digital Art</span>
-              </div>
-                <div className="px-4 py-2 bg-foreground/5 hover:bg-foreground/10 transition-colors rounded-none">
-                  <span className="text-sm text-foreground/80">Creative Writing</span>
-            </div>
-                <div className="px-4 py-2 bg-foreground/5 hover:bg-foreground/10 transition-colors rounded-none">
-                  <span className="text-sm text-foreground/80">Personal Growth</span>
-              </div>
-                <div className="px-4 py-2 bg-foreground/5 hover:bg-foreground/10 transition-colors rounded-none">
-                  <span className="text-sm text-foreground/80">Technology</span>
-                    </div>
-                <div className="px-4 py-2 bg-foreground/5 hover:bg-foreground/10 transition-colors rounded-none">
-                  <span className="text-sm text-foreground/80">Innovation</span>
-                  </div>
-                <div className="px-4 py-2 bg-foreground/5 hover:bg-foreground/10 transition-colors rounded-none">
-                  <span className="text-sm text-foreground/80">Self Discovery</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section Divider */}
-        <div className="relative py-12">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-foreground/10"></div>
-          </div>
-          <div className="relative flex justify-center">
-            <span className="px-4 bg-background text-foreground/50 text-base tracking-widest">RECENT CREATIONS</span>
-          </div>
-        </div>
 
         {/* Creations Preview */}
         <section 
           id="creations"
           ref={(el) => (sectionsRef.current[1] = el)}
-          className="py-24"
+          className="min-h-screen flex flex-col justify-center py-24"
         >
           <div className="container mx-auto px-4 max-w-screen-xl">
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-0.5 bg-gradient-to-r from-foreground/50 to-transparent" />
-                <span className="text-xs text-foreground/50 tracking-widest">RECENT PROJECTS</span>
+                <span className="text-xs text-foreground/50 tracking-widest">SELECTED PROJECTS</span>
               </div>
               <h2 className="text-3xl md:text-4xl tracking-wide">
-                <span className="text-foreground font-extralight">CHENIUS </span>
-                <span className="text-foreground/80 font-bold">Creations</span>
+                <span className="text-foreground font-extralight">Latest </span>
+                <span className="text-foreground/80 font-bold">Work</span>
               </h2>
             </div>
             
@@ -751,31 +673,21 @@ export default function Index() {
           </div>
         </section>
 
-        {/* Section Divider */}
-        <div className="relative py-12">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-foreground/10"></div>
-          </div>
-          <div className="relative flex justify-center">
-            <span className="px-4 bg-background text-foreground/50 text-base tracking-widest">LATEST JOURNALS</span>
-          </div>
-        </div>
-
         {/* Journals Preview */}
         <section 
           id="journals"
           ref={(el) => (sectionsRef.current[2] = el)}
-          className="py-24"
+          className="min-h-screen flex flex-col justify-center py-24"
         >
           <div className="container mx-auto px-4 max-w-screen-xl">
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-0.5 bg-gradient-to-r from-foreground/50 to-transparent" />
-                <span className="text-sm text-foreground/50 tracking-widest">LATEST JOURNALS</span>
+                <span className="text-sm text-foreground/50 tracking-widest">THOUGHTS & NOTES</span>
               </div>
               <h2 className="text-3xl md:text-4xl tracking-wide">
-                <span className="text-foreground font-extralight">Dummy </span>
-                <span className="text-foreground/80 font-bold">Journals</span>
+                <span className="text-foreground font-extralight">Recent </span>
+                <span className="text-foreground/80 font-bold">Entries</span>
               </h2>
             </div>
 
@@ -828,18 +740,8 @@ export default function Index() {
           </div>
         </section>
 
-        {/* Section Divider */}
-        <div className="relative py-12">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-foreground/10"></div>
-          </div>
-          <div className="relative flex justify-center">
-            <span className="px-4 bg-background text-foreground/50 text-base tracking-widest">LET'S TALK OR JUST STALK</span>
-          </div>
-        </div>
-
         {/* Favorites Section */}
-        <section id="favorites" className="py-24">
+        <section id="favorites" className="min-h-screen flex flex-col justify-center py-24">
           <div className="container mx-auto px-4 max-w-screen-xl">
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-4">
@@ -860,7 +762,7 @@ export default function Index() {
         </section>
 
         {/* Contact Me Section */}
-        <section id="contact" className="py-32">
+        <section id="contact" className="min-h-screen flex flex-col justify-center py-32">
           <div className="container mx-auto px-4 max-w-screen-xl">
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-4">

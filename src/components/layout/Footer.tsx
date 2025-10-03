@@ -5,17 +5,17 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="w-full bg-cs-dark-900 border-t border-cs-dark-700 max-w-screen-xl mx-auto">
+    <footer className="w-full bg-background border-t border-border max-w-screen-xl mx-auto">
       <div className="container mx-auto px-4 md:px-8 py-16">
         {/* Main Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
           {/* Left Column - Brand & Description */}
           <div className="space-y-4">
             <Link to="/" className="inline-block">
-              <span className="text-cs-dark-100 font-semibold">CHENIUS</span>
-              <span className="text-cs-dark-200 font-thin">SPACE</span>
+              <span className="text-foreground font-semibold">CHENIUS</span>
+              <span className="text-foreground/70 font-thin">SPACE</span>
             </Link>
-            <p className="text-cs-dark-300 text-sm max-w-md">
+            <p className="text-muted-foreground text-sm max-w-md">
               A digital space for creative exploration and artistic expression. 
               Discover unique creations, read insightful journals, and explore curated favorites.
             </p>
